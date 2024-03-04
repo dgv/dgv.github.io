@@ -1,0 +1,30 @@
+title: 職人
+description: dgv's page
+baseurl: ""
+url: https://dgv.dev.br
+
+theme: cvless
+
+# site settings
+taglong: Daniel Gomes Vargas
+tagshort:
+
+# author settings
+author:
+  name: Daniel Gomes Vargas
+  email: dgv@fastmail.com
+photo: assets/files/photo.jpg
+address: Curitiba, Brazil
+
+# social media links
+social:
+  github: dgv
+  linkedin: dgvargas
+  x: dgvargas
+
+# build settings
+permalink: pretty
+exclude:
+  - docker-compose.yml
+  - LICENSE
+  - README.md

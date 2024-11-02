@@ -1,13 +1,10 @@
 ---
-layout: home
+layout: home2
 title: Home
 ---
 
-# Hello friend!
+# whoami
 
-I am computer programmer building and running some [projects](/cv/#projects).
-
-As [digital minimalism](https://www.amazon.com/Digital-Minimalism-Choosing-Focused-Noisy/dp/0525536515) practitioner I prefer async communication, so unless you are sending me spam, I welcome your e-mail. =)
+Hello friend, I am _Daniel Gomes Vargas_ (aka dgv), programmer living in [Curitiba](https://en.wikipedia.org/wiki/Curitiba), Brazil.
 
 {% include archive.html %}
-{% include_relative _include/mail.html %}

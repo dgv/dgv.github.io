@@ -1,4 +1,4 @@
-title: 職人
+title: 職人魂
 description: dgv's page
 baseurl: ""
 url: https://dgv.dev.br
@@ -6,7 +6,7 @@ url: https://dgv.dev.br
 theme: cvless
 
 # site settings
-taglong: Daniel Gomes Vargas
+taglong: dgv's devlog
 tagshort:
 
 # author settings
@@ -20,7 +20,8 @@ address: Curitiba, Brazil
 social:
   github: dgv
   linkedin: dgvargas
-  x: dgvargas
+  #  x: dgvargas
+  mastodon: mastodon.social/@dgv
 
 # build settings
 permalink: pretty
@@ -28,3 +29,6 @@ exclude:
   - docker-compose.yml
   - LICENSE
   - README.md
+
+plugins:
+  - jekyll-feed

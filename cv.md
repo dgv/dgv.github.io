@@ -1,5 +1,5 @@
 ---
-layout: cv
+layout: cv2
 title: CV
 ---
 
@@ -7,28 +7,30 @@ title: CV
 
 ## Personal
 
-I'm from São Paulo, living in [Curitiba](https://en.wikipedia.org/wiki/Curitiba) 🌳, Brazil.<br>
-I've more than 18 years of professional experience in software development, working remotely async with small teams since 2012.
+  I'm Daniel Gomes Vargas (aka dgv), I grew up in São Paulo, Brazil, living in Curitiba 🌳 since 2006. I've more than 18 years of professional experience in software development, working remotely async with small teams since 2012.
 
-english level: professional working proficiency ([certified](https://cert.efset.org/XTuHyA) as CEFR C2).
+_What I cannot build, I do not understand._<br>
+— Richard Feynman
 
-hobbies: reading, piano, walking.
+English level: professional working proficiency ([certified](https://cert.efset.org/XTuHyA) as CEFR C2).
 
-**not interested:** corp bullshit 💩, too many meetings, move to another country.
+Hobbies: reading, piano, walking.
+
+Interests: Web3, communications protocols, embedded and distributed systems.
+
+Not interested: corp bullshit 💩, too many meetings, move to another country.
 
 ### Tech. Skills
-
 [![Hackerrank](https://img.shields.io/badge/-Hackerrank-2EC866?style=for-the-badge&logo=HackerRank&logoColor=white)](https://www.hackerrank.com/profile/dgvargas)
 
-- Profissional experience: Golang, PostgreSQL, Redis, AWS, GCP, Kafka, Docker, Git, Prometheus, Codacy, Sentry, Github Actions, Newrelic, Linux.<br><br>
-- Familiar: Zig, Rust, Lua, Flutter, Javascript, C, Jenkins, Travis, Terraform, Kubernetes, Blockchain, WebRTC, OpenBSD, FreeBSD, Windows Server, Nanovms.<br><br>
-- Interests: Web3, communications protocols and distributed systems.<br><br>
+#golang, #zig, #c, #sqlite, #postgresql, #redis, #aws, #gcp, #kafka, #docker, #git, #networking, #webrtc, #voip, #opentelemetry, #devsecops, #linux, #freebsd, #openbsd, #windowsserver, #nanovms
 
 ## Work Experience
 
-- _Jun 2023 - present_<br>Landell Labs<br>Founder (Golang, Flutter, VUE.js)<br><br> After a deserved sabbatical time I decided to start my own company to develop and run some ideas from the last years.
-
-- _Aug 2018 - Oct 2022:_<br>[Cloudwalk](https://cloudwalk.io)<br>Sr Software Engineer (Golang, PostgreSQL, AWS, GCP)<br><br>Was conviced to come back by the CTO and help the company achieve the dream of became a merchant acquirer (from payment processor and later the [first licensed crypto firm in Brazil](https://www.coindesk.com/business/2022/11/03/cloudwalk-is-first-crypto-firm-in-brazil-to-become-a-licensed-payments-institution/)).
+- _Jun 2023 - present_<br>[Landell Labs](https://landell.dev)<br>Founder (Golang, Zig, Javascript)<br><br>
+  After a deserved sabbatical time I decided to start my own company to develop and run some ideas from the last years.
+<br><br>
+- _Aug 2018 - Oct 2022:_<br>[Cloudwalk](https://cloudwalk.io)<br>Sr Software Engineer (Golang, PostgreSQL, AWS, GCP)<br><br>Help the company achieve the goal of became a merchant acquirer from payment processor and later the [first licensed crypto firm in Brazil](https://www.coindesk.com/business/2022/11/03/cloudwalk-is-first-crypto-firm-in-brazil-to-become-a-licensed-payments-institution/).
   - Experienced the exponential growth and saw the company goes from 20 people to 400 in couple years, after receive the [largest B series investment in Brazil](https://www.businesswire.com/news/home/20210511005284/en/CloudWalk-Announces-US190M-Series-B-Financing-Round-Led-by-Coatue) at time and be valued in [$2.15bi](https://www.reuters.com/technology/brazils-cloudwalk-valued-215-bln-after-coatue-led-investment-2021-11-17/) after C series.
   - Worked as Lead SRE and Lead Cloud Security Engineer positions.
   - In charge of all infrastructure compliance of PCI-DSS during three years.
@@ -36,8 +38,7 @@ hobbies: reading, piano, walking.
   - Responsible of development and operation of legacy payment gateway system with more than 100k client devices.
   - Finops, hardening of cloud assets, monitoring and troubleshooting on daily basis.
   - Support of teams pipelines and devs guidance.
-  - Elaborated and maintained infrastructure compliance documentation and security awareness training (OWASP/PCI-DSS).
-  - Burnout 🔥 after years accumulating functions and hiring issues during the pandemic.<br><br>
+  - Elaborated and maintained infrastructure compliance documentation and security awareness training (OWASP/PCI-DSS).<br><br>
 - _Nov 2015 - Jun 2018_ <br>Independent Contractor<br>Software Developer (Golang, C, Elm)
   - Development of VoIP platform using FreeSWITCH.
   - Technical/Customer Support.<br><br>
@@ -46,7 +47,7 @@ hobbies: reading, piano, walking.
   - Help the team on the development of cloud payment gateway.
   - Participated of [the first PoC using Bitcoin on POS terminal](https://youtu.be/zsNQ6YV8FgE) with Coinbase integration.
   - Developed experimental CoAP implementation with observe support ([draft-ietf-core-observe-12](https://datatracker.ietf.org/doc/html/draft-ietf-core-observe-12)), abbandoned by operational reasons in favor of HTTP.
-  - Development of time synchronization, notifications and software update systems for POS terminals using SNTP, GOSSIP and Bittorrent protocols respectively.<br><br>
+  - Development of time synchronization, notifications and software update systems for POS terminals using SNTP, Gossip and Bittorrent protocols respectively.<br><br>
 - _Oct 2011 - Oct 2013_ <br>Software Developer<br>Freelancer (Golang, Lua, PHP, nginx, MySQL, SQLite, C)
   - Development of API for mailing service using OpenResty.
   - Sysadmin of LAMP Servers.
@@ -78,8 +79,7 @@ hobbies: reading, piano, walking.
 
 ## Projects
 
-- [feedport](https://github.com/feedport/feedport) (Golang, VUE.js): based on my [YARR](https://github.com/dgv/yarr) fork, minimalist feed reader with some other features support.
-- [play.zig](https://github.com/dgv/play.zig) (Golang, Zig, JavaScript): playground to run, share and learn Zig code online (used by [Zig by Example](https://zig-by-example.com/)).
+- [play.zig](https://github.com/dgv/play.zig) (Zig, Go, JavaScript): playground to run, share and learn Zig code online (used by [Zig by Example](https://zig-by-example.com/)).
 
 ### Legacy Projects
 

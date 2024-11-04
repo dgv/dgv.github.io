@@ -28,7 +28,9 @@ Not interested: corp bullshit 💩, too many meetings, move to another country.
 ## Work Experience
 
 - _Jun 2023 - present_<br>[Landell Labs](https://landell.dev)<br>Founder (Golang, Zig, Javascript)<br><br>
-  After a deserved sabbatical time I decided to start my own company to develop and run some ideas from the last years.
+  Initiative to host micro-SaaS ideas and develop my own projects with commercial support. Actual projects:
+  - [feedport](https://github.com/feedport) (Go): feeds reader with media, newsletter and notifications support.
+  - [noteguard](https://github.com/noteguard) (Go): simple, secure and synced notes.
 <br><br>
 - _Aug 2018 - Oct 2022:_<br>[Cloudwalk](https://cloudwalk.io)<br>Sr Software Engineer (Golang, PostgreSQL, AWS, GCP)<br><br>Help the company achieve the goal of became a merchant acquirer from payment processor and later the [first licensed crypto firm in Brazil](https://www.coindesk.com/business/2022/11/03/cloudwalk-is-first-crypto-firm-in-brazil-to-become-a-licensed-payments-institution/).
   - Experienced the exponential growth and saw the company goes from 20 people to 400 in couple years, after receive the [largest B series investment in Brazil](https://www.businesswire.com/news/home/20210511005284/en/CloudWalk-Announces-US190M-Series-B-Financing-Round-Led-by-Coatue) at time and be valued in [$2.15bi](https://www.reuters.com/technology/brazils-cloudwalk-valued-215-bln-after-coatue-led-investment-2021-11-17/) after C series.
@@ -79,7 +81,7 @@ Not interested: corp bullshit 💩, too many meetings, move to another country.
 
 ## Projects
 
-- [play.zig](https://github.com/dgv/play.zig) (Zig, Go, JavaScript): playground to run, share and learn Zig code online (used by [Zig by Example](https://zig-by-example.com/)).
+- [play.zig](https://github.com/dgv/play.zig) (Zig, JavaScript): playground to run, share and learn Zig code online (used by [Zig by Example](https://zig-by-example.com/)).
 
 ### Legacy Projects
 

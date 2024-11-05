@@ -1,8 +1,9 @@
 ---
 layout: post2
-title: Shokunin Tamashī
-lead: The craftman spirit.
+title: shokunin tamashī
+lead: the craftman spirit.
 ---
+
 
 I'm back, blogging again, after so many years. First of all, about the japanese kanjis 職人魂, it means _shokunin tamashī_, or the spirit of craftmanship. I'll explain below the term, how and why it inspires me.
 
@@ -34,63 +35,53 @@ Another aspect of _shokunin_ philosophy is _ikigai_ often translates as _a reaso
 
 ## practice and perfeccionism
 
-As many programmers I started with LEGO during my childhood when my mom saw my interest handling blocks and building things,
-it was my favorite toy ever, luckly my parents and family was capable to bouth me two kits by year at least, one on my birthday and another one
-on christmas, and tiny cheap ones ocasionally, year after year...
+As many programmers I started with LEGO® System during my childhood (~5yo), when my mom saw my interest handling blocks and building things,
+it was my favorite toy ever, luckly my parents were capable to bought me two sets each year at least, one on my birthday, another for Christmas, and tiny cheap ones ocasionally, year after year...
 
-Modus-operandi: Got new kit, build it play for while then disassembly and mix with the others bricks, so I saw something interesting I'll try to copy it, spaceshuttle
-from a movie, ship from a book, I always tried to transpose each detail with LEGO parts.
+Modus-operandi: Every day I tried to build something, saw something interesting? Grab my atention for some reason? I'll try to copy it, a spaceshuttle
+from a movie or cartoon, a ship from a book, I always tried to transpose each detail with LEGO parts. Got a new set? After build and play for while I was able to disassembly and mix with the others bricks.
+Never put a side, I never was a collector, does not make sense for me.
 
-No one tell me "use this part" "will be better on this alway", I always aim
-for the best design with the parts I had at moment mixing all the kits, **most of the joy come from bricks caos**, the flow building it for hours, the creativity associated,
-another part offcourse is finish and playing with the object as I thought, how close it looks like I imagined, **the perfection is the realization of possibility** for
-me, is enough. More years, more kits, more design options, new possibilities.
+No one telling me "use this part", "will be better on this way", I had to figure it out, aim
+for the best design with the parts I had at moment mixing all the sets, I love to build things from my mind, no building instructions, **the joy come from bricks caos**, the flow building it for hours, the creativity associated,
+another motivation of course is finishing and playing with the object as I thought, how close it looks like as I imagined, **the perfection is the realization of a possibility**.
+It's funny, because is like Jiro dealing with the tuna available at market. For me, more years, more sets, more experiencied I became, more design options, new possibilities.
+I never thought "I wish be out with others" or "I wish have other toys", I'm just happy, I only dream about what I can achieve with other LEGO sets LOL...
 
-As you can see it was never discipline, but pure joy, the same happen years later when my neighboor donated an old Compaq Presario CDS 524 (i486DX4, 16MB RAM, HDD 512MB)
-finally something else grab my attention like LEGO and soon started to figure how it works and to code some batch scripts and webpages on notepad...
+As you can see it was never discipline, but pure joy, basically had only one toy, but the best one, the same happen years later when my neighboor donated an old Compaq Presario CDS 524 (i486DX4, 16MB RAM, HDD 512MB),
+finally something else grab my attention like LEGO and soon started to figure how it works and to code some batch scripts, webpages on notepad and make some money selling parts...
 
-We need some practice to learn anything in life, master something can require [10k hours](https://en.wikipedia.org/wiki/Outliers_(book)) deliberatly,_you must build Minimum
+We need some practice to learn anything in life, master something can require [10k hours](https://en.wikipedia.org/wiki/Outliers_(book)) deliberatly, _you must build Minimum
 Viable Product first_ they say, what about what matter for you? What you proud about? How you'll manage the possibilities? **Practice wisely**.
-
-Now parents are using OpenCV+LLMs (aka "A.I") to "help" their kids build LEGO and supress any frustration...
-
-[![great-wave](/assets/files/brickit.png)](https://www.instagram.com/labelessnutrition/reel/C9pUZfEuEoK/)
-
-I don't know what is the worst part, "...without any guilty"?, "...never stress"?, "...without any help"? I never played LEGO with my mom, she always been working...
-What's wrong with the kid imagination? Deal with their emotions? What's the motivation for a kid using this? Joy of follow "secure" steps to achieve "desired" thing suggested
-by the app like a chinese factory worker? We know what happend on Foxconn... I have a better #momhack for you, what you think about replace your kid with rubik-robot-solver
-adapted for LEGO parts, it can build anything from the app much faster than your kid, no stress guaranteed, ironically your kid will be "obsolete" and "dismissed" and  you will finally have all the time.
-
-Technology is not magic, not an end, we must know how it works, when it is useful for us, control it, otherwise someone will.
 
 ## craft and matter
 
-_Programming is a creative art form based in logic. Every programmer is different and will code differently. **It's the output that matters**._
-
+_Programming is a creative art form based in logic. Every programmer is different and will code differently. **It's the output that matters**._<br>
 — John Romero id Software co-founder and Doom co-creator
 
-_I don't feel like I'm writing poetry. I don't want to feel like I'm writing poetry. I'm happy to be making information machines, because that's the honest truth of the craft. The poetry lies in what those machines do; **the art is in the output**. To me, writing a boring program whose code is very clever is like writing a boring poem in beautiful calligraphy and arguing that the beauty of the calligraphy makes the poem better._
-
+_I don't feel like I'm writing poetry. I don't want to feel like I'm writing poetry. I'm happy to be making information machines, because that's the honest truth of the craft. The poetry lies in what those machines do; **the art is in the output**. To me, writing a boring program whose code is very clever is like writing a boring poem in beautiful calligraphy and arguing that the beauty of the calligraphy makes the poem better._<br>
 — Jordan Orelli about Golang
 
-Different from a sculpture, a drawing or music album, _software is never finished_, software [decay](https://en.wikipedia.org/wiki/Software_rot), has [entropy](https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X) is a different matter... But soon I realized that is just way not end byself, like my LEGO, so you must enjoy about what you're building, not the technology itself, software _is not a destination; it's a way of life_.
+Different from a sculpture, a drawing or music album, _software is never finished_, software [decay](https://en.wikipedia.org/wiki/Software_rot), has [entropy](https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X), is a different matter... Soon I realized that is just way not end byself, like my LEGO, so you must enjoy about what you're building, not the technology itself, for me software _is not a destination; it's a way of life_.
 
-I'm not a programmer or senior software enginer, I'm just building LEGO for other people to live.
-
-## [drive](https://www.goodreads.com/book/show/6452796-drive)
-
-_It comes from a good conscience, from honorable purposes, from right actions, from contempt of the gifts of chance, from an even and calm way of living which treads but one path…There are only a few who control themselves and their affairs by a guiding purpose; the rest do not proceed; they are merely swept along, like objects afloat in a river. And of these objects, some are held back by sluggish waters and are transported gently; others are torn along by a more violent current; some, which are nearest the bank, are left there as the current slackens; and others are carried out to sea by the onrush of the stream. Therefore, we should decide what we wish, and abide by the decision._
-
- — Seneca (Moral letters to Lucilius)
-
-We are not _bleessed_ with skills, we are a consequence of our circunstances (Ortega y Gasset), does not matter it was by necessity, influences or inherited trauma, once you found joy and it became habit you can achieve something for yourself and others, work which represents you, enough significancy in life.
-
-The natural movement is live doing this, living by your art, the tricky part is how turn it useful or valuable for other people at time. Finding that will take time, you will work in the dark, giving what you have, is the madness of art (Henry James). But it's there, find it, and you'll have joy maybe forever.
+I'm not a programmer or _senior software enginer_, I'm just building LEGO for other people to live.
 
 _...the essence of being an artisan is that it’s deeply personal: It has to speak to you. You must be willing to put your soul into the game. This means everyone will go about the Art of Focus in their own way._<br>[Focusing is an art not science](https://web.archive.org/web/20230120001146/https://fs.blog/focusing-art-not-science/)
 
+## [drive](https://www.goodreads.com/book/show/6452796-drive)
+
+_It comes from a good conscience, from honorable purposes, from right actions, from contempt of the gifts of chance, from an even and calm way of living which treads but one path…There are only a few who control themselves and their affairs by a guiding purpose; the rest do not proceed; they are merely swept along, like objects afloat in a river. And of these objects, some are held back by sluggish waters and are transported gently; others are torn along by a more violent current; some, which are nearest the bank, are left there as the current slackens; and others are carried out to sea by the onrush of the stream. Therefore, we should decide what we wish, and abide by the decision._<br>
+— Seneca (Moral letters to Lucilius)
+
+We are not _bleessed_ with skills, we are a consequence of our circunstances (Ortega y Gasset), does not matter if it was by necessity, influences or inherited trauma, once you found joy and it became a habit you can achieve something for yourself and others, work which represents you, meaning.
+
+The natural movement is live doing this, living by your art, the tricky part is how turn it useful or valuable for other people at time. Finding that will take time, you will work in the dark, giving what you have, is the madness of art (Henry James). But it's there, find it, and you'll have joy maybe forever.
+
+<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/383959037&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/danielgvargas" title="dgv" target="_blank" style="color: #cccccc; text-decoration: none;">dgv</a> · <a href="https://soundcloud.com/danielgvargas/o-fogo-na-floresta" title="Heitor Villa-Lobos - O fogo na floresta" target="_blank" style="color: #cccccc; text-decoration: none;">Heitor Villa-Lobos - O fogo na floresta</a></div>
+
 ## legacy
 
+Linus Torvalds created Linux, Git and still [rolling](https://www.phoronix.com/news/Linus-2.6p-Faster-Scale-Patch)...
 [![conectiva](/assets/files/Fm2ct3DWAAEu3L3.jpg)](https://distrowatch.com/table.php?distribution=conectiva)
 
 Some day we will die like anything else in this universe, my code once written will run at some machine for while,
@@ -102,8 +93,7 @@ _We are in great haste to construct a magnetic telegraph from Maine to Texas; bu
 
 _As if the main object were to talk fast and not to talk sensibly..._
 
-_After all, the man whose horse trots a mile in a minute does not carry the most important messages._
-
+_After all, the man whose horse trots a mile in a minute does not carry the most important messages._<br>
  — Henry David Thoreau (Walden, 1854)
 
 ![great-wave](/assets/files/great-wave.webp)

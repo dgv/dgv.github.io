@@ -27,61 +27,47 @@ Not interested: corp bullshit 💩, too many meetings, move to another country.
 
 ## Work Experience
 
-- _Jun 2023 - present_<br>[Landell Labs](https://landell.dev)<br>Founder (Golang, Zig, Javascript)<br><br>
-  Initiative to host micro-SaaS ideas and develop my own projects with commercial support. Actual projects:
-  - [feedport](https://github.com/feedport) (Go): feeds reader with media, newsletter and notifications support.
-  - [noteguard](https://github.com/noteguard) (Go): simple, secure and synced notes.
+- _Jun 2023 - present_<br>[Landell Labs](https://landell.dev)<br>Founder (Golang, Zig, JavaScript)<br><br>
+  Initiative to develop my open source projects with commercial support. Some of them:
+  - [feedport](https://github.com/feedport): minimalist feeds reader with newsletter and push notifications support.
+  - [noteguard](https://github.com/noteguard): simple, secure and synced notes.
 <br><br>
-- _Aug 2018 - Oct 2022:_<br>[Cloudwalk](https://cloudwalk.io)<br>Sr Software Engineer (Golang, PostgreSQL, AWS, GCP)<br><br>Help the company achieve the goal of became a merchant acquirer from payment processor and later the [first licensed crypto firm in Brazil](https://www.coindesk.com/business/2022/11/03/cloudwalk-is-first-crypto-firm-in-brazil-to-become-a-licensed-payments-institution/).
-  - Experienced the exponential growth and saw the company goes from 20 people to 400 in couple years, after receive the [largest B series investment in Brazil](https://www.businesswire.com/news/home/20210511005284/en/CloudWalk-Announces-US190M-Series-B-Financing-Round-Led-by-Coatue) at time and be valued in [$2.15bi](https://www.reuters.com/technology/brazils-cloudwalk-valued-215-bln-after-coatue-led-investment-2021-11-17/) after C series.
-  - Worked as Lead SRE and Lead Cloud Security Engineer positions.
-  - In charge of all infrastructure compliance of PCI-DSS during three years.
-  - Planned and implemented hybrid network topology across AWS, GCP and couple datacenters.
-  - Responsible of development and operation of legacy payment gateway system with more than 100k client devices.
-  - Finops, hardening of cloud assets, monitoring and troubleshooting on daily basis.
-  - Support of teams pipelines and devs guidance.
-  - Elaborated and maintained infrastructure compliance documentation and security awareness training (OWASP/PCI-DSS).<br><br>
-- _Nov 2015 - Jun 2018_ <br>Independent Contractor<br>Software Developer (Golang, C, Elm)
-  - Development of VoIP platform using FreeSWITCH.
-  - Technical/Customer Support.<br><br>
-- _Nov 2013 - Oct 2015_ <br>[Cloudwalk](https://cloudwalk.io)<br> Backend Software Engineer (Golang, PostgreSQL, AWS)
-  - Team lead.
-  - Help the team on the development of cloud payment gateway.
-  - Participated of [the first PoC using Bitcoin on POS terminal](https://youtu.be/zsNQ6YV8FgE) with Coinbase integration.
-  - Developed experimental CoAP implementation with observe support ([draft-ietf-core-observe-12](https://datatracker.ietf.org/doc/html/draft-ietf-core-observe-12)), abbandoned by operational reasons in favor of HTTP.
-  - Development of time synchronization, notifications and software update systems for POS terminals using SNTP, Gossip and Bittorrent protocols respectively.<br><br>
-- _Oct 2011 - Oct 2013_ <br>Software Developer<br>Freelancer (Golang, Lua, PHP, nginx, MySQL, SQLite, C)
-  - Development of API for mailing service using OpenResty.
-  - Sysadmin of LAMP Servers.
-  - Development of web interface for FreeSWITCH.
-  - Development of Fax over IP service.<br><br>
-- _Jul 2010 - Aug 2011_ <br>[View Informática](http://www.viewinformatica.com.br)<br>Software Developer (Delphi, Oracle)
-  - Software analyst and developer for bank financial system products like leasing and bail at Volvo, HSBC and Case New Holland banks.
-  - Help on the mainframe integration using IBM MQ/MI and other webservices like CRIVO for risk analysis.
-  - Query optimizations on Oracle database.
-  - Lead development team.
-  - Implementation of SCM(Subversion) and development good practices.<br><br>
-- _Jul 2009 - Jul 2010_ <br> [Prime Software](https://primesw.com.br)<br>Software Developer (Java, JBOSS, SQLServer, Oracle)
-  - Help to develop electronic timecard and access control systems using Java, JBOSS and Oracle/SQLServer databases and the conversion to the cloud.
-  - Technical support of network infrastructure, VoIP and servers.
-  - Development of secure VoIP system using FreeSWITCH and ZRTP/SRTP for encrypted calls.<br><br>
-- _May 2008 - Mar 2009_ <br> Volcano<br>Support Analyst (LAMP, Ruby, VoIP)
-  - Sysadmin and technical support of network infrastructure, VoIP and Windows/UNIX-like servers.
-  - Lead support staff.<br><br>
-- _Sep 2007 - May 2008_ <br> [View Informática](http://www.viewinformatica.com.br) <br>Software Developer (Delphi, Oracle)
-  - Software development of modules for financial banking systems at Case New Holland Bank and HSBC Bank.<br><br>
-- _Apr 2007 - Aug 2007_ <br>Link Farma<br>Webdeveloper (LAMP)
-  - Web development of ERP and ecommerce systems.
-  - Technical support of network infrastructure and development environment.<br><br>
-- _Jan 2006 - Mar 2007_ <br>[Henry Equipamentos](https://henry.com.br)<br>Software Developer (Delphi/Kylix, VisualBasic, C)
-  - Worked on electronic timecard and access control software.
-  - Implementation of proprietary protocols and low-level analysis/testing.
-  - Development of small SDK around a C library for biometric systems.
-  - Development support to 3rd-party software integrators.
+- _Aug 2018 - Oct 2022:_<br>[Cloudwalk](https://cloudwalk.io)<br>Sr Software Engineer (Golang, PostgreSQL, AWS, GCP)<br><br>
+  Experienced as Lead SRE the company exponential growth after receive the [largest B series investment in Brazil](https://www.businesswire.com/news/home/20210511005284/en/CloudWalk-Announces-US190M-Series-B-Financing-Round-Led-by-Coatue) (at time), being valued in [$2.15bi](https://www.reuters.com/technology/brazils-cloudwalk-valued-215-bln-after-coatue-led-investment-2021-11-17/) after C series and lately became the [first licensed crypto firm in Brazil](https://www.coindesk.com/business/2022/11/03/cloudwalk-is-first-crypto-firm-in-brazil-to-become-a-licensed-payments-institution/).
+
+  As former backend engineer I was responsible of development and operation of a legacy payment gateway system with more than 100k client devices.
+
+  I was in charge of all infrastructure compliance of PCI-DSS during three years, planned and implemented hybrid network topology across AWS, GCP and couple datacenters.
+
+  Also performed finops, hardening of cloud assets, monitoring and troubleshooting on daily basis supporting teams pipelines, giving guidance to developers.
+
+  Elaborated and maintained infrastructure compliance documentation and security awareness training for OWASP and PCI-DSS.<br><br>
+
+- _Nov 2015 - Jun 2018_ <br>Independent Contractor<br>Software Developer (Golang, C, Elm)<br><br>
+  Design and built VoIP platform using FreeSWITCH and give customer support.<br><br>
+- _Nov 2013 - Oct 2015_ <br>[Cloudwalk](https://cloudwalk.io)<br> Lead Backend Software Engineer (Golang, PostgreSQL, AWS)<br><br>
+  Worked on the development of cloud payment gateway, tried things like a CoAP implementation with observe support ([draft-ietf-core-observe-12](https://datatracker.ietf.org/doc/html/draft-ietf-core-observe-12)), and developed time synchronization, notifications and software update systems for POS terminals using SNTP, Gossip and Bittorrent protocols respectively. Also participated of [the first PoC using Bitcoin on POS terminal](https://youtu.be/zsNQ6YV8FgE) with Coinbase integration.<br><br>
+- _Oct 2011 - Oct 2013_ <br>Software Developer<br>Freelancer (Golang, Lua, PHP, nginx, MySQL, SQLite, C)<br><br>
+  Built API for mailing service using OpenResty and FoIP system with web interface using FreeSWITCH.<br><br>
+- _Jul 2010 - Aug 2011_ <br>[View Informática](http://www.viewinformatica.com.br)<br>Lead Software Developer (Delphi, Oracle)<br><br>
+  Software analyst and developer for bank financial system products like leasing and bail for Volvo, HSBC and Case New Holland banks. Help on the mainframe integration using IBM MQ/MI and other webservices like CRIVO for risk analysis. Work diligently on query optimizations for Oracle database. Implementation of SCM(Subversion) and development good practices.<br><br>
+- _Jul 2009 - Jul 2010_ <br> [Prime Software](https://primesw.com.br)<br>Software Developer (Java, JBOSS, SQLServer, Oracle)<br><br>
+  Worked on electronic timecard and access control systems using Java, JBOSS and Oracle/SQLServer databases and later the migration to the cloud.
+  Provided technical support of network infrastructure, VoIP and servers. Design and built secure VoIP system using FreeSWITCH and ZRTP/SRTP for encrypted calls.<br><br>
+- _May 2008 - Mar 2009_ <br> Volcano<br>Lead Support Analyst (LAMP, Ruby, VoIP)<br><br>
+  As sysadmin provided technical support of network infrastructure, maintaining VoIP and applications systems on Windows/UNIX-like servers.<br><br>
+- _Sep 2007 - May 2008_ <br> [View Informática](http://www.viewinformatica.com.br) <br>Software Developer (Delphi, Oracle)<br><br>
+  Software development of modules for financial banking systems at Case New Holland Bank and HSBC Bank.<br><br>
+- _Apr 2007 - Aug 2007_ <br>Link Farma<br>Webdeveloper (LAMP)<br><br>
+  Worked on development of ERP and ecommerce systems and provided technical support on the office network infrastructure and the development environment.<br><br>
+- _Jan 2006 - Mar 2007_ <br>[Henry Equipamentos](https://henry.com.br)<br>Software Developer (Delphi/Kylix, VisualBasic, C)<br><br>
+  Worked on electronic timecard and access control software, built small SDK around a C library for biometric systems implementing proprietary protocols and providing support to 3rd-party software integrators.
 
 ## Projects
 
 - [play.zig](https://github.com/dgv/play.zig) (Zig, JavaScript): playground to run, share and learn Zig code online (used by [Zig by Example](https://zig-by-example.com/)).
+- [yubicli](https://github.com/dgv/yubicli) (Rust): simple CLI tool to handle Yubico dongles for authentication (TOTP/HOTP), raw implementation without dependencies of Yubico Manager (ykman).
+- [banzai](https://github.com/dgv/banzai) (Zig, Lua): rewritten of [lite](https://github.com/rxi/lite) editor focused in simplicity, performance and portability.
 
 ### Legacy Projects
 

@@ -1,7 +1,7 @@
 ---
 layout: post2
-title: Good free/open books for devs
-lead: Best thigs in life are free.
+title: good free books for devs
+lead: best thigs in life are free.
 ---
 
 Just maintaining here my personal curated list.

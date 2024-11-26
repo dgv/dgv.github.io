@@ -1,12 +1,12 @@
-title: 職人魂
-description: dgv's page
+title: dgv
+description: devlog
 baseurl: ""
 url: https://dgv.dev.br
 
 theme: cvless
 
 # site settings
-taglong: dgv's devlog
+taglong: devlog
 tagshort:
 
 # author settings
@@ -26,9 +26,18 @@ social:
 # build settings
 permalink: pretty
 exclude:
-  - docker-compose.yml
   - LICENSE
   - README.md
+  - Gemfile
+  - vendor/
+  - docker-compose.yml
 
 plugins:
   - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate-v2
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+sass:
+  sourcemap: never

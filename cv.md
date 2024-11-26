@@ -1,6 +1,6 @@
 ---
 layout: cv2
-title: CV
+title: curriculum vitæ
 ---
 
 # Curriculum Vitæ
@@ -27,10 +27,8 @@ Not interested: corp bullshit 💩, too many meetings, move to another country.
 
 ## Work Experience
 
-- _Jun 2023 - present_<br>[Landell Labs](https://landell.dev)<br>Founder (Golang, Zig, JavaScript)<br><br>
-  Initiative to develop my open source projects with commercial support. Some of them:
-  - [feedport](https://github.com/feedport): minimalist feeds reader with newsletter and push notifications support.
-  - [noteguard](https://github.com/noteguard): simple, secure and synced notes.
+- _Jun 2023 - present_<br>[Landell Labs](https://github.com/lll)<br>Founder (Golang, Zig, JavaScript, TypeScript)<br><br>
+  Initiative to develop my open source projects with some commercial support.
 <br><br>
 - _Aug 2018 - Oct 2022:_<br>[Cloudwalk](https://cloudwalk.io)<br>Sr Software Engineer (Golang, PostgreSQL, AWS, GCP)<br><br>
   Experienced as Lead SRE the company exponential growth after receive the [largest B series investment in Brazil](https://www.businesswire.com/news/home/20210511005284/en/CloudWalk-Announces-US190M-Series-B-Financing-Round-Led-by-Coatue) (at time), being valued in [$2.15bi](https://www.reuters.com/technology/brazils-cloudwalk-valued-215-bln-after-coatue-led-investment-2021-11-17/) after C series and lately became the [first licensed crypto firm in Brazil](https://www.coindesk.com/business/2022/11/03/cloudwalk-is-first-crypto-firm-in-brazil-to-become-a-licensed-payments-institution/).
@@ -39,9 +37,7 @@ Not interested: corp bullshit 💩, too many meetings, move to another country.
 
   I was in charge of all infrastructure compliance of PCI-DSS during three years, planned and implemented hybrid network topology across AWS, GCP and couple datacenters.
 
-  Also performed finops, hardening of cloud assets, monitoring and troubleshooting on daily basis supporting teams pipelines, giving guidance to developers.
-
-  Elaborated and maintained infrastructure compliance documentation and security awareness training for OWASP and PCI-DSS.<br><br>
+  Also performed finops, hardening of cloud assets, monitoring, code reviewing and troubleshooting on daily basis supporting teams pipelines and giving guidance to developers.<br><br>
 
 - _Nov 2015 - Jun 2018_ <br>Independent Contractor<br>Software Developer (Golang, C, Elm)<br><br>
   Design and built VoIP platform using FreeSWITCH and give customer support.<br><br>

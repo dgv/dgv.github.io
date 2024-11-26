@@ -5,11 +5,11 @@ lead: the craftman spirit.
 ---
 
 
-I'm back, blogging again, after so many years. First of all, about the japanese kanjis 職人魂, it means _shokunin tamashī_, or the spirit of craftmanship. I'll explain below the term, how and why it inspires me.
+I'm back, blogging again, after so many years. First of all, _shokunin tamashī  職人魂_ is the japanese term for the spirit of craftmanship. I'll explain below the term, how and why it inspires me.
 
-I always been interested in japanese culture, besides all influence during my childhood, sansei friends and neighboohood stores, animes etc, I really start dive into with [Zen to Done](https://zenhabits.net/zen-to-done-ztd-the-ultimate-simple-productivity-system/) method after so many influences in [programing](https://www.zenprogrammer.org/en/10-rules-of-a-zen-programmer.html),
-read books about Zen, even tried [zazen](https://en.wikipedia.org/wiki/Zazen), it was pretty natural for me as introspective self-taught techinician and programmer attracted by [simplicity](http://www.extremeprogramming.org/rules/simple.html), [simple things](http://lawsofsimplicity.com/) and [simplify](https://www.goodreads.com/quotes/897002-our-life-is-frittered-away-by-detail-simplicity-simplicity-simplicity-i)...
-Finally watched Jiro Dreams of Sushi [movie](https://www.imdb.com/title/tt1772925/) and was presented to the _shokunin_ term and how the "philosophy" relates with me.
+I always been interested in japanese culture, besides all influence during my childhood, sansei friends and neighborhood stores, animes etc, I really start dive into with [Zen to Done](https://archive.org/stream/ZenToDoneTheUltimateSimpleProductivitySystemByLeoBabauta/zen_to_done.Leo_Babauta-jorel314_djvu.txt) method after so many influences in [programing](https://www.zenprogrammer.org/en/10-rules-of-a-zen-programmer.html),
+then start to read books about Zen, even tried [zazen](https://en.wikipedia.org/wiki/Zazen) for some time, the philosophy was pretty natural for me as low profile, introspective self-taught techinician and programmer attracted by [simplicity](http://www.extremeprogramming.org/rules/simple.html), [simple things](http://lawsofsimplicity.com/) and [simplify](https://www.goodreads.com/quotes/897002-our-life-is-frittered-away-by-detail-simplicity-simplicity-simplicity-i)...
+Finally watched Jiro Dreams of Sushi [movie](https://www.imdb.com/title/tt1772925/) and was presented to the _shokunin_ term and how the _philosophy_ relates with me.
 
 
 ## definition
@@ -43,15 +43,16 @@ from a movie or cartoon, a ship from a book, I always tried to transpose each de
 Never put a side, I never was a collector, does not make sense for me.
 
 No one telling me "use this part", "will be better on this way", I had to figure it out, aim
-for the best design with the parts I had at moment mixing all the sets, I love to build things from my mind, no building instructions, **the joy come from bricks caos**, the flow building it for hours, the creativity associated,
-another motivation of course is finishing and playing with the object as I thought, how close it looks like as I imagined, **the perfection is the realization of a possibility**.
-It's funny, because is like Jiro dealing with the tuna available at market. For me, more years, more sets, more experiencied I became, more design options, new possibilities.
-I never thought "I wish be out with others" or "I wish have other toys", I'm just happy, I only dream about what I can achieve with other LEGO sets LOL...
+for the best design with the parts I had at moment mixing all the sets, I love to build things from my mind, no building instructions, the joy come from _bricks caos_, the flow building for hours, the creativity associated,
+another motivation of course is finishing and playing with the object as I thought, how close it looks like as I imagined, the perfection is the realization of a possibility.
 
-As you can see it was never discipline, but pure joy, basically had only one toy, but the best one, the same happen years later when my neighboor donated an old Compaq Presario CDS 524 (i486DX4, 16MB RAM, HDD 512MB),
+It's funny, like Jiro dealing with the fish available at market, I always had to deal with limited set of bricks, more years, more sets, more experiencied I became, more design options, new possibilities.
+I never thought "I wish be out with others" or "I wish have other toys", I'm just happy, I only dream about what I can achieve with next LEGO sets LOL...
+
+As you can see it was never discipline, but pure joy, basically had only one toy, but the best one, the same happen years later when my neighbor donated an old Compaq Presario CDS 524 (i486DX4, 16MB RAM, HDD 512MB),
 finally something else grab my attention like LEGO and soon started to figure how it works and to code some batch scripts, webpages on notepad and make some money selling parts...
 
-We need some practice to learn anything in life, master something can require [10k hours](https://en.wikipedia.org/wiki/Outliers_(book)) deliberatly, _you must build Minimum
+We need some practice to learn anything in life, master something can require [10k hours](https://en.wikipedia.org/wiki/Outliers_(book)) deliberatly, nowadays endevouring _you must build Minimum
 Viable Product first_ they say, what about what matter for you? What you proud about? How you'll manage the possibilities? **Practice wisely**.
 
 ## craft and matter
@@ -81,7 +82,7 @@ The natural movement is live doing this, living by your art, the tricky part is 
 
 ## legacy
 
-Linus Torvalds created Linux, Git and still [rolling](https://www.phoronix.com/news/Linus-2.6p-Faster-Scale-Patch)...
+Linus Torvalds created Linux 33 years ago, Git 19 years ago and still [rolling](https://www.phoronix.com/news/Linus-2.6p-Faster-Scale-Patch), [open-source](https://en.wikipedia.org/wiki/Open-source-software_movement) is clearly a form of transcendence.
 [![conectiva](/assets/files/Fm2ct3DWAAEu3L3.jpg)](https://distrowatch.com/table.php?distribution=conectiva)
 
 Some day we will die like anything else in this universe, my code once written will run at some machine for while,

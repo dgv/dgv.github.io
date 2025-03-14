@@ -29,9 +29,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Ruby
-        uses: ruby/setup-ruby@b8e92371f8a42c64e9d30c21a76596c1a2209cf5
+        uses: ruby/setup-ruby@6c79f721fa26dd64559c2700086ac852c18e0756 # v1.225.0
         with:
-          ruby-version: "3.4.2" # Not needed with a .ruby-version file
+          ruby-version: "3.2.3" # Not needed with a .ruby-version file
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
           cache-version: 0 # Increment this number if you need to re-download cached gems
       - name: Setup Pages

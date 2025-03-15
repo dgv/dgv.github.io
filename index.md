@@ -5,10 +5,10 @@ title: devlog
 
 # whoami
 
-Hello friend, I am _Daniel Gomes Vargas_ (aka dgv), another programmer living in [Curitiba](https://en.wikipedia.org/wiki/Curitiba), Brazil. I'm maintainer of couple [projects](/cv/#projects).
+Hello friend, I am _Daniel Gomes Vargas_ (aka dgv), programmer, undergraduate electrical engineer student and pianist living in Brazil.
 
 Posting here stuff about tech and life.
 
-[apps](apps) &middot; [tools](tools) &middot; [readings](readings) &middot; [books](books)
+[apps](apps) &middot; [tools](tools) &middot; [readings](readings) &middot; [books](books) &middot; [contact](contact)
 
 {% include archive.html %}

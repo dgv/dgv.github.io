@@ -36,12 +36,12 @@ best thigs in life are free
 - [Site Reliability Engineering](https://sre.google/sre-book/table-of-contents/)
 
 ### Operational Systems
+- [OpenBSD Handbook](https://www.openbsdhandbook.com/)
 - [Operating System in 1,000 Lines](https://operating-system-in-1000-lines.vercel.app/en/)
-- [The little book about OS development](http://littleosbook.github.io/)
 - [Operating System Design Book Series](http://www.fysnet.net/osdesign_book_series.htm)
+- [The little book about OS development](http://littleosbook.github.io/)
 
 ### Another Resources
-
 - [Good books for deep hacks](https://begriffs.com/posts/2017-04-13-longterm-computing-reading.html)
 - [FreeTechBooks](http://www.freetechbooks.com/)
 - [DevFreeBooks](https://devfreebooks.github.io/)

@@ -7,7 +7,7 @@ title: curriculum vitæ
 
 ## Personal
 
-  I'm Daniel Gomes Vargas (aka dgv), I grew up in São Paulo, Brazil, living in Curitiba 🌳 since 2006. I've more than 18 years of professional experience in software development, working remotely async with small teams since 2012.
+  I'm Daniel Gomes Vargas (aka dgv), I grew up in São Paulo, Brazil, living in [Curitiba](https://en.wikipedia.org/wiki/Curitiba) 🌳 since 2006. I've more than 18 years of professional experience in software development, working remotely async with small teams since 2012.
 
 _What I cannot build, I do not understand._<br>
 — Richard Feynman
@@ -61,9 +61,9 @@ Not interested: corp bullshit 💩, too many meetings, move to another country.
 
 ## Projects
 
+- [banzai](https://github.com/dgv/banzai) (Zig, Lua): rewritten of [lite](https://github.com/rxi/lite) editor focused in simplicity, performance and portability.
 - [play.zig](https://github.com/dgv/play.zig) (Zig, JavaScript): playground to run, share and learn Zig code online (used by [Zig by Example](https://zig-by-example.com/)).
 - [yubicli](https://github.com/dgv/yubicli) (Rust): simple CLI tool to handle Yubico dongles for authentication (TOTP/HOTP), raw implementation without dependencies of Yubico Manager (ykman).
-- [banzai](https://github.com/dgv/banzai) (Zig, Lua): rewritten of [lite](https://github.com/rxi/lite) editor focused in simplicity, performance and portability.
 
 ### Legacy Projects
 

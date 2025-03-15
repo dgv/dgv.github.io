@@ -12,15 +12,14 @@ tagshort:
 # author settings
 author:
   name: Daniel Gomes Vargas
-  email: dgv@fastmail.com
+  email: dgv@keemail.me
 photo: assets/files/photo.jpg
 address: Curitiba, Brazil
 
 # social media links
-social:
+profile:
   github: dgv
-  linkedin: dgvargas
-  #  x: dgvargas
+  bluesky: dgv.dev.br
   mastodon: mastodon.social/@dgv
 
 # build settings

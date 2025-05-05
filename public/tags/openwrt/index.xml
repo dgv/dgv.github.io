@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Openwrt on Morten Linderud</title>
+    <link>http://localhost:1313/tags/openwrt/</link>
+    <description>Recent content in Openwrt on Morten Linderud</description>
+    <generator>Hugo</generator>
+    <language>nb</language>
+    <lastBuildDate>Fri, 18 Apr 2025 14:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/openwrt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Easter hack: terraform-provider-openwrt</title>
+      <link>http://localhost:1313/blog/easter-hack-terraform-provider-openwrt/</link>
+      <pubDate>Fri, 18 Apr 2025 14:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/easter-hack-terraform-provider-openwrt/</guid>
+      <description>&lt;p&gt;April is usualy tax season for most people in Norway, and as I got some &lt;a href=&#34;https://www.youtube.com/watch?v=ThRXs74EjeE&#34;&gt;&amp;ldquo;money&#xA;back on the skætt&amp;rdquo;&lt;/a&gt; I wound up purchasing an &lt;a href=&#34;https://openwrt.org/toh/openwrt/one&#34;&gt;OpenWrt One&lt;/a&gt; to replace my 13-14 year old Asus router. I&amp;rsquo;ve been meaning to learn a bit more&#xA;about networking in general and getting an OpenWrt router seemed like a fun&#xA;project.&lt;/p&gt;&#xA;&lt;p&gt;Last year I bought a &lt;a href=&#34;https://www.gl-inet.com/products/gl-mt3000/&#34;&gt;Beryl AX&lt;/a&gt; from GL-Inet as I was travelling for a few&#xA;weeks. It&amp;rsquo;s a qute smol travel router that runs a fork of OpenWrt. But during&#xA;a recent conference it was reset and I realized I did not have a backup of any&#xA;configuration files for the device. Oops!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

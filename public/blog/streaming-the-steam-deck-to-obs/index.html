@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Daniel Gomes Vargas">
+<meta name="description" content="Valve was kind enough to send Steam Deck devkits to Arch Linux maintainers and
+developers which gave us an opportunity to mess around with the device.
+Personally I find it a bit fun to mess around with video streaming, thus one of
+the first things I wanted to try figure out was how I could stream the gamemode
+on the Steam Deck. Installing the OBS flatpak and adding it to the menu doesn&rsquo;t
+actually work so we sadly have to be a bit more clever.">
+
+<meta property="og:url" content="http://localhost:1313/blog/streaming-the-steam-deck-to-obs/">
+  <meta property="og:site_name" content="Morten Linderud">
+  <meta property="og:title" content="Streaming the Steam Deck to OBS">
+  <meta property="og:description" content="Valve was kind enough to send Steam Deck devkits to Arch Linux maintainers and developers which gave us an opportunity to mess around with the device.
+Personally I find it a bit fun to mess around with video streaming, thus one of the first things I wanted to try figure out was how I could stream the gamemode on the Steam Deck. Installing the OBS flatpak and adding it to the menu doesn’t actually work so we sadly have to be a bit more clever.">
+  <meta property="og:locale" content="nb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2022-03-26T14:07:41+01:00">
+    <meta property="article:modified_time" content="2022-03-26T14:07:41+01:00">
+    <meta property="article:tag" content="English">
+    <meta property="article:tag" content="Streaming">
+    <meta property="article:tag" content="Steamdeck">
+    <meta property="article:tag" content="Archlinux">
+
+
+<title>
+
+
+     Streaming the Steam Deck to OBS 
+
+</title>
+<link rel="canonical" href="http://localhost:1313/blog/streaming-the-steam-deck-to-obs/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/reset.css?t=2025-05-08%2016%3a20%3a22.465620731%20-0300%20-03%20m%3d%2b889.170583953">
+    <link rel="stylesheet" href="http://localhost:1313/css/pygments.css?t=2025-05-08%2016%3a20%3a22.465620731%20-0300%20-03%20m%3d%2b889.170583953">
+    <link rel="stylesheet" href="http://localhost:1313/css/main.css?t=2025-05-08%2016%3a20%3a22.465620731%20-0300%20-03%20m%3d%2b889.170583953">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="http://localhost:1313/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+<link rel="me" href="https://chaos.social/@Foxboron">
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="http://localhost:1313/"><img class="avatar" src="http://localhost:1313/img/profile.png" srcset="http://localhost:1313/img/profile.png 1x"></a>
+            
+            <a href="http://localhost:1313/"><div class="name">Daniel Gomes Vargas</div></a>
+            
+              <h3 class="self-intro">Programmer, Entropist Netrunner</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-about"><a href="http://localhost:1313/about/"><span>about</span></a></li>
+                    
+                        <li class="nav-blog"><a href="http://localhost:1313/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-tags"><a href="http://localhost:1313/tags/"><span>tags</span></a></li>
+                    
+                        <li class="nav-tips"><a href="http://localhost:1313/tips/"><span>tips</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="//github.com/dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/github.svg" alt="github" /></a>
+        
+
+        
+            <a href="//mastodon.social/@dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//twitter.com/dgvargas" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/twitter.svg" alt="twitter" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            
+        
+
+        
+
+        
+            <a href="mailto:morten@linderud.pw"><img class="icon" src="http://localhost:1313/img/email.svg" alt="email" /></a>
+        
+
+        
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Streaming the Steam Deck to OBS
+
+</div>
+
+                    <div class="initials"><a href="http://localhost:1313/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Sat Mar 26 2022 14:07:41 &#43;0100'>Mar 26, 2022</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>6 minutes read</div>
+                    
+                    
+                    <div class="tags"><div class="middot"></div>Tags:
+                    
+                    <a href="http://localhost:1313/tags/english/">English</a>
+                    
+                    <a href="http://localhost:1313/tags/streaming/">Streaming</a>
+                    
+                    <a href="http://localhost:1313/tags/steamdeck/">Steamdeck</a>
+                    
+                    <a href="http://localhost:1313/tags/archlinux/">Archlinux</a>
+                    
+                    </div>
+                    
+                    </div>
+            </div>
+            <div class="markdown">
+                <p>Valve was kind enough to send Steam Deck devkits to Arch Linux maintainers and
+developers which gave us an opportunity to mess around with the device.</p>
+<p>Personally I find it a bit fun to mess around with video streaming, thus one of
+the first things I wanted to try figure out was how I could stream the gamemode
+on the Steam Deck. Installing the OBS flatpak and adding it to the menu doesn&rsquo;t
+actually work so we sadly have to be a bit more clever.</p>
+<p>Essentially the goal is to run an RTMP server locally which OBS can read from
+using the &ldquo;Media Source&rdquo; layer, and figure out a way to have the Steam Deck to
+stream towards that.</p>
+<p>Lets setup the RTMP stream first and check that it works.</p>
+<h2 id="local-setup">Local Setup</h2>
+<p>We are going to use a quick docker container for this so we don&rsquo;t have to deal
+with nginx directly.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">λ ~ » podman run -d -p 1935:1935 --name rtmp-stream alfg/nginx-rtmp</span></span></code></pre></div>
+<p>This is going to give us a <code>rtmp-stream</code> container which will be serving us RTMP
+streams on port 1935. It accepts arbitrary path names with the prefix <code>stream</code>
+so for the purpose of this post we are going to use <code>/stream/deck</code> as our RTMP
+stream.</p>
+<p>To test the stream we can simply use <code>ffmpeg</code> with a special <code>testsrc</code> input.
+Shamelessly stolen from Stack Overflow.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">λ ~ » ffmpeg -r <span class="m">30</span> -f lavfi -i testsrc  -vf <span class="nv">scale</span><span class="o">=</span>1280:960 -vcodec libx264 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>     -profile:v baseline -pix_fmt yuv420p  -f flv rtmp://localhost/stream/deck</span></span></code></pre></div></p>
+<p>To validate that this works we can just open the RTMP stream in <code>vlc</code> or <code>mpv</code>
+and get some test output back.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">λ ~ » mpv rtmp://localhost/stream/deck</span></span></code></pre></div>
+<p>Now we can also make an OBS source for this. We are using the &ldquo;Media Source&rdquo;
+unhooking &ldquo;Local File&rdquo;. Add the RTMP source as &ldquo;Input&rdquo; and you should see the
+same test image in OBS.</p>
+<figure class="full"><img src="http://localhost:1313/img/steamdeck/test_stream.png">
+</figure>
+
+<p>For the next stems you need to figure out the local IP of your machine. This can
+be done by looking at <code>ip -br addr</code>, and for the purpose of this post the IP is
+<code>192.168.1.4</code> but this is going to be different on your system.</p>
+<h2 id="steam-deck-setup">Steam Deck Setup</h2>
+<p>This setup assumes you have <code>sshd</code> running on your Steam Deck. The easiest way to
+get this done is to get into the Desktop Mode (Power Button -&gt; Desktop Mode).
+Open konsole, set a password on the deck user with <code>passwd</code> and start <code>ssh</code> with <code>systemctl start sshd</code>.</p>
+<p>Then you can run <code>ip -br addr</code> and find the IP of the <code>wlan0</code> device and login with <code>ssh deck@&lt;localip&gt;</code></p>
+<p>Keep in mind that everything we do beyond this point is not going to be
+persistent and we need to rerun several of these steps after updating the Steam
+Deck.</p>
+<h2 id="ffmpeg">Ffmpeg?</h2>
+<p>Ffmpeg is the bread and butter of modern video processing. It&rsquo;s used everywhere
+and does any kind of media conversion and processing you can think of.</p>
+<p>The first thing I tried was to get <code>ffmpeg</code> to stream from the Deck. There is a
+<a href="https://gist.github.com/robertkirkman/753922262259486ec417e5ff8b5b924b">gist</a>
+with instruction on how to use <code>kmsgrab</code>. But it overcomplicates a few things by
+trying to use <code>obs-kmsgrab</code> instead of having an outgoing RTMP stream.</p>
+<p>For using the RTMP stream one could do the following
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>deck@steamdeck ~<span class="o">)</span>$ sudo ffmpeg -f kmsgrab -i - -vaapi_device /dev/dri/renderD128 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-vf <span class="nv">hwmap</span><span class="o">=</span><span class="nv">derive_device</span><span class="o">=</span>vaapi,scale_vaapi<span class="o">=</span><span class="nv">format</span><span class="o">=</span>nv12 -c:v h264_vaapi -bf <span class="m">1</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>-f flv rtmp://192.168.1.4/stream/deck</span></span></code></pre></div></p>
+<p>The issue is that <code>gamescope</code> seems to change the byte layout of the buffer
+whenever you change from the gamemode UI to any games. <code>ffmpeg</code> seems expects
+this to never change. The &ldquo;solution&rdquo; to this is to wrap the <code>ffmpeg</code> command in
+a while loop so you restart the stream whenever it crashes, but you are still
+going to be left with green artifacts in the menu and some staggering.</p>
+<p>The entire setup is less than stellar.</p>
+<p>I made an issue on <a href="https://github.com/Plagman/gamescope/issues/448">gamescope</a>,
+but I don&rsquo;t see how it&rsquo;s going to be solved on their end. However, someone
+comments that <code>gstreamer</code> might work better. I gave that a shot instead.</p>
+<h2 id="gstreamer">Gstreamer</h2>
+<p>gstreamer is essentially a framework for video and audio where you can make
+pipelines. It&rsquo;s super powerful and offers a bit more flexibility then the
+command line of <code>ffmpeg</code>.</p>
+<p>First off we are going to install packages on the Deck. The first step to do
+this is to disable the readonly attribute of the system.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>deck@steamdeck ~<span class="o">)</span>$ sudo steamos-readonly disable
+</span></span><span class="line"><span class="cl"><span class="o">(</span>deck@steamdeck ~<span class="o">)</span>$ sudo pacman -S gstreamer-vaapi gst-plugin-pipewire</span></span></code></pre></div>
+<p>We are using the <code>vaapi</code> plugins as we want hardware accelerated encoding, then the
+<code>pipewire</code> plugin for fetching the video itself.</p>
+<p>Note that any changes to <code>/etc</code> is persistent, but since <code>/</code> is ephemeral it
+will actually loose track of any files <code>pacman</code> has written to this directory.
+If you install the above packages after an update you&rsquo;ll find several file
+conflicts. You can ignore these by adding <code>--overwrite='*'</code> to <code>pacman</code>.</p>
+<p>You might also need to initialize the <code>pacman</code> keyring if you see keyring error.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>deck@steamdeck ~<span class="o">)</span>$ sudo pacman-key --init
+</span></span><span class="line"><span class="cl"><span class="o">(</span>deck@steamdeck ~<span class="o">)</span>$ sudo pacman-key --populate</span></span></code></pre></div></p>
+<p>The gstreamer pipeline itself took me a few days to figure out. We fetch the
+video from <code>pipewiresrc</code> and convert it to a <code>h264</code> stream. We mux this with the
+pulseaudio sound source of the speakers. We encode this with <code>aac</code> and throw it
+towards the FLV muxer and onwards to the RTMP sink.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">(</span>deck@steamdeck ~<span class="o">)</span>$ gst-launch-1.0 -e <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pipewiresrc <span class="k">do</span>-timestamp<span class="o">=</span>True <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! queue <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! videoconvert <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! queue <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! vaapih264enc <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! h264parse <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! mux. <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    pulsesrc <span class="nv">device</span><span class="o">=</span><span class="s2">&#34;alsa_output.pci-0000_04_00.5-platform-acp5x_mach.0.HiFi__hw_acp5x_1__sink.monitor&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! queue <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! fdkaacenc <span class="nv">bitrate</span><span class="o">=</span><span class="m">8000</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! mux. <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    flvmux <span class="nv">name</span><span class="o">=</span>mux <span class="nv">streamable</span><span class="o">=</span>True <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>        ! rtmpsink <span class="nv">location</span><span class="o">=</span><span class="s1">&#39;rtmp://192.168.1.4/stream/deck live=1&#39;</span></span></span></code></pre></div>
+<p>This seems works on my end. There seems to be some performance impact when doing
+this, even with vaapi. But it is probably negligible unless you are playing
+performance heavy games like Cyberpunk or Elden Ring.</p>
+<p>And for the demonstration:
+<video class="video-shortcode" preload="metadata" controls>
+    <source src="https://pub.linderud.dev/video/gamemode.mp4" type="video/mp4">
+</video>
+</p>
+<h2 id="improvements">Improvements</h2>
+<p>There are probably several ways to make this easier to use. Asking people to
+deal with the terminal and ssh isn&rsquo;t very approachable for non-Linux users.
+<a href="https://www.reddit.com/r/SteamDeck/comments/tkbywo/working_on_a_script_to_record_the_steam_decks/">Someone on
+reddit</a>
+added the script as a library application which can probably be a handy way of
+starting and stopping the stream.</p>
+<p>It would also be neat to see if it would be possible to offload the encoding of
+the stream to the remote device and do less on the Deck itself.</p>
+<p>This is a little bit of progress to enable streaming on the steam deck.
+Hopefully someone finds this useful! Thanks again to Valve for sending Devkits
+and thanks to folks on IRC for entertaining my cluelessness around gstreamer :)</p>
+
+                <br>
+                <p class="back-to-posts"><a href="http://localhost:1313/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+

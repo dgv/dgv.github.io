@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Daniel Gomes Vargas">
+<meta name="description" content="Lets prefix this with: I really love Transparency Logs!
+It&rsquo;s a fairly simple concept: If you hash elements together in a binary tree,
+you can validate and verify if elements are present on a tree by hashing a
+couple of elements. This is what is commonly known as a Merkle tree.
+I forget the math, but if you have a tree with a million items, you would only
+really need less than 10 hashes (I think) to figure out what the hash of the top
+node would be. This allows you to easily audit and verify the tree is internally
+consistent. If you compare this to something like git, which people often
+mistake for a Merkle tree, you would need to effectively replay a million
+commits to figure out if the last commit hash is actually correct or not.">
+
+<meta property="og:url" content="http://localhost:1313/blog/monitoring-the-kernel.org-transparency-log-for-a-year/">
+  <meta property="og:site_name" content="Morten Linderud">
+  <meta property="og:title" content="Monitoring the kernel.org Transparency Log for a year">
+  <meta property="og:description" content="Lets prefix this with: I really love Transparency Logs!
+It’s a fairly simple concept: If you hash elements together in a binary tree, you can validate and verify if elements are present on a tree by hashing a couple of elements. This is what is commonly known as a Merkle tree.
+I forget the math, but if you have a tree with a million items, you would only really need less than 10 hashes (I think) to figure out what the hash of the top node would be. This allows you to easily audit and verify the tree is internally consistent. If you compare this to something like git, which people often mistake for a Merkle tree, you would need to effectively replay a million commits to figure out if the last commit hash is actually correct or not.">
+  <meta property="og:locale" content="nb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2022-04-16T00:00:00+02:00">
+    <meta property="article:modified_time" content="2022-04-16T00:00:00+02:00">
+    <meta property="article:tag" content="English">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Transparency Log">
+
+
+<title>
+
+
+     Monitoring the kernel.org Transparency Log for a year 
+
+</title>
+<link rel="canonical" href="http://localhost:1313/blog/monitoring-the-kernel.org-transparency-log-for-a-year/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/reset.css?t=2025-05-08%2016%3a20%3a22.453879563%20-0300%20-03%20m%3d%2b889.158842791">
+    <link rel="stylesheet" href="http://localhost:1313/css/pygments.css?t=2025-05-08%2016%3a20%3a22.453879563%20-0300%20-03%20m%3d%2b889.158842791">
+    <link rel="stylesheet" href="http://localhost:1313/css/main.css?t=2025-05-08%2016%3a20%3a22.453879563%20-0300%20-03%20m%3d%2b889.158842791">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="http://localhost:1313/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+<link rel="me" href="https://chaos.social/@Foxboron">
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="http://localhost:1313/"><img class="avatar" src="http://localhost:1313/img/profile.png" srcset="http://localhost:1313/img/profile.png 1x"></a>
+            
+            <a href="http://localhost:1313/"><div class="name">Daniel Gomes Vargas</div></a>
+            
+              <h3 class="self-intro">Programmer, Entropist Netrunner</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-about"><a href="http://localhost:1313/about/"><span>about</span></a></li>
+                    
+                        <li class="nav-blog"><a href="http://localhost:1313/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-tags"><a href="http://localhost:1313/tags/"><span>tags</span></a></li>
+                    
+                        <li class="nav-tips"><a href="http://localhost:1313/tips/"><span>tips</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="//github.com/dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/github.svg" alt="github" /></a>
+        
+
+        
+            <a href="//mastodon.social/@dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//twitter.com/dgvargas" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/twitter.svg" alt="twitter" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            
+        
+
+        
+
+        
+            <a href="mailto:morten@linderud.pw"><img class="icon" src="http://localhost:1313/img/email.svg" alt="email" /></a>
+        
+
+        
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Monitoring the kernel.org Transparency Log for a year
+
+</div>
+
+                    <div class="initials"><a href="http://localhost:1313/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Sat Apr 16 2022 00:00:00 &#43;0200'>Apr 16, 2022</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>8 minutes read</div>
+                    
+                    
+                    <div class="tags"><div class="middot"></div>Tags:
+                    
+                    <a href="http://localhost:1313/tags/english/">English</a>
+                    
+                    <a href="http://localhost:1313/tags/linux/">Linux</a>
+                    
+                    <a href="http://localhost:1313/tags/transparency-log/">Transparency Log</a>
+                    
+                    </div>
+                    
+                    </div>
+            </div>
+            <div class="markdown">
+                <p>Lets prefix this with: I really love Transparency Logs!</p>
+<p>It&rsquo;s a fairly simple concept: If you hash elements together in a binary tree,
+you can validate and verify if elements are present on a tree by hashing a
+couple of elements. This is what is commonly known as a <a href="https://en.wikipedia.org/wiki/Merkle_tree">Merkle tree</a>.</p>
+<p>I forget the math, but if you have a tree with a million items, you would only
+really need less than 10 hashes (I think) to figure out what the hash of the top
+node would be. This allows you to easily audit and verify the tree is internally
+consistent. If you compare this to something like git, which people often
+mistake for a Merkle tree, you would need to effectively replay a million
+commits to figure out if the last commit hash is actually correct or not.</p>
+<p>In day-to-day life this is used in Certificate Transparency Logs to have an
+audit trace of who published which TLS certificate. You can read <a href="https://datatracker.ietf.org/doc/html/rfc6962">RFC6962</a> for more details on this.</p>
+<p>In 2019 I wrote my <a href="https://bora.uib.no/bora-xmlui/handle/1956/20411">master thesis</a> around the same
+concepts but in the context of <a href="https://reproducible-builds.org/">Reproducible Builds</a>. If we have several parties that
+reproduce published binaries and announce them publicly, how do we know if they
+won&rsquo;t retract this in the future? Transparency Logs, obviously 😊. It also had
+some ideas on how to implement this inside Linux package managers, <code>apt</code> in this
+case. More recently kpcryd has implemented the some of the same ideas with
+<a href="https://github.com/kpcyrd/pacman-bintrans"><code>pacman-bintrans</code></a>.</p>
+<p>Generally speaking, transparency logs in the context of the software
+supply-chain security is underutilized. This is why I was super excited about
+kernel.org announcing their own transparency log!</p>
+<h2 id="git-push-certificates">Git push certificates</h2>
+<p>Konstantin Ryabitsev <a href="https://people.kernel.org/monsieuricon/introducing-the-kernel-org-git-transparency-log">announced the kernel.org transparency log</a> back in November 2020.  What many people probably don&rsquo;t realize is that git doesn&rsquo;t only sign commits,
+it can also sign <a href="https://people.kernel.org/monsieuricon/signed-git-pushes">push attestations</a>. This log records who pushes what to which repositories, along with a signed attestation.
+If you record this on a transparency log then you get a tamper-evident record of all the
+commits that was pushed, and by who.</p>
+<p>Why is this useful?</p>
+<ul>
+<li><a href="https://arstechnica.com/gadgets/2021/03/hackers-backdoor-php-source-code-after-breaching-internal-git-server/">Hackers backdoor PHP source code after breaching internal git server</a> (2021)</li>
+<li><a href="https://www.gentoo.org/news/2018/06/28/Github-gentoo-org-hacked.html">Github Gentoo organization hacked</a> (2018)</li>
+<li><a href="https://www.theregister.com/2011/08/31/linux_kernel_security_breach/">Kernel.org Linux repository rooted in hack attack</a> (2011)</li>
+</ul>
+<p>Logging all push actions doesn&rsquo;t prevent any of these issues on their own. But
+they do provide tamper-evident logs in the case of a forge gets compromised.
+If the pipelines publishing the artifacts do strict requirement checks, like all
+commits are pushed and signed as an example, then you could prevent some of the issues above.</p>
+<p>However, Transparency Logs are cool, but they are fairly useless without
+anything looking at them and verify that the entries are consistent. Monitors
+essentially track the log and validate that any recent additions to the logs
+can&rsquo;t be retroactively removed. Thus preventing the tampering.</p>
+<p>Last year I wrote a monitor for the kernel.org log which I have been running on
+<a href="https://tlog.linderud.dev">https://tlog.linderud.dev</a>. The code can be found on
+<a href="https://github.com/Foxboron/kernel.org-git-verifier">Github</a>.</p>
+<p>It uses the
+<a href="https://git.kernel.org/pub/scm/infra/transparency-logs/gitolite/git/1.git/tree/m?id=050341bbff698070996979b840eac013413cc242">pgpkeys</a> repository
+which hosts the GnuPG keys of kernel.org maintainers, and the last shard of
+the <a href="https://git.kernel.org/pub/scm/infra/transparency-logs/gitolite/git/1.git/">transparency log</a> which is when the signing started.</p>
+<p>An example log entry: <a href="https://git.kernel.org/pub/scm/infra/transparency-logs/gitolite/git/1.git/tree/m?id=050341bbff698070996979b840eac013413cc242">https://git.kernel.org/pub/scm/infra/transparency-logs/gitolite/git/1.git/tree/m?id=050341bbff698070996979b840eac013413cc242</a></p>
+<p>What the monitor does is parsing the email, validate the signature and store the result. That is what the website is currently showing. This is somewhat useful, but mostly functions as a naughty list of all the kernel devs that hasn&rsquo;t started signing their git
+pushes yet[<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>].</p>
+<p>Clearly we can do more interesting stuff with the data!</p>
+<h2 id="verifying-torvaldslinuxgit">Verifying torvalds/linux.git</h2>
+<p>I included some code that stores all the witnessed commits in the logs while we
+parse the emails. This helps us work more as a verifier and check if all commits
+are present. If we traverse the commits between two kernel releases we can check
+if we have seen any of the commits previously on the log. We also store their
+signature validity to make some assertion if they where signed or not.</p>
+<p>As we are not too strict we check for signature validity across all the
+different repositories on kernel.org. If Greg Kroah-Hartman pushes 3 commits to
+his kernel clone, and Linus pulls these changes. The verifier is going to mark
+all the 3 commits as valid signatures even if Linus never signed his push.</p>
+<p>I have included some results below. The first one is between the last two kernel
+releases taken from <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/">torvalds/linux</a>.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ verifier check v5.16 v5.17
+</span></span><span class="line"><span class="cl">Out of <span class="m">14199</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">14199</span> was found on the tlog between v5.16 and v5.17
+</span></span><span class="line"><span class="cl"><span class="m">14199</span> commits where <span class="k">done</span> over <span class="m">2956</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">2239</span> commits are covered by a valid signature</span></span></code></pre></div></p>
+<p>(At this point I should note that I don&rsquo;t fully trust my own code. Don&rsquo;t take
+this as proof that nothing malicious has happened to the repositories. But
+rather keep it around as a potential data point.)</p>
+<p>The first thing we should pay attention to is that all the commits from the
+release was found on the transparency log copy we have. We can also see that
+there is not a whole lot of signed pushes being done, however we do have commits
+covered by a valid signature. If we didn&rsquo;t find commits on the log it would be a
+good canary that something weird was happening, but not necessarily malicious.</p>
+<p>I have attached rest of the results from the kernel below. Please note that log
+was deployed in the v5.9 release cycle, so anything before that is not present
+on the signed log.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ verifier check v5.15 v5.16
+</span></span><span class="line"><span class="cl">Out of <span class="m">15384</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">15384</span> was found on the tlog between v5.15 and v5.16
+</span></span><span class="line"><span class="cl"><span class="m">15384</span> commits where <span class="k">done</span> over <span class="m">2920</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">2642</span> commits are covered by a valid signature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ verifier check v5.14 v5.15
+</span></span><span class="line"><span class="cl">Out of <span class="m">13473</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">13473</span> was found on the tlog between v5.14 and v5.15
+</span></span><span class="line"><span class="cl"><span class="m">13473</span> commits where <span class="k">done</span> over <span class="m">2759</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">2235</span> commits are covered by a valid signature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ verifier check v5.13 v5.14
+</span></span><span class="line"><span class="cl">Out of <span class="m">15871</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">15871</span> was found on the tlog between v5.13 and v5.14
+</span></span><span class="line"><span class="cl"><span class="m">15871</span> commits where <span class="k">done</span> over <span class="m">2924</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">2815</span> commits are covered by a valid signature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ verifier check v5.12 v5.13
+</span></span><span class="line"><span class="cl">Out of <span class="m">17187</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">17187</span> was found on the tlog between v5.12 and v5.13
+</span></span><span class="line"><span class="cl"><span class="m">17187</span> commits where <span class="k">done</span> over <span class="m">3041</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">3068</span> commits are covered by a valid signature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ verifier check v5.11 v5.12
+</span></span><span class="line"><span class="cl">Out of <span class="m">14167</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">14167</span> was found on the tlog between v5.11 and v5.12
+</span></span><span class="line"><span class="cl"><span class="m">14167</span> commits where <span class="k">done</span> over <span class="m">2756</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">1795</span> commits are covered by a valid signature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ verifier check v5.10 v5.11
+</span></span><span class="line"><span class="cl">Out of <span class="m">15477</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">15007</span> was found on the tlog between v5.10 and v5.11
+</span></span><span class="line"><span class="cl"><span class="m">15477</span> commits where <span class="k">done</span> over <span class="m">2730</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">1687</span> commits are covered by a valid signature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ verifier check v5.9 v5.10
+</span></span><span class="line"><span class="cl">Out of <span class="m">17467</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">6305</span> was found on the tlog between v5.9 and v5.10
+</span></span><span class="line"><span class="cl"><span class="m">17467</span> commits where <span class="k">done</span> over <span class="m">863</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">225</span> commits are covered by a valid signature
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ verifier check v5.8 v5.8
+</span></span><span class="line"><span class="cl">Out of <span class="m">1</span> commits...
+</span></span><span class="line"><span class="cl"><span class="m">0</span> was found on the tlog between v5.8 and v5.8
+</span></span><span class="line"><span class="cl"><span class="m">1</span> commits where <span class="k">done</span> over <span class="m">1</span> pushes
+</span></span><span class="line"><span class="cl"><span class="m">0</span> commits are covered by a valid signature</span></span></code></pre></div>
+<p>Personally I think this is a pretty neat project. Monitors allows us to further
+secure supply-chain as it makes us less reliant on centralized infrastructure.
+I&rsquo;m a little bit annoyed I have not been able to improve on it to such a degree
+that one could trust it. But have to start somewhere :)</p>
+<h1 id="future-improvements">Future improvements</h1>
+<p>Clearly we can do <em>more</em> and improve things.</p>
+<p>I noted in the beginning that git is not a transparency log, sadly the
+kernel.org transparency log is a git repository. It&rsquo;s not a true transparency
+log and trying to prove the that a commit is present on the log needs one to
+replay the entire log before comparing the state of the main log and the
+monitor. This isn&rsquo;t ideal.</p>
+<p>A big improvement would be to move this over to an actual transparency log.
+<a href="https://www.sigstore.dev/">Sigstore</a> attempts to be a general purpose transparency log for build artifacts. I did start working on a
+<a href="https://www.sigstore.dev/">patch</a> to include git-push certificates in Rekor, their transparency log implementation. But this has stalled because I lack the
+time and I think it would need a bit of code on the remote end to function properly.</p>
+<p>If you are into OpenSSF projects, the SLSA project lists several requirements to
+protect a supply chain. A Transparency Log for git-push certificates neatly fits
+into the B Threat, <a href="http://slsa.dev/spec/v0.1/threats">&ldquo;Compromise source control platform&rdquo;</a>. However mitigations like
+transparency logs are not widely cited as being possible mitigation to this
+threat. One can speculate why this is the case, but I think the lack of support in
+Git forges is the main issue.</p>
+<p>Gitlab supports <a href="https://docs.gitlab.com/ee/administration/server_hooks.html">server hooks</a> and I think you could implement a git-push monitor with a bit of manual maintenance. Github does not support this, and I think that is something Github should improve on.
+Generally these sort of server-side configurations are not very
+accessible but very much needed. I&rsquo;d love to have my own</p>
+<p>Another improvement on the monitor would be to look more into the code
+the Trillian team at Google has been doing. Currently they have written a few
+concepts for a standardized <a href="https://github.com/google/trillian-examples/tree/master/witness">Witness
+protocol</a> for
+different transparency logs, and I think it would be neat to provide the same
+interface for the kernel.org log. This would make it easier to have standardized
+clients across different logs to validate entries.</p>
+<h1 id="closing">Closing</h1>
+<p>This project was mostly thrown together so I had some more content for my BSides
+Oslo <a href="https://www.youtube.com/watch?v=ptoDdcJ_B_g">talk</a> last year and I hope people find it interesting.</p>
+<p>It would be great to keep better statistics around the number of signatures in
+the kernel, how many kernel devs sign their pushes, and the ratio over time.
+However I&rsquo;m a bit unsure if I should publish results of my monitor between
+kernel releases considering the state of the project.</p>
+<p>If the wider community see this as valuable I can probably try figure something
+out, please let me know.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Bonus points if you manage to guess which kernel developer has the most signed push certificates on the log. <a href="https://pub.linderud.dev/answer.txt">Answer</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+                <br>
+                <p class="back-to-posts"><a href="http://localhost:1313/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+

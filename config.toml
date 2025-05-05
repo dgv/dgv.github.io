@@ -1,0 +1,63 @@
+baseurl             = "https://dgv.dev.br/"
+builddrafts         = false
+canonifyurls        = true
+contentdir          = "content"
+languageCode        = "en"
+layoutdir           = "layouts"
+publishdir          = "public"
+theme               = "cocoa"
+author              = "Daniel Gomes Vargas"
+title               = "dgv"
+pygmentsuseclasses  = true
+#pluralizelisttitles = false
+highlightjs = true
+
+[permalinks]
+blog  = "blog/:slug/"
+
+[[menu.main]]
+name                   = "about"
+weight                 = -120
+identifier             = "about"
+url                    = "/about/"
+
+[[menu.main]]
+name                   = "blog"
+weight                 = -110
+identifier             = "blog"
+url                    = "/blog/"
+
+[[menu.main]]
+name                   = "tags"
+weight                 = -100
+identifier             = "tags"
+url                    = "/tags/"
+
+[[menu.main]]
+name                   = "tips"
+weight                 = -90
+identifier             = "tips"
+url                    = "/tips/"
+
+[params]
+latestpostscount       = 5                             # how many posts to display on the home page
+i18n_flags             = false                         # whether to display small country flags for available translations
+author                 = "Daniel Gomes Vargas"
+cachebuster            = true                          # add the current unix timestamp in query string for cache busting css assets
+dateform               = "Jan 2, 2006"
+dateformfull           = "Mon Jan 2 2006 15:04:05 MST"
+description            = "devlog & stuff"
+email                  = "danielgvargas@proton.me"
+lang                   = "en"
+selfintro              = "Programmer, Entropist Netrunner"
+github                 = "//github.com/dgv"
+twitter                = "//twitter.com/dgvargas"
+mastodon               = "//mastodon.social/@dgv"
+avatar = "img/profile.png"
+
+[taxonomies]
+  tag = "tags"
+  
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

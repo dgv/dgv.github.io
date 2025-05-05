@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Foss on Morten Linderud</title>
+    <link>http://localhost:1313/tags/foss/</link>
+    <description>Recent content in Foss on Morten Linderud</description>
+    <generator>Hugo</generator>
+    <language>nb</language>
+    <lastBuildDate>Wed, 05 May 2021 21:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/foss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FOSS Activities in April 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-april-2021/</link>
+      <pubDate>Wed, 05 May 2021 21:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-april-2021/</guid>
+      <description>&lt;p&gt;Yo!&lt;/p&gt;&#xA;&lt;p&gt;Hope people have had a lovely spring. This month has passed quickly! I have&#xA;put off writing the monthly post because I was busy with a weekend project.&lt;/p&gt;&#xA;&lt;p&gt;My master thesis was about how to apply transparency logs and reproducible&#xA;builds to give package rebuilders the ability to produce tamper evident logs.&#xA;This is handy since any one package build can easily be proven to be part of the&#xA;log, and you can very easily fill inn the history from one point in time to&#xA;another by hashing files in the correct order.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in March 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-march-2021/</link>
+      <pubDate>Fri, 02 Apr 2021 14:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-march-2021/</guid>
+      <description>&lt;p&gt;Yoooo!&lt;/p&gt;&#xA;&lt;p&gt;Another month has passed which means another status update.&lt;/p&gt;&#xA;&lt;p&gt;The python2 removal has been steady and several packages has been removed this&#xA;month. Currently a query for &lt;code&gt;python2&lt;/code&gt; on archweb returns 139 matches. At the&#xA;start of the month it was around 160-170. Progress!&lt;/p&gt;&#xA;&lt;p&gt;I have suggested we &lt;a href=&#34;https://lists.archlinux.org/pipermail/arch-dev-public/2021-March/030390.html&#34;&gt;remove &lt;code&gt;checkdepends&lt;/code&gt;&lt;/a&gt; on python2 packages to ease the cleanup of dependency cycles. The&#xA;response has been lukewarm at best so we&amp;rsquo;ll see how that progresses. Hopefully&#xA;more is being removed in the upcoming months.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in February 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-february-2021/</link>
+      <pubDate>Mon, 01 Mar 2021 18:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-february-2021/</guid>
+      <description>&lt;p&gt;Yo!&lt;/p&gt;&#xA;&lt;p&gt;New month, new update!&lt;/p&gt;&#xA;&lt;p&gt;The start of this month was marked with FOSDEM! I held a talk about secure boot&#xA;and the tooling stuff I have written, &lt;code&gt;sbctl&lt;/code&gt;. It&amp;rsquo;s a tool to help you manage&#xA;secure boot keys and signing files. With help from &lt;code&gt;sbsigntools&lt;/code&gt; it also does&#xA;live enrollment of keys.&lt;/p&gt;&#xA;&lt;p&gt;The talk went great (I think) and it was fun to see how FOSDEM pulled off the&#xA;conference with matrix and jitsi. I gave me some inspiration for Arch Conf 2021&#xA;that I should try kick off some planning on.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in January 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-january-2021/</link>
+      <pubDate>Mon, 01 Feb 2021 00:21:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-january-2021/</guid>
+      <description>&lt;p&gt;And January is over! Time has frankly been moving fast the past days.&lt;/p&gt;&#xA;&lt;p&gt;Packaging wise, things has been fine. Added &lt;code&gt;tailscale&lt;/code&gt; and some other minor&#xA;packages, but had a real purge of old packages from resigned maintainers. Also&#xA;dropped &lt;code&gt;ntop&lt;/code&gt; to the AUR which hasn&amp;rsquo;t been actively developed for years at this&#xA;point. I&amp;rsquo;m curious when people are going to bug me about that one :)&lt;/p&gt;&#xA;&lt;p&gt;On the security side of things there has been quite a lot happening just the&#xA;past week. &lt;code&gt;sudo&lt;/code&gt; had &lt;a href=&#34;https://security.archlinux.org/CVE-2021-3156&#34;&gt;CVE-2021-3156&lt;/a&gt; and &lt;code&gt;libgcrypt&lt;/code&gt; had &lt;a href=&#34;https://security.archlinux.org/CVE-2021-3345&#34;&gt;CVE-2021-3345&lt;/a&gt; which are&#xA;both are quite severe. My personal take is that the &lt;code&gt;sudo&lt;/code&gt; one bad, but not &lt;em&gt;that&lt;/em&gt;&#xA;bad. While &lt;code&gt;libgcrypt&lt;/code&gt; is a bit more terrible considering the data is parsed&#xA;before it&amp;rsquo;s authenticated. However both was patched fairly quickly in Arch.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in December 2020</title>
+      <link>http://localhost:1313/blog/foss-activities-in-december-2020/</link>
+      <pubDate>Sat, 02 Jan 2021 11:20:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-december-2020/</guid>
+      <description>&lt;p&gt;End of the year and third blog post! Hope everyone has had a nice new years eve :)&lt;/p&gt;&#xA;&lt;p&gt;The first news of the month is that Remi Gacogne was &lt;a href=&#34;https://lists.archlinux.org/pipermail/aur-general/2020-December/036034.html&#34;&gt;accepted&lt;/a&gt; as Trusted User.&#xA;Congratulations to him and super exciting.&lt;/p&gt;&#xA;&lt;p&gt;Other then that I have had a meeting with the devops team discussing how we&#xA;should implement the &lt;a href=&#34;https://lists.archlinux.org/pipermail/arch-dev-public/2020-November/030222.html&#34;&gt;debuginfod system&lt;/a&gt; on our infrastructure. I have written up&#xA;the &lt;a href=&#34;https://gitlab.archlinux.org/archlinux/infrastructure/-/merge_requests/168&#34;&gt;ansible role&lt;/a&gt; for debuginfod and it was more or less decided that we want to&#xA;host it on a small VPS for the service itself, and sync debug packages to the&#xA;host to serve them. This avoid the problem of hosting more services on our&#xA;server which distributes packages with services it does not really need.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in November 2020</title>
+      <link>http://localhost:1313/blog/foss-activities-in-november-2020/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-november-2020/</guid>
+      <description>&lt;p&gt;Second month of doing these posts. In short not much has been happening the past&#xA;weeks, but that would be a slight lie.&lt;/p&gt;&#xA;&lt;p&gt;I have sponsored rgacognes Trusted User application. The application was posted&#xA;to the &lt;a href=&#34;https://lists.archlinux.org/pipermail/aur-general/2020-November/036017.html&#34;&gt;mailing list&lt;/a&gt;, and it&amp;rsquo;s currently being voted and decided by a weeks time.&lt;/p&gt;&#xA;&lt;p&gt;There has also been some discussion for &lt;em&gt;years&lt;/em&gt; about bringing debug packages&#xA;into Arch. This has largely been stalled but I brought it back to life again.&#xA;Essentially the problem might be solved by utilizing the new &lt;a href=&#34;https://developers.redhat.com/blog/2019/10/14/introducing-debuginfod-the-elfutils-debuginfo-server/&#34;&gt;debuginfod&lt;/a&gt; project,&#xA;and we can later distribute the packages itself when we understand the new&#xA;mirror requirements. There is currently a discussion on &lt;a href=&#34;https://lists.archlinux.org/pipermail/arch-dev-public/2020-November/030222.html&#34;&gt;&lt;code&gt;[arch-dev-public]&lt;/code&gt;&lt;/a&gt;&#xA;about it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in October 2020</title>
+      <link>http://localhost:1313/blog/foss-activities-in-october-2020/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-october-2020/</guid>
+      <description>&lt;p&gt;I wanted to start writing these for myself as I have been reading quite a few&#xA;monthly resports from Chris Lamb and other Debian contributors. They make for&#xA;interesting content for readers curious about what distribution maintainers do&#xA;during a month, and motivation for myself as not everything one does is visible&#xA;work.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll try have some sort of structure with them, by starting off with the menial&#xA;tasks, and add the meeting notes and misc contributions at the bottom.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

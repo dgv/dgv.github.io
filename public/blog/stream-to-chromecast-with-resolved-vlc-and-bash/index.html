@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Daniel Gomes Vargas">
+<meta name="description" content="Chromecast is one of those devices I just generally use a lot. They are small
+practical and enables me to stream video or music to my TV from multiple
+devices. But it also requires you to have a supported browser or video player.
+This is obviously a bit boring.
+There has been multiple command line chromecast streamers through the years. But
+their ffmpeg usage has been shoddy at best with no hardware decoding support and
+usually quite bad implementations.">
+
+<meta property="og:url" content="http://localhost:1313/blog/stream-to-chromecast-with-resolved-vlc-and-bash/">
+  <meta property="og:site_name" content="Morten Linderud">
+  <meta property="og:title" content="Stream to chromecast with resolved, vlc and bash">
+  <meta property="og:description" content="Chromecast is one of those devices I just generally use a lot. They are small practical and enables me to stream video or music to my TV from multiple devices. But it also requires you to have a supported browser or video player. This is obviously a bit boring.
+There has been multiple command line chromecast streamers through the years. But their ffmpeg usage has been shoddy at best with no hardware decoding support and usually quite bad implementations.">
+  <meta property="og:locale" content="nb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-01-06T20:59:20+02:00">
+    <meta property="article:modified_time" content="2024-01-06T20:59:20+02:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Resolved">
+    <meta property="article:tag" content="English">
+
+
+<title>
+
+
+     Stream to chromecast with resolved, vlc and bash 
+
+</title>
+<link rel="canonical" href="http://localhost:1313/blog/stream-to-chromecast-with-resolved-vlc-and-bash/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/reset.css?t=2025-05-08%2016%3a20%3a22.413779046%20-0300%20-03%20m%3d%2b889.118742256">
+    <link rel="stylesheet" href="http://localhost:1313/css/pygments.css?t=2025-05-08%2016%3a20%3a22.413779046%20-0300%20-03%20m%3d%2b889.118742256">
+    <link rel="stylesheet" href="http://localhost:1313/css/main.css?t=2025-05-08%2016%3a20%3a22.413779046%20-0300%20-03%20m%3d%2b889.118742256">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="http://localhost:1313/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+<link rel="me" href="https://chaos.social/@Foxboron">
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="http://localhost:1313/"><img class="avatar" src="http://localhost:1313/img/profile.png" srcset="http://localhost:1313/img/profile.png 1x"></a>
+            
+            <a href="http://localhost:1313/"><div class="name">Daniel Gomes Vargas</div></a>
+            
+              <h3 class="self-intro">Programmer, Entropist Netrunner</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-about"><a href="http://localhost:1313/about/"><span>about</span></a></li>
+                    
+                        <li class="nav-blog"><a href="http://localhost:1313/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-tags"><a href="http://localhost:1313/tags/"><span>tags</span></a></li>
+                    
+                        <li class="nav-tips"><a href="http://localhost:1313/tips/"><span>tips</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="//github.com/dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/github.svg" alt="github" /></a>
+        
+
+        
+            <a href="//mastodon.social/@dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//twitter.com/dgvargas" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/twitter.svg" alt="twitter" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            
+        
+
+        
+
+        
+            <a href="mailto:morten@linderud.pw"><img class="icon" src="http://localhost:1313/img/email.svg" alt="email" /></a>
+        
+
+        
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Stream to chromecast with resolved, vlc and bash
+
+</div>
+
+                    <div class="initials"><a href="http://localhost:1313/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Sat Jan 6 2024 20:59:20 &#43;0200'>Jan 6, 2024</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>5 minutes read</div>
+                    
+                    
+                    <div class="tags"><div class="middot"></div>Tags:
+                    
+                    <a href="http://localhost:1313/tags/linux/">Linux</a>
+                    
+                    <a href="http://localhost:1313/tags/resolved/">Resolved</a>
+                    
+                    <a href="http://localhost:1313/tags/english/">English</a>
+                    
+                    </div>
+                    
+                    </div>
+            </div>
+            <div class="markdown">
+                <p>Chromecast is one of those devices I just generally use a lot. They are small
+practical and enables me to stream video or music to my TV from multiple
+devices. But it also requires you to have a supported browser or video player.
+This is obviously a bit boring.</p>
+<p>There has been multiple command line chromecast streamers through the years. But
+their ffmpeg usage has been shoddy at best with no hardware decoding support and
+usually quite bad implementations.</p>
+<p>Instead of using these tools I have wound up with two bash scripts that pipes
+together a command line program to stream towards chromecasts and it works
+surprisingly well.</p>
+<p>The first part of this is how we stream towards the chromecast. This is easily
+solveable with <code>vlc</code> luckily. You can just open <code>vlc file://....</code>, select
+<code>Playback -&gt; Renderer</code> and generally find the correct chromecast there. But this
+is boring. We have to manually open the GUI and select the device!</p>
+<p>I can peak into the app on my phone and learn that the local IP of my chromecast
+is <code>192.168.1.231</code>. With <code>clvc</code> you can also pass <code>sout</code> and
+<code>sout-chromecast-ip</code> to auto-start a headless VLC players that will connect
+towards your chromecast.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">IP</span><span class="o">=</span><span class="s2">&#34;192.168.1.231&#34;</span>
+</span></span><span class="line"><span class="cl">cvlc --sout <span class="s2">&#34;#chromecast&#34;</span> --sout-chromecast-ip<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span> <span class="s2">&#34;file://....&#34;</span></span></span></code></pre></div>
+<p>This works really well on it&rsquo;s own. You can also pipe <code>yt-dlp</code> into <code>clvc</code> and
+support most media websites like youtube or twitch. This allows you to quickly
+write up some scripts to stream from these sites and is fairly flexible.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">IP</span><span class="o">=</span><span class="s2">&#34;192.168.1.231&#34;</span>
+</span></span><span class="line"><span class="cl">yt-dlp <span class="s2">&#34;https://twitch.tv/sovietwomble&#34;</span> -o - <span class="p">|</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>cvlc --sout <span class="s2">&#34;#chromecast&#34;</span> --sout-chromecast-ip<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span> -</span></span></code></pre></div>
+<p>There is one issue though, that IP is not static. If the chromecast reconnects
+to the network it might change it&rsquo;s IP, and I&rsquo;m never going to bother setting a
+static device.</p>
+<p>Luckily chromecast announces itself over <a href="http://www.dns-sd.org/">DNS Service Discovery</a>
+which allows devices to announce themself over the network through DNS names. To
+query for these devices we will be using <code>systemd-resolved</code> and <code>resolvectl</code>.
+You can probably use another DNS query tool, but <code>systemd-resolved</code> also
+supports <code>mDNS</code> which is useful for finding services on the network.</p>
+<p>First you need to enable <code>systemd-resolved</code> through <code>systemctl enable --now systemd-resolved</code>. Your mileage might wary but in some distributions this comes
+enabled by default. It&rsquo;s also important to note that you don&rsquo;t need to make
+<code>resolved</code> your default stub resolver for any of this to work.</p>
+<p>If you do read the <a href="https://man.archlinux.org/man/resolvectl.1#COMMANDS"><code>resolvctl(1)</code> man page</a>
+you will see it has native support for dns-sd through <code>resolvectl service</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ resolvectl service _googlecast._tcp local</span></span></code></pre></div>
+<p>However I have not gotten this to work as it seems like it will try to send a
+combined DNS query to your network DNS resolver, and this doesn&rsquo;t seem supported
+depending on the router you have. So we have to implement this ourself. So we
+will be using the <code>PTR+SRV+TXT</code> process as outlined in <a href="https://www.ietf.org/rfc/rfc6763.txt">RFC6763</a>.</p>
+<p>To find available chromecasts on the network we&rsquo;ll first query for PTR records
+on <code>_googlecast._tcp.local</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ resolvectl --type<span class="o">=</span>PTR query _googlecast._tcp.local
+</span></span><span class="line"><span class="cl">_googlecast._tcp.local IN PTR Chromecast-Ultra-13ccb56dd0ea6ce65dbe15b39c573856._googlecast._tcp.local</span></span></code></pre></div>
+<p>Here I see one Chromecast. Then we need to query for the service record it self,
+SRV is defined as part of <a href="https://tools.ietf.org/html/rfc2782">RFC2782</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ resolvectl --type<span class="o">=</span>SRV query Chromecast-Ultra-13ccb56dd0ea6ce65dbe15b39c573856._googlecast._tcp.local
+</span></span><span class="line"><span class="cl">Chromecast-Ultra-13ccb56dd0ea6ce65dbe15b39c573856._googlecast._tcp.local IN SRV <span class="m">0</span> <span class="m">0</span> <span class="m">8009</span> 13ccb56d-d0ea-6ce6-5dbe-15b39c573856.local</span></span></code></pre></div>
+<p>And finally we can just query the TXT record of the service for the IP of the
+device itself, which is the correct IP we started out with :)!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ resolvectl query 13ccb56d-d0ea-6ce6-5dbe-15b39c573856.local
+</span></span><span class="line"><span class="cl">192.168.1.231</span></span></code></pre></div>
+<p>To make this easier in the future we can easily parse this space limited output
+with <code>read</code> in a bash script<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ~/.local/bin/dns-sd
+</span></span><span class="line"><span class="cl"><span class="c1">#!/usr/bin/bash</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> -e
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -r _ _ _ ptr _ &lt; &lt;<span class="o">(</span>resolvectl --type<span class="o">=</span>PTR query <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -r _ _ _ _ _ _ srv _ &lt; &lt;<span class="o">(</span>resolvectl --type<span class="o">=</span>SRV query <span class="s2">&#34;</span><span class="nv">$ptr</span><span class="s2">&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">read</span> -r _ ip _ &lt; &lt;<span class="o">(</span>resolvectl query <span class="s2">&#34;</span><span class="nv">$srv</span><span class="s2">&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">printf</span> <span class="s2">&#34;</span><span class="nv">$ip</span><span class="s2">&#34;</span></span></span></code></pre></div>
+<p>And we can make our <code>chromecast</code> script as well which calls <code>dns-sd</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ~/.local/bin/chromecast
+</span></span><span class="line"><span class="cl"><span class="c1">#!/usr/bin/bash</span>
+</span></span><span class="line"><span class="cl"><span class="nv">IP</span><span class="o">=</span><span class="s2">&#34;</span><span class="k">$(</span>dns-sd _googlecast._tcp.local<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;Using </span><span class="nv">$IP</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">yt-dlp <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> -o - <span class="p">|</span> cvlc --sout <span class="s2">&#34;#chromecast&#34;</span> --sout-chromecast-ip<span class="o">=</span><span class="s2">&#34;</span><span class="nv">$IP</span><span class="s2">&#34;</span> -</span></span></code></pre></div>
+<p>With this we have a neat way to stream web content to our chromecast without
+having to go through a GUI.</p>
+<h3 id="bonus-content-qutebrowser">Bonus content: qutebrowser</h3>
+<p>If you, like me, enjoy qutebrowser but find the lack of chromecast support
+annoying we can resolve that with the script above.</p>
+<p>We&rsquo;ll use the current chromecast script from qutebrowser:</p>
+<p><a href="https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/cast">https://github.com/qutebrowser/qutebrowser/blob/main/misc/userscripts/cast</a></p>
+<p>And apply the diff here, which just removes code we don&rsquo;t really need.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl"><span class="gh">diff --git a/misc/userscripts/cast b/misc/userscripts/cast
+</span></span></span><span class="line"><span class="cl"><span class="gh">index ec703d5fb..57c8f95f9 100755
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- a/misc/userscripts/cast
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ b/misc/userscripts/cast
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -139,37 +139,6 @@ printjs() {
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span> }
+</span></span><span class="line"><span class="cl"> echo &#34;jseval -q $(printjs)&#34; &gt;&gt; &#34;$QUTE_FIFO&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gd">-tmpdir=$(mktemp -d)
+</span></span></span><span class="line"><span class="cl"><span class="gd">-file_to_cast=${tmpdir}/qutecast
+</span></span></span><span class="line"><span class="cl"><span class="gd">-cast_program=$(command -v castnow)
+</span></span></span><span class="line"><span class="cl"><span class="gd">-
+</span></span></span><span class="line"><span class="cl"><span class="gd">-# pick a ytdl program
+</span></span></span><span class="line"><span class="cl"><span class="gd">-for p in &#34;$QUTE_CAST_YTDL_PROGRAM&#34; yt-dlp youtube-dl; do
+</span></span></span><span class="line"><span class="cl"><span class="gd">-    ytdl_program=$(command -v -- &#34;$p&#34;)
+</span></span></span><span class="line"><span class="cl"><span class="gd">-    [ &#34;$ytdl_program&#34; == &#34;&#34; ] || break
+</span></span></span><span class="line"><span class="cl"><span class="gd">-done
+</span></span></span><span class="line"><span class="cl"><span class="gd">-
+</span></span></span><span class="line"><span class="cl"><span class="gd">-if [[ &#34;${cast_program}&#34; == &#34;&#34; ]]; then
+</span></span></span><span class="line"><span class="cl"><span class="gd">-    msg error &#34;castnow can&#39;t be found&#34;
+</span></span></span><span class="line"><span class="cl"><span class="gd">-    exit 1
+</span></span></span><span class="line"><span class="cl"><span class="gd">-fi
+</span></span></span><span class="line"><span class="cl"><span class="gd">-if [[ &#34;${ytdl_program}&#34; == &#34;&#34; ]]; then
+</span></span></span><span class="line"><span class="cl"><span class="gd">-    msg error &#34;youtube-dl or a drop-in replacement can&#39;t be found in PATH, and no installed program &#34; \
+</span></span></span><span class="line"><span class="cl"><span class="gd">-        &#34;specified in QUTE_CAST_YTDL_PROGRAM (currently \&#34;$QUTE_CAST_YTDL_PROGRAM\&#34;)&#34;
+</span></span></span><span class="line"><span class="cl"><span class="gd">-    exit 1
+</span></span></span><span class="line"><span class="cl"><span class="gd">-fi
+</span></span></span><span class="line"><span class="cl"><span class="gd">-
+</span></span></span><span class="line"><span class="cl"><span class="gd">-# kill any running instance of castnow
+</span></span></span><span class="line"><span class="cl"><span class="gd">-pkill -f -- &#34;${cast_program}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="gd">-
+</span></span></span><span class="line"><span class="cl"><span class="gd">-# start youtube download in stream mode (-o -) into temporary file
+</span></span></span><span class="line"><span class="cl"><span class="gd">-&#34;${ytdl_program}&#34; -qo - &#34;$1&#34; &gt; &#34;${file_to_cast}&#34; &amp;
+</span></span></span><span class="line"><span class="cl"><span class="gd">-ytdl_pid=$!
+</span></span></span><span class="line"><span class="cl"><span class="gd">-
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+pkill -f -- chromecast
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span> msg info &#34;Casting $1&#34; &gt;&gt; &#34;$QUTE_FIFO&#34;
+</span></span><span class="line"><span class="cl"><span class="gd">-# start castnow in stream mode to cast on ChromeCast
+</span></span></span><span class="line"><span class="cl"><span class="gd">-tail -F &#34;${file_to_cast}&#34; | ${cast_program} -
+</span></span></span><span class="line"><span class="cl"><span class="gd">-
+</span></span></span><span class="line"><span class="cl"><span class="gd">-# cleanup remaining background process and file on disk
+</span></span></span><span class="line"><span class="cl"><span class="gd">-kill ${ytdl_pid}
+</span></span></span><span class="line"><span class="cl"><span class="gd">-rm -rf &#34;${tmpdir}&#34;
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+chromecast &#34;$1&#34;
+</span></span></span></code></pre></div>
+<p>Then add a keybind into <code>config.py</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">config</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;,c&#39;</span><span class="p">,</span> <span class="s1">&#39;spawn --userscript cast&#39;</span><span class="p">)</span></span></span></code></pre></div>
+<p>Ta-da, chromecast support with our script.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I might have written all of this to show off the script. I just really like it. #NoShame&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+                <br>
+                <p class="back-to-posts"><a href="http://localhost:1313/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Culture on dgv</title>
+    <link>http://localhost:1313/tags/culture/</link>
+    <description>Recent content in Culture on dgv</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 27 Sep 2024 00:00:00 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/culture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>web3 is here</title>
+      <link>http://localhost:1313/blog/web3-is-here/</link>
+      <pubDate>Fri, 27 Sep 2024 00:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/blog/web3-is-here/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;tl;dr&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m aware of current criticism, I&amp;rsquo;m follower of &lt;a href=&#34;https://www.web3isgoinggreat.com/&#34;&gt;web3 is going just great&lt;/a&gt; from &lt;a href=&#34;https://mastodon.social/@molly0xfff@hachyderm.io&#34;&gt;Molly White&lt;/a&gt; but also a &lt;a href=&#34;https://andrewkelley.me/post/the-techno-optimist-manifesto.html&#34;&gt;techno-optimist&lt;/a&gt; &lt;em&gt;à la Thoreau&lt;/em&gt; (not &lt;a href=&#34;https://en.wikipedia.org/wiki/Techno-Optimist_Manifesto&#34;&gt;Andressen&amp;rsquo;s definition&lt;/a&gt;),&#xA;so even working close to blockchains and using bitcoin since 2014 I always been skeptical until last years events. The idea here is not to convince or promote anything, just summarize some definitions and references about how things are going at this point.&lt;/p&gt;&#xA;&lt;h2 id=&#34;btw-what-is-web3&#34;&gt;btw, what is web3?&lt;/h2&gt;&#xA;&lt;p&gt;The term &amp;ldquo;web3&amp;rdquo; was coined in 2014 by Ethereum co-founder &lt;a href=&#34;https://en.wikipedia.org/wiki/Gavin_Wood&#34;&gt;Gavin Wood&lt;/a&gt;, is an idea for a new iteration of the World Wide Web which incorporates concepts such as &lt;strong&gt;decentralization&lt;/strong&gt;, &lt;strong&gt;blockchain&lt;/strong&gt; technologies, and &lt;strong&gt;token-based&lt;/strong&gt; economics.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

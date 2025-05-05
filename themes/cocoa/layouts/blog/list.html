@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+
+{{ $Pages := where site.RegularPages "Type" "blog" }}
+<section class="main">
+    <div class="container">
+        <div class="content">
+            {{ if .Content }}
+                <div class="markdown">
+                    {{ .Content }}
+                </div>
+            {{ end }}
+            <div class="page-heading">{{ i18n "blogHeading" }}</div>
+            <ul>
+                {{ range $Pages }}
+                    {{ partial "li.html" . }}
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</section>
+{{ partial "footer.html" . }}
+

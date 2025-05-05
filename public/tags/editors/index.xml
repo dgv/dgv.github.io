@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Editors on dgv</title>
+    <link>http://localhost:1313/tags/editors/</link>
+    <description>Recent content in Editors on dgv</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 20 Jul 2024 00:00:00 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/editors/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>banzai! why another code editor?</title>
+      <link>http://localhost:1313/blog/banzai-why-another-code-editor/</link>
+      <pubDate>Sat, 20 Jul 2024 00:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/blog/banzai-why-another-code-editor/</guid>
+      <description>&lt;p&gt;My first editor for code was Microsoft Notepad, why? Because Internet Explorer on Win95 used to show page source there, so I like to edit HTML and batch scripts using it, then FrontPage Express (to have syntax highlighting support) and later notepad++.&lt;/p&gt;&#xA;&lt;p&gt;When finally started to use Linux and later OpenBSD choose vi, yes vi, not iMproved version, emacs is not available by default, used vi for notes, shell scripting then some C, found funny the &lt;code&gt;~&lt;/code&gt; marks, buffer manipulation and shortcuts, never was a advanced user, or have complex &lt;code&gt;.vimrc&lt;/code&gt;, or problems to &lt;code&gt;:q!&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

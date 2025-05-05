@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on dgv</title>
+    <link>http://localhost:1313/blog/</link>
+    <description>Recent content in Blogs on dgv</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 27 Sep 2024 00:00:00 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>web3 is here</title>
+      <link>http://localhost:1313/blog/web3-is-here/</link>
+      <pubDate>Fri, 27 Sep 2024 00:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/blog/web3-is-here/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;tl;dr&lt;/h2&gt;&#xA;&lt;p&gt;I&amp;rsquo;m aware of current criticism, I&amp;rsquo;m follower of &lt;a href=&#34;https://www.web3isgoinggreat.com/&#34;&gt;web3 is going just great&lt;/a&gt; from &lt;a href=&#34;https://mastodon.social/@molly0xfff@hachyderm.io&#34;&gt;Molly White&lt;/a&gt; but also a &lt;a href=&#34;https://andrewkelley.me/post/the-techno-optimist-manifesto.html&#34;&gt;techno-optimist&lt;/a&gt; &lt;em&gt;à la Thoreau&lt;/em&gt; (not &lt;a href=&#34;https://en.wikipedia.org/wiki/Techno-Optimist_Manifesto&#34;&gt;Andressen&amp;rsquo;s definition&lt;/a&gt;),&#xA;so even working close to blockchains and using bitcoin since 2014 I always been skeptical until last years events. The idea here is not to convince or promote anything, just summarize some definitions and references about how things are going at this point.&lt;/p&gt;&#xA;&lt;h2 id=&#34;btw-what-is-web3&#34;&gt;btw, what is web3?&lt;/h2&gt;&#xA;&lt;p&gt;The term &amp;ldquo;web3&amp;rdquo; was coined in 2014 by Ethereum co-founder &lt;a href=&#34;https://en.wikipedia.org/wiki/Gavin_Wood&#34;&gt;Gavin Wood&lt;/a&gt;, is an idea for a new iteration of the World Wide Web which incorporates concepts such as &lt;strong&gt;decentralization&lt;/strong&gt;, &lt;strong&gt;blockchain&lt;/strong&gt; technologies, and &lt;strong&gt;token-based&lt;/strong&gt; economics.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>banzai! why another code editor?</title>
+      <link>http://localhost:1313/blog/banzai-why-another-code-editor/</link>
+      <pubDate>Sat, 20 Jul 2024 00:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/blog/banzai-why-another-code-editor/</guid>
+      <description>&lt;p&gt;My first editor for code was Microsoft Notepad, why? Because Internet Explorer on Win95 used to show page source there, so I like to edit HTML and batch scripts using it, then FrontPage Express (to have syntax highlighting support) and later notepad++.&lt;/p&gt;&#xA;&lt;p&gt;When finally started to use Linux and later OpenBSD choose vi, yes vi, not iMproved version, emacs is not available by default, used vi for notes, shell scripting then some C, found funny the &lt;code&gt;~&lt;/code&gt; marks, buffer manipulation and shortcuts, never was a advanced user, or have complex &lt;code&gt;.vimrc&lt;/code&gt;, or problems to &lt;code&gt;:q!&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>shokunin tamashī</title>
+      <link>http://localhost:1313/blog/shokunin-tamash%C4%AB/</link>
+      <pubDate>Sat, 15 Jun 2024 00:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/blog/shokunin-tamash%C4%AB/</guid>
+      <description>&lt;h3 id=&#34;tldr&#34;&gt;&lt;em&gt;tl;dr&lt;/em&gt;&lt;/h3&gt;&#xA;&lt;p&gt;I&amp;rsquo;m back, blogging again, after so many years. First of all, &lt;em&gt;shokunin tamashī&lt;/em&gt; is the japanese term for the spirit of craftmanship. I&amp;rsquo;ll explain below the term, how and why it inspires me.&lt;/p&gt;&#xA;&lt;h3 id=&#34;intro&#34;&gt;intro&lt;/h3&gt;&#xA;&lt;p&gt;I always been interested in japanese culture, besides all influence during my childhood, &lt;em&gt;sansei&lt;/em&gt; friends and neighborhood stores, animes etc, I really start to dive into with &lt;a href=&#34;https://archive.org/stream/ZenToDoneTheUltimateSimpleProductivitySystemByLeoBabauta/zen_to_done.Leo_Babauta-jorel314_djvu.txt&#34;&gt;Zen to Done&lt;/a&gt; method after so many influences in &lt;a href=&#34;https://www.zenprogrammer.org/en/10-rules-of-a-zen-programmer.html&#34;&gt;programing&lt;/a&gt;,&#xA;then start to read books about Zen, even tried &lt;a href=&#34;https://en.wikipedia.org/wiki/Zazen&#34;&gt;zazen&lt;/a&gt; for some time, the philosophy was pretty natural for me as low profile person, introspective self-taught technician and programmer attracted by &lt;a href=&#34;http://www.extremeprogramming.org/rules/simple.html&#34;&gt;simplicity&lt;/a&gt;, &lt;a href=&#34;http://lawsofsimplicity.com/&#34;&gt;simple things&lt;/a&gt; and &lt;a href=&#34;https://www.goodreads.com/quotes/897002-our-life-is-frittered-away-by-detail-simplicity-simplicity-simplicity-i&#34;&gt;simplify&lt;/a&gt;&amp;hellip;&#xA;Finally watched Jiro Dreams of Sushi &lt;a href=&#34;https://www.imdb.com/title/tt1772925/&#34;&gt;movie&lt;/a&gt; and was presented to the &lt;em&gt;shokunin&lt;/em&gt; term and how the &lt;em&gt;philosophy&lt;/em&gt; relates with me.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

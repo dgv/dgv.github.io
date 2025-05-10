@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Daniel Gomes Vargas">
+<meta name="description" content="I have lately been trying to learn more about the Trusted Platform Module (TPM)
+as they are capable of key creation and sealing secrets in a secure manner. They
+are common hardware these days and make for a reasonable ways to store secrets.
+age is a file encryption/decryption tool
+from Filippo Valsorda which a lot of people have been using to replace GnuPG for
+things like password-store. It has a few plugins doing things like storing
+keys on Yubikey, Trezor hardware wallets or the Apple Secure Enclave, however
+it doesn&rsquo;t have a TPM plugin. I saw the opportunity to write something that is
+capable of utilizing the TPM.">
+
+<meta property="og:url" content="http://localhost:1313/blog/golang-crypto/ecdh-and-the-tpm/">
+  <meta property="og:site_name" content="Morten Linderud">
+  <meta property="og:title" content="Golang crypto/ecdh and the TPM">
+  <meta property="og:description" content="I have lately been trying to learn more about the Trusted Platform Module (TPM) as they are capable of key creation and sealing secrets in a secure manner. They are common hardware these days and make for a reasonable ways to store secrets.
+age is a file encryption/decryption tool from Filippo Valsorda which a lot of people have been using to replace GnuPG for things like password-store. It has a few plugins doing things like storing keys on Yubikey, Trezor hardware wallets or the Apple Secure Enclave, however it doesn’t have a TPM plugin. I saw the opportunity to write something that is capable of utilizing the TPM.">
+  <meta property="og:locale" content="nb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2023-04-24T20:00:00+02:00">
+    <meta property="article:modified_time" content="2023-04-24T20:00:00+02:00">
+    <meta property="article:tag" content="Tpm">
+    <meta property="article:tag" content="Golang">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="English">
+
+
+<title>
+
+
+     Golang crypto/ecdh and the TPM 
+
+</title>
+<link rel="canonical" href="http://localhost:1313/blog/golang-crypto/ecdh-and-the-tpm/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/reset.css?t=2025-05-08%2016%3a20%3a22.422959967%20-0300%20-03%20m%3d%2b889.127923173">
+    <link rel="stylesheet" href="http://localhost:1313/css/pygments.css?t=2025-05-08%2016%3a20%3a22.422959967%20-0300%20-03%20m%3d%2b889.127923173">
+    <link rel="stylesheet" href="http://localhost:1313/css/main.css?t=2025-05-08%2016%3a20%3a22.422959967%20-0300%20-03%20m%3d%2b889.127923173">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="http://localhost:1313/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+<link rel="me" href="https://chaos.social/@Foxboron">
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="http://localhost:1313/"><img class="avatar" src="http://localhost:1313/img/profile.png" srcset="http://localhost:1313/img/profile.png 1x"></a>
+            
+            <a href="http://localhost:1313/"><div class="name">Daniel Gomes Vargas</div></a>
+            
+              <h3 class="self-intro">Programmer, Entropist Netrunner</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-about"><a href="http://localhost:1313/about/"><span>about</span></a></li>
+                    
+                        <li class="nav-blog"><a href="http://localhost:1313/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-tags"><a href="http://localhost:1313/tags/"><span>tags</span></a></li>
+                    
+                        <li class="nav-tips"><a href="http://localhost:1313/tips/"><span>tips</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="//github.com/dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/github.svg" alt="github" /></a>
+        
+
+        
+            <a href="//mastodon.social/@dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//twitter.com/dgvargas" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/twitter.svg" alt="twitter" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            
+        
+
+        
+
+        
+            <a href="mailto:morten@linderud.pw"><img class="icon" src="http://localhost:1313/img/email.svg" alt="email" /></a>
+        
+
+        
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Golang crypto/ecdh and the TPM
+
+</div>
+
+                    <div class="initials"><a href="http://localhost:1313/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Mon Apr 24 2023 20:00:00 &#43;0200'>Apr 24, 2023</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>7 minutes read</div>
+                    
+                    
+                    <div class="tags"><div class="middot"></div>Tags:
+                    
+                    <a href="http://localhost:1313/tags/tpm/">Tpm</a>
+                    
+                    <a href="http://localhost:1313/tags/golang/">Golang</a>
+                    
+                    <a href="http://localhost:1313/tags/linux/">Linux</a>
+                    
+                    <a href="http://localhost:1313/tags/english/">English</a>
+                    
+                    </div>
+                    
+                    </div>
+            </div>
+            <div class="markdown">
+                <p>I have lately been trying to learn more about the Trusted Platform Module (TPM)
+as they are capable of key creation and sealing secrets in a secure manner. They
+are common hardware these days and make for a reasonable ways to store secrets.</p>
+<p><a href="https://github.com/FiloSottile/age"><code>age</code></a> is a file encryption/decryption tool
+from Filippo Valsorda which a lot of people have been using to replace GnuPG for
+things like <code>password-store</code>. It has a few plugins doing things like storing
+keys on Yubikey, Trezor hardware wallets or the Apple Secure Enclave, however
+it doesn&rsquo;t have a TPM plugin. I saw the opportunity to write something that is
+capable of utilizing the TPM.</p>
+<p>So after a couple of weekends hacking on something I had an initial version of
+such a plugin, <a href="https://github.com/Foxboron/age-plugin-tpm"><code>age-plugin-tpm</code></a>.
+Which is capable of creating and storing RSA 2048 bit keys for age to use inside
+the TPM.</p>
+<p>However a big downside is that it is using RSA 2048, and the keys are already
+super long. Like 443 bytes long.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">age1tpm1syqqqpqqqqqqqqqpqqq6uxewjcd9c30s027a4wmfud2qewzanp6x7jljd6jf6gn45sv9lssx
+</span></span><span class="line"><span class="cl">39pdlgl2khwwf8u4vzevavapte5j8n5ntrhvk58wvsp3e49ghmhp36m4u7m958tuh0u7zqwq0sk6fxff
+</span></span><span class="line"><span class="cl">lr9rm8fwazvss4u86wjsygu0py4nl26g0np2ce5ehshfgkm2k0sgls8389e25fxta2yqt8k4gh4uuh9t
+</span></span><span class="line"><span class="cl">5n84uaend273yfst8ykap6unhn5dphdwfa6562e80jlnme5j28yvmvdafwfa3v8rnyerxmt6zat6kez7
+</span></span><span class="line"><span class="cl">ywv7acvzxu3knh7m56pxyntpmpsgwp3kevrh85ue8kpakgnqtsrfede2tfz98s2drd2nhj4dq8t5uu82
+</span></span><span class="line"><span class="cl">ex54l3g9jeh4rkhdz6slt33zgf5wcff42fgdky7gd42</span></span></code></pre></div>
+<p>Thus we need to try and figure out Elliptic Curve cryptography which is what
+<code>age</code> itself is doing.</p>
+<h1 id="elliptic-curves">Elliptic Curves</h1>
+<p>RSA is an asymmetric public-private key scheme where we distribute a public
+key, and we keep a private key. Only the private key can decrypt the material
+encrypted with the public key.</p>
+<p>Elliptic Curves on the other hand uses symmetric encryption. This means that the
+key encrypting something, and the key decrypting something uses the same key for
+both these tasks. It&rsquo;s effectively a shared secret. A common way of doing this
+is through the Diffie-Hellman key exchange. This is called Elliptic-curve
+Diffie-Hellman (ECDH).</p>
+<p>With the release of Go 1.20 we got a new <code>crypto/ecdh</code> library to perform
+operations like these.</p>
+<p>Since the TPM only supports a subset of curves we will be using NIST P-256 for
+all the examples below.</p>
+<p>We will be creating two keys. One for Alice, and one for Bob. Alice and Bob
+needs to agree on a shared secret they can encrypt secrets with.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-golang" data-lang="golang"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;crypto/ecdh&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;crypto/rand&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;crypto/sha256&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="s">&#34;fmt&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">alice</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ecdh</span><span class="p">.</span><span class="nf">P256</span><span class="p">().</span><span class="nf">GenerateKey</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Reader</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">bob</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ecdh</span><span class="p">.</span><span class="nf">P256</span><span class="p">().</span><span class="nf">GenerateKey</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Reader</span><span class="p">)</span></span></span></code></pre></div>
+<p>Alice gives Bob their public key and Bob can perform an ECDH key exchange with
+the public key. We generate a hash of the key here only to produce an easily
+readable representation of the key.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">alicePubkey</span> <span class="o">:=</span> <span class="nx">alice</span><span class="p">.</span><span class="nf">PublicKey</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">shared</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">bob</span><span class="p">.</span><span class="nf">ECDH</span><span class="p">(</span><span class="nx">alicePubkey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">bobShared</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">Sum256</span><span class="p">(</span><span class="nx">shared</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Shared key (Bob)  %x\n&#34;</span><span class="p">,</span> <span class="nx">shared</span><span class="p">)</span></span></span></code></pre></div>
+<p>With the following as output.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Shared key (Bob)  1cb538e525096ef7c3d8bbf9b3868eba183ebc153d548c934975a2107696b215</span></span></code></pre></div>
+<p>Cool, we have something that can probably work as a key. Now Bob gives their
+public key to Alice and they do the same.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">bobPubkey</span> <span class="o">:=</span> <span class="nx">bob</span><span class="p">.</span><span class="nf">PublicKey</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">shared</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">alice</span><span class="p">.</span><span class="nf">ECDH</span><span class="p">(</span><span class="nx">bobPubkey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">aliceShared</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">Sum256</span><span class="p">(</span><span class="nx">shared</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Shared key (Alice)  %x\n&#34;</span><span class="p">,</span> <span class="nx">shared</span><span class="p">)</span></span></span></code></pre></div>
+<p>And we get the same output.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">Shared key (Alice)  1cb538e525096ef7c3d8bbf9b3868eba183ebc153d548c934975a2107696b215</span></span></code></pre></div>
+<p>This was actually pretty easy! I&rsquo;m not very sturdy in explaining the math behind
+this, but we are effectively agreeing on the same position on the curve which
+will work as our symmetric key.</p>
+<p>Lets do the same but now lets store the key from Alice in the TPM.</p>
+<h1 id="trusted-platform-modules">Trusted Platform Modules</h1>
+<p>We will be using the <a href="https://github.com/google/go-tpm/"><code>go-tpm</code></a> from Google
+to deal with the TPM and I will try to give a complete example on how to
+implement this.</p>
+<p>First off we need a couple of variables. TPM use key hierarchies which allow us
+to generate deterministic create keys. We are going to create a key under the
+&ldquo;Storage Root Key&rdquo; (SRK) which will work as our application key.</p>
+<p>There is a very good introduction to TPM key hierarchies by Eric Chiang:
+<a href="https://ericchiang.github.io/post/tpm-keys/">https://ericchiang.github.io/post/tpm-keys/</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/google/go-tpm/tpm2&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="s">&#34;github.com/google/go-tpm/tpmutil&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">var</span> <span class="p">(</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Default SRK handle</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">srkHandle</span> <span class="nx">tpmutil</span><span class="p">.</span><span class="nx">Handle</span> <span class="p">=</span> <span class="mh">0x81000001</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">// Default SRK key template</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">srkTemplate</span> <span class="p">=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">Public</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Type</span><span class="p">:</span>       <span class="nx">tpm2</span><span class="p">.</span><span class="nx">AlgECC</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">NameAlg</span><span class="p">:</span>    <span class="nx">tpm2</span><span class="p">.</span><span class="nx">AlgSHA256</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Attributes</span><span class="p">:</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">FlagStorageDefault</span> <span class="p">|</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">FlagNoDA</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ECCParameters</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">tpm2</span><span class="p">.</span><span class="nx">ECCParams</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Symmetric</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">tpm2</span><span class="p">.</span><span class="nx">SymScheme</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">Alg</span><span class="p">:</span>     <span class="nx">tpm2</span><span class="p">.</span><span class="nx">AlgAES</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">KeyBits</span><span class="p">:</span> <span class="mi">128</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">Mode</span><span class="p">:</span>    <span class="nx">tpm2</span><span class="p">.</span><span class="nx">AlgCFB</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="p">},</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">CurveID</span><span class="p">:</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">CurveNISTP256</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Point</span><span class="p">:</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">ECPoint</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">XRaw</span><span class="p">:</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">YRaw</span><span class="p">:</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">			<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">// Our Key Handle</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">keyHandle</span> <span class="nx">tpmutil</span><span class="p">.</span><span class="nx">Handle</span> <span class="p">=</span> <span class="mh">0x81010004</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">// ECC Encrypt/Decrypt key template</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">eccKeyTemplate</span> <span class="p">=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">Public</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Type</span><span class="p">:</span>       <span class="nx">tpm2</span><span class="p">.</span><span class="nx">AlgECC</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">NameAlg</span><span class="p">:</span>    <span class="nx">tpm2</span><span class="p">.</span><span class="nx">AlgSHA256</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">Attributes</span><span class="p">:</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">FlagStorageDefault</span> <span class="o">&amp;</span> <span class="p">^</span><span class="nx">tpm2</span><span class="p">.</span><span class="nx">FlagRestricted</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">ECCParameters</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">tpm2</span><span class="p">.</span><span class="nx">ECCParams</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">CurveID</span><span class="p">:</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">CurveNISTP256</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">Point</span><span class="p">:</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">ECPoint</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">XRaw</span><span class="p">:</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">				<span class="nx">YRaw</span><span class="p">:</span> <span class="nb">make</span><span class="p">([]</span><span class="kt">byte</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">			<span class="p">},</span>
+</span></span><span class="line"><span class="cl">		<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span></span></span></code></pre></div>
+<p>Handles are effectively locations on the TPM where we store our keys. Some
+handles are reserved for special keys and the rest of the space is usable for
+applications.</p>
+<p>The <code>0x81000001</code> is special for the SRK, and we select the handle <code>0x81010004</code>
+for our application key.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">rwc</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">OpenTPM</span><span class="p">(</span><span class="s">&#34;/dev/tpm0&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">defer</span> <span class="nx">rwc</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">bob</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">ecdh</span><span class="p">.</span><span class="nf">P256</span><span class="p">().</span><span class="nf">GenerateKey</span><span class="p">(</span><span class="nx">rand</span><span class="p">.</span><span class="nx">Reader</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">bobPubKey</span> <span class="o">:=</span> <span class="nx">externalKey</span><span class="p">.</span><span class="nf">PublicKey</span><span class="p">()</span></span></span></code></pre></div>
+<p>The next portion opens up the TPM device, and then we generate a key pair for
+Bob.</p>
+<p>If you don&rsquo;t want to do this directly towards your TPM, I have written a small
+library to initialize an instance of <code>swtpm</code> which can be used for testing.</p>
+<p><a href="https://github.com/Foxboron/swtpm_test">https://github.com/Foxboron/swtpm_test</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">handle</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">CreatePrimary</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">HandleOwner</span><span class="p">,</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">PCRSelection</span><span class="p">{},</span>
+</span></span><span class="line"><span class="cl">                                        <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">srkTemplate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;CreatedPrimary: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">EvictControl</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">HandleOwner</span><span class="p">,</span> <span class="nx">handle</span><span class="p">,</span> <span class="nx">srkHandle</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;EvictControl: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>This section creates our SRK key under the Owner hierarchy and we use
+<code>EvictControl</code> to delegate the temporary key to the persistent handle.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">priv</span><span class="p">,</span> <span class="nx">pub</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">CreateKey</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="nx">handle</span><span class="p">,</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">PCRSelection</span><span class="p">{},</span>
+</span></span><span class="line"><span class="cl">                                            <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">eccKeyTemplate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;CreateKey: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">handle</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">Load</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="nx">srkHandle</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">pub</span><span class="p">,</span> <span class="nx">priv</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;Load: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">defer</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">FlushContext</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="nx">handle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="p">=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">EvictControl</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">HandleOwner</span><span class="p">,</span> <span class="nx">handle</span><span class="p">,</span> <span class="nx">keyHandle</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;EvictControl: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>In this section we are creating our key for Alice. We pass our values to
+<code>tpm2.CreateKey</code> which most importantly is using our <code>eccKeyTemplate</code>. We then
+load the private and public parts into a handle, which we then make persistent.</p>
+<p>This allow us to reference the created key under the handle <code>0x81010004</code> for
+future sessions.</p>
+<h1 id="elliptic-curve-diffie-hellman">Elliptic-curve Diffie-Hellman</h1>
+<p>Now we can do the key exchange!</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="o">:=</span> <span class="nx">elliptic</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">elliptic</span><span class="p">.</span><span class="nf">P256</span><span class="p">(),</span> <span class="nx">bobPubKey</span><span class="p">.</span><span class="nf">Bytes</span><span class="p">())</span></span></span></code></pre></div>
+<p>First we need to parse Bob&rsquo;s key to retrieve the <code>X</code> and <code>Y</code> portions of the
+keys so we can pass them to the TPM. The <code>crypt/ecdh</code> library does not expose
+these values from keys, so we need to pass it through <code>elliptic.Unmarshal</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">bobKey</span> <span class="o">:=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nx">ECPoint</span><span class="p">{</span><span class="nx">XRaw</span><span class="p">:</span> <span class="nx">x</span><span class="p">.</span><span class="nf">Bytes</span><span class="p">(),</span> <span class="nx">YRaw</span><span class="p">:</span> <span class="nx">y</span><span class="p">.</span><span class="nf">Bytes</span><span class="p">()}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">z</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">ECDHZGen</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="nx">keyHandle</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">bobKey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">log</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;ECDHZGen: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">shared</span> <span class="o">:=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">Sum256</span><span class="p">(</span><span class="nx">z</span><span class="p">.</span><span class="nf">X</span><span class="p">().</span><span class="nf">Bytes</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Shared key (Alice)  %x\n&#34;</span><span class="p">,</span> <span class="nx">shared</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Shared key (Alice)  2912759ae2641a4a18ae08abadbf1e413339333ea266f02bbaf580e5f58b6d44</span></span></span></code></pre></div>
+<p>At this point we have done the key exchange over the TPM. The return value of
+<code>z.X().Bytes()</code> is the equivalent value as returned by
+<code>alice.ECDH(bobPubkey)</code> from the earlier example.</p>
+<h1 id="returning-to-bob">Returning to Bob</h1>
+<p>However, Bob still wants to produce the same secret, but now the key material is
+stored in the TPM. What we need to do is to fetch the Public Key material from
+the TPM and produce a <code>ecdh.PublicKey</code> struct for Bob.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">pub</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">tpm2</span><span class="p">.</span><span class="nf">ReadPublic</span><span class="p">(</span><span class="nx">rwc</span><span class="p">,</span> <span class="nx">keyHandle</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;ReadPublic: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">pub</span><span class="p">.</span><span class="nf">Key</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;can&#39;t read public key: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">ecdsaPubKey</span> <span class="o">:=</span> <span class="nx">publicKey</span><span class="p">.(</span><span class="o">*</span><span class="nx">ecdsa</span><span class="p">.</span><span class="nx">PublicKey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">alicePubKey</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ecdsaPubKey</span><span class="p">.</span><span class="nf">ECDH</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;pubkey.ECDH: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+<p>The code above reads the public key material. We then need to do a little bit
+of dancing as <code>google/go-tpm</code> only really deals with <code>ecdsa.PublicKey</code>. We need
+to cast the return value from <code>.Key()</code> (which is <code>crypto.PublicKey</code>), to
+<code>ecdh.PublicKey</code>.</p>
+<p>Then utilize the new Go 1.20 method <code>.ECDH()</code> to produce the correct key type
+for our <code>crypto/ecdh</code> library. Now we can give <code>alicePubKey</code> to Bob and
+they can reproduce the same secret we have.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="nx">shared</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">bob</span><span class="p">.</span><span class="nf">ECDH</span><span class="p">(</span><span class="nx">alicePubKey</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nx">shared</span> <span class="p">=</span> <span class="nx">sha256</span><span class="p">.</span><span class="nf">Sum256</span><span class="p">(</span><span class="nx">shared</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Shared key (Bob)  %x\n&#34;</span><span class="p">,</span> <span class="nx">shared</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Shared key (Bob)  2912759ae2641a4a18ae08abadbf1e413339333ea266f02bbaf580e5f58b6d44</span></span></span></code></pre></div>
+<p>And that completes the example!</p>
+<p>The complete code example this article is based off on can be found here:
+<a href="https://github.com/Foxboron/tpm-stuff/blob/master/ecc_keys/keys_test.go">https://github.com/Foxboron/tpm-stuff/blob/master/ecc_keys/keys_test.go</a></p>
+<p>The complete code example also contains the missing pieces for how <code>age</code> uses
+shared secret through a Key Derivative Function (KDF) and <code>chacha20poly1305</code> to provide the actual encryption.</p>
+<p>If you think messing with TPMs and practical application are fun feel free to
+come and hack on on
+<a href="https://github.com/Foxboron/age-plugin-tpm"><code>age-plugin-tpm</code></a>, or
+<a href="https://github.com/Foxboron/sbctl/"><code>sbctl</code></a> once I get around to implementing
+the improved key handling there :)</p>
+<p>Thanks for reading!</p>
+
+                <br>
+                <p class="back-to-posts"><a href="http://localhost:1313/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+

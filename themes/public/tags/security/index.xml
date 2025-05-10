@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Morten Linderud</title>
+    <link>http://localhost:1313/tags/security/</link>
+    <description>Recent content in Security on Morten Linderud</description>
+    <generator>Hugo</generator>
+    <language>nb</language>
+    <lastBuildDate>Sat, 31 Aug 2024 18:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSH CA with device and identity attestation: ssh-tpm-ca-authority</title>
+      <link>http://localhost:1313/blog/ssh-ca-with-device-and-identity-attestation-ssh-tpm-ca-authority/</link>
+      <pubDate>Sat, 31 Aug 2024 18:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/ssh-ca-with-device-and-identity-attestation-ssh-tpm-ca-authority/</guid>
+      <description>&lt;p&gt;The past year I have been hacking around on tools utilizing TPMs, and one of the&#xA;features I have been interested to learn more about is the device attestation&#xA;features.&lt;/p&gt;&#xA;&lt;p&gt;After being a bit inspired by some ideas from people at work, the hackerspace&#xA;and toots on mastodon, I figure out a SSH certificate authority would be a cool&#xA;small project to hack on. Last year I wrote an SSH agent with TPM bound keys so&#xA;this would nicely fit into the existing tooling.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Store ssh keys inside the TPM: ssh-tpm-agent</title>
+      <link>http://localhost:1313/blog/store-ssh-keys-inside-the-tpm-ssh-tpm-agent/</link>
+      <pubDate>Wed, 04 Oct 2023 19:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/store-ssh-keys-inside-the-tpm-ssh-tpm-agent/</guid>
+      <description>&lt;p&gt;After writing &lt;a href=&#34;https://github.com/Foxboron/age-plugin-tpm&#34;&gt;age-plugin-tpm&lt;/a&gt; a friend of mine at the &lt;a href=&#34;https://hackeriet.no&#34;&gt;hackerspace&lt;/a&gt; was super&#xA;excited to &lt;em&gt;finally&lt;/em&gt; have easy file encryption with TPM sealed keys, all without&#xA;having to rely on &lt;code&gt;gnupg&lt;/code&gt;. &amp;ldquo;This is great!&amp;rdquo; he said.&lt;/p&gt;&#xA;&lt;p&gt;&amp;ldquo;I wish I could have my SSH keys sealed in a TPM just as easily&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;We should have left it at that.&lt;/p&gt;&#xA;&lt;p&gt;I shouldn&amp;rsquo;t have replied with a random assortment&#xA;of facts like &amp;ldquo;I know &lt;a href=&#34;https://github.com/google/go-tpm&#34;&gt;&lt;code&gt;google/go-tpm&lt;/code&gt;&lt;/a&gt; now&amp;rdquo;, or &amp;ldquo;but Go has a &lt;a href=&#34;https://pkg.go.dev/golang.org/x/crypto/ssh/agent&#34;&gt;&lt;code&gt;ssh-agent&lt;/code&gt; protocol&lt;/a&gt; implementation&amp;rdquo; followed-up with &amp;ldquo;Filippo has already implemented &lt;a href=&#34;https://github.com/FiloSottile/yubikey-agent/&#34;&gt;&lt;code&gt;yubikey-agent&lt;/code&gt;&lt;/a&gt;, it can&amp;rsquo;t be that hard&amp;rdquo;. So I wound up writing a new ssh agent.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Store age identities inside the TPM: age-plugin-tpm</title>
+      <link>http://localhost:1313/blog/store-age-identities-inside-the-tpm-age-plugin-tpm/</link>
+      <pubDate>Mon, 17 Jul 2023 18:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/store-age-identities-inside-the-tpm-age-plugin-tpm/</guid>
+      <description>&lt;p&gt;The past year I have been trying to learn more about the Trusted Platform Module&#xA;(TPM). This is a small device found on most modern laptops that has several cool&#xA;security features like key creation, sealing and attestation, however I have&#xA;been struggling to find a small project where I can learn more about it.&lt;/p&gt;&#xA;&lt;p&gt;To my surprised I learned a couple of months ago that nobody has written a TPM&#xA;plugin for age!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PAM Bypass: when null(is not)ok</title>
+      <link>http://localhost:1313/blog/pam-bypass-when-nullis-notok/</link>
+      <pubDate>Tue, 24 Nov 2020 20:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/pam-bypass-when-nullis-notok/</guid>
+      <description>&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;&#xA;&lt;p&gt;Someone enters an IRC support channel and proclaims their dovecot server has&#xA;been hacked and a non existing user sends spam email from their server. The&#xA;initial reaction might be something along the lines of&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Wat ಠ_ಠ&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;With the following assumption that the user &lt;em&gt;clearly&lt;/em&gt; did something wrong.&#xA;Hosting email is difficult after all. I don&amp;rsquo;t quite recall how rest of the&#xA;support went, but it was solved and the root cause was not found. However, we&#xA;keep on rolling! Then someone posts about a similar incident on &lt;a href=&#34;https://www.reddit.com/r/archlinux/comments/jvh38a/postfix_dovecot_got_hacked/&#34;&gt;r/archlinux&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

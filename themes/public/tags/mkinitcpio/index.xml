@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mkinitcpio on Morten Linderud</title>
+    <link>http://localhost:1313/tags/mkinitcpio/</link>
+    <description>Recent content in Mkinitcpio on Morten Linderud</description>
+    <generator>Hugo</generator>
+    <language>nb</language>
+    <lastBuildDate>Sun, 22 Aug 2021 00:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mkinitcpio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mkinitcpio v31 and UEFI stubs</title>
+      <link>http://localhost:1313/blog/mkinitcpio-v31-and-uefi-stubs/</link>
+      <pubDate>Sun, 22 Aug 2021 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/mkinitcpio-v31-and-uefi-stubs/</guid>
+      <description>&lt;p&gt;A few months ago I wrote up some code for &lt;code&gt;mkinitcpio&lt;/code&gt; which teaches it how to&#xA;create UEFI executables utilizing the systemd stub.&lt;/p&gt;&#xA;&lt;p&gt;The change can be found here: &lt;a href=&#34;https://github.com/archlinux/mkinitcpio/pull/53&#34;&gt;https://github.com/archlinux/mkinitcpio/pull/53&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;This is a short introduction to why the feature is great, how it makes it easier&#xA;to boot your system, and how it can be used to better secure your system with&#xA;something like secure boot.&lt;/p&gt;&#xA;&lt;h3 id=&#34;the-boot-process&#34;&gt;The Boot Process&lt;/h3&gt;&#xA;&lt;p&gt;For the past decade most computers have two ways to boot. The legacy BIOS mode&#xA;and UEFI which is suppose to replace it. It frankly does a lot of things, but&#xA;one of the more interesting aspects is that the Linux kernel is a valid &lt;a href=&#34;https://en.wikipedia.org/wiki/DOS_MZ_executable&#34;&gt;MS DOS&#xA;binary&lt;/a&gt;. If you read out the&#xA;two first bytes you will see &lt;code&gt;MZ&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

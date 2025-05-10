@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Daniel Gomes Vargas">
+<meta name="description" content="Yoooo!
+Another month has passed which means another status update.
+The python2 removal has been steady and several packages has been removed this
+month. Currently a query for python2 on archweb returns 139 matches. At the
+start of the month it was around 160-170. Progress!
+I have suggested we remove checkdepends on python2 packages to ease the cleanup of dependency cycles. The
+response has been lukewarm at best so we&rsquo;ll see how that progresses. Hopefully
+more is being removed in the upcoming months.">
+
+<meta property="og:url" content="http://localhost:1313/blog/foss-activities-in-march-2021/">
+  <meta property="og:site_name" content="Morten Linderud">
+  <meta property="og:title" content="FOSS Activities in March 2021">
+  <meta property="og:description" content="Yoooo!
+Another month has passed which means another status update.
+The python2 removal has been steady and several packages has been removed this month. Currently a query for python2 on archweb returns 139 matches. At the start of the month it was around 160-170. Progress!
+I have suggested we remove checkdepends on python2 packages to ease the cleanup of dependency cycles. The response has been lukewarm at best so we’ll see how that progresses. Hopefully more is being removed in the upcoming months.">
+  <meta property="og:locale" content="nb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2021-04-02T14:00:00+02:00">
+    <meta property="article:modified_time" content="2021-04-02T14:00:00+02:00">
+    <meta property="article:tag" content="Foss">
+    <meta property="article:tag" content="Monthly">
+    <meta property="article:tag" content="Archlinux">
+    <meta property="article:tag" content="English">
+
+
+<title>
+
+
+     FOSS Activities in March 2021 
+
+</title>
+<link rel="canonical" href="http://localhost:1313/blog/foss-activities-in-march-2021/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/reset.css?t=2025-05-08%2016%3a20%3a22.430717662%20-0300%20-03%20m%3d%2b889.135680859">
+    <link rel="stylesheet" href="http://localhost:1313/css/pygments.css?t=2025-05-08%2016%3a20%3a22.430717662%20-0300%20-03%20m%3d%2b889.135680859">
+    <link rel="stylesheet" href="http://localhost:1313/css/main.css?t=2025-05-08%2016%3a20%3a22.430717662%20-0300%20-03%20m%3d%2b889.135680859">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="http://localhost:1313/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+<link rel="me" href="https://chaos.social/@Foxboron">
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="http://localhost:1313/"><img class="avatar" src="http://localhost:1313/img/profile.png" srcset="http://localhost:1313/img/profile.png 1x"></a>
+            
+            <a href="http://localhost:1313/"><div class="name">Daniel Gomes Vargas</div></a>
+            
+              <h3 class="self-intro">Programmer, Entropist Netrunner</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-about"><a href="http://localhost:1313/about/"><span>about</span></a></li>
+                    
+                        <li class="nav-blog"><a href="http://localhost:1313/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-tags"><a href="http://localhost:1313/tags/"><span>tags</span></a></li>
+                    
+                        <li class="nav-tips"><a href="http://localhost:1313/tips/"><span>tips</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="//github.com/dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/github.svg" alt="github" /></a>
+        
+
+        
+            <a href="//mastodon.social/@dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//twitter.com/dgvargas" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/twitter.svg" alt="twitter" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            
+        
+
+        
+
+        
+            <a href="mailto:morten@linderud.pw"><img class="icon" src="http://localhost:1313/img/email.svg" alt="email" /></a>
+        
+
+        
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    FOSS Activities in March 2021
+
+</div>
+
+                    <div class="initials"><a href="http://localhost:1313/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Fri Apr 2 2021 14:00:00 &#43;0200'>Apr 2, 2021</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>4 minutes read</div>
+                    
+                    
+                    <div class="tags"><div class="middot"></div>Tags:
+                    
+                    <a href="http://localhost:1313/tags/foss/">Foss</a>
+                    
+                    <a href="http://localhost:1313/tags/monthly/">Monthly</a>
+                    
+                    <a href="http://localhost:1313/tags/archlinux/">Archlinux</a>
+                    
+                    <a href="http://localhost:1313/tags/english/">English</a>
+                    
+                    </div>
+                    
+                    </div>
+            </div>
+            <div class="markdown">
+                <p>Yoooo!</p>
+<p>Another month has passed which means another status update.</p>
+<p>The python2 removal has been steady and several packages has been removed this
+month. Currently a query for <code>python2</code> on archweb returns 139 matches. At the
+start of the month it was around 160-170. Progress!</p>
+<p>I have suggested we <a href="https://lists.archlinux.org/pipermail/arch-dev-public/2021-March/030390.html">remove <code>checkdepends</code></a> on python2 packages to ease the cleanup of dependency cycles. The
+response has been lukewarm at best so we&rsquo;ll see how that progresses. Hopefully
+more is being removed in the upcoming months.</p>
+<p>Support for debug in Arch Linux is in large parts written and under review. The
+dbscripts patches, which is how we administer packages to our repositories, has
+all the needed <a href="https://github.com/archlinux/dbscripts/pull/21">patches</a> and a passing test suite! But it is currently missing a
+review from the current maintainer. I have also <a href="https://gitlab.archlinux.org/archlinux/infrastructure/-/merge_requests/168">shaped up the infrastructure</a>
+part so we can provide <code>debuginfod</code>. The general goal is to start providing
+debug packages through <code>debuginfod</code> and at a later date decide if we want to
+distribute the packages to some or all mirrors.</p>
+<p>Hopefully it&rsquo;s just a few weeks left until we can provide this to our users!</p>
+<p>Arch recent got a new <a href="https://gitlab.archlinux.org/archlinux/rfcs/-/blob/master/rfcs/0001-using-rfcs.rst">RFC process</a> which is intended to create more structure
+around changes to the distribution. This is a neat change and there have already
+been 3 RFCs up for discussion this month from Allan.</p>
+<p>Something that was brought up <a href="https://lists.archlinux.org/pipermail/arch-dev-public/2019-October/029695.html">in 2019</a> was to move our <code>license</code> field in
+packages from loosely defined strings to <a href="https://spdx.dev/ids/#how">SPDX identifiers</a>. This allows us to
+standardize our license fields and allow people to better figure out which
+license a package has. This is going to a lot of work as we need to restructure
+our current license package with <a href="https://spdx.org/licenses/index.html">SPDX identifiers</a>, update the archwiki license
+guidelines and formulate an RFC. Hopefully we&rsquo;ll have some work done on this
+through April and an RFC before next month :)</p>
+<p>And for the polarizing news. Richard Stallman was secretly reelected back on the
+board of the FSF. I personally think this is a move that firmly cements the Free
+Software Foundation as organization suffering from <a href="https://en.wikipedia.org/wiki/Founder%27s_syndrome">&ldquo;Founder&rsquo;s Syndrome&rdquo;</a> and
+incapable of modernizing. FSF is struggling with relevance and replacing the
+board, along with Stallman, is a better course of action to ensure the
+organization doesn&rsquo;t die out.</p>
+<p>I have signed the open letter along with several Arch maintainer and people I
+have got to know over the years which got me into FOSS development in the first
+place.</p>
+<p><a href="https://rms-open-letter.github.io/">https://rms-open-letter.github.io/</a></p>
+<p>And last I&rsquo;d like to congratulate Kristian Klausen for being accepted as <a href="https://lists.archlinux.org/pipermail/arch-devops/2021-March/000502.html">junior
+devops</a>. They have done great work
+for Arch Linux on the infrastructure side of things and I hope there are more
+things to come :)</p>
+<p>Cheers and happy holidays!</p>
+<figure><img src="http://localhost:1313/img/arch.png">
+</figure>
+
+<h1 id="package-updates-to-community">Package Updates to [community]</h1>
+<ul>
+<li><code>bash-bats</code> updated to <code>1.2.1-2</code></li>
+<li><code>docker</code> updated to <code>1:20.10.5-1</code></li>
+<li><code>lxd</code> updated to <code>4.12-1</code>, <code>4.12-2</code></li>
+<li><code>github-cli</code> updated to <code>1.7.0-1</code>, <code>1.7.0-2</code>, <code>1.8.0-1</code></li>
+<li><code>udiskie</code> updated to <code>2.3.3-1</code></li>
+<li><code>buildah</code> updated to <code>1.19.7-1</code>, <code>1.19.8-1</code>, <code>1.20.0-1</code></li>
+<li><code>python-google-api-core</code> updated to <code>1.26.1-1</code></li>
+<li><code>plocate</code> updated to <code>1.1.5-3</code>, <code>1.1.5-4</code></li>
+<li><code>cni-plugins</code> updated to <code>0.9.1-3</code></li>
+<li><code>qmk</code> updated to <code>0.0.40-1</code>, <code>0.0.45-1</code></li>
+<li><code>v2ray</code> updated to <code>4.35.1-1</code></li>
+<li><code>python-docs</code> updated to <code>3.9.2-1</code></li>
+<li><code>go</code> updated to <code>2:1.16.1-1</code>, <code>2:1.16.2-1</code></li>
+<li><code>conmon</code> updated to <code>1:2.0.27-1</code></li>
+<li><code>staticcheck</code> updated to <code>2020.2.3-1</code></li>
+<li><code>bash-bats</code> updated to <code>1.3.0-1</code></li>
+<li><code>python-reportlab</code> updated to <code>3.5.65-1</code></li>
+<li><code>python-pandas</code> updated to <code>1.2.3-1</code></li>
+<li><code>python-sqlobject</code> updated to <code>3.9.1-1</code></li>
+<li><code>python-prompt_toolkit</code> updated to <code>3.0.17-1</code>, <code>3.0.18-1</code></li>
+<li><code>qutebrowser</code> updated to <code>2.1.0-1</code></li>
+<li><code>lostfiles</code> updated to <code>4.10-1</code></li>
+<li><code>borg</code> updated to <code>1.1.15-1</code>, <code>1.1.15-1</code>, <code>1.1.16-1</code></li>
+<li><code>tailscale</code> updated to <code>1.4.6-1</code>, <code>1.6.0-1</code></li>
+<li><code>python-language-server</code> updated to <code>0.36.2-3</code></li>
+<li><code>helm</code> updated to <code>3.5.3-1</code></li>
+<li><code>python-pyserial</code> updated to</li>
+<li><code>nageru</code> updated to <code>1.8.6-9</code></li>
+<li><code>font-awesome</code> updated to <code>5.15.3-1</code></li>
+<li><code>gopass</code> updated to <code>1.12.4-1</code>, <code>1.12.5-1</code></li>
+<li><code>python-adblock</code> updated to <code>0.4.3-1</code></li>
+<li><code>poke</code> updated to <code>1.1-1</code></li>
+<li><code>step-ca</code> updated to <code>0.15.10-1</code>, <code>0.15.11-1</code></li>
+<li><code>k9s</code> updated to <code>0.24.3-1</code>, <code>0.24.6-1</code></li>
+<li><code>python-reportlab</code> updated to <code>3.5.66-1</code></li>
+<li><code>yubikey-manager-qt</code> updated to <code>1.2.0-1</code>, <code>1.2.1-1</code></li>
+<li><code>podman-dnsname</code> updated to <code>1.1.1-1</code>, <code>1.2.0-1</code></li>
+<li><code>dns-over-https</code> updated to <code>2.2.4-2</code>, <code>2.2.5-1</code></li>
+<li><code>git-lfs</code> updated to <code>2.13.2-2</code>, <code>2.13.3-1</code></li>
+<li><code>go-md2man</code> updated to <code>2.0.0-4</code></li>
+<li><code>runc</code> updated to <code>1.0.0rc93-2</code></li>
+<li><code>fuse-overlayfs</code> updated to <code>1.5.0-1</code></li>
+<li><code>k9s</code> updated to <code>0.24.4-1</code></li>
+<li><code>raft</code> updated to <code>0.10.0-1</code></li>
+<li><code>salt</code> updated to <code>3002.6-1</code></li>
+<li><code>python-milc</code> updated to <code>1.2.0-1</code>, <code>1.3.0-1</code></li>
+<li><code>podman</code> updated to <code>3.1.0-1</code></li>
+</ul>
+<h2 id="package-additions-to-community">Package additions to [community]</h2>
+<ul>
+<li><code>podman-dnsname</code>
+<ul>
+<li>For proper <code>docker-compose</code> support with <code>podman</code>.</li>
+</ul>
+</li>
+<li><code>python-dotty-dict</code>
+<ul>
+<li>New dependency for <code>qmk</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="package-removals-from-community">Package removals from [community]</h2>
+<ul>
+<li><code>python2-bcrypt</code></li>
+<li><code>syncthing-gtk</code></li>
+<li><code>python2-pyserial</code></li>
+<li><code>python2-futures</code></li>
+<li><code>python2-tornado</code></li>
+<li><code>dep</code></li>
+</ul>
+<h3 id="potential-new-packages-for">Potential new packages for</h3>
+<ul>
+<li><code>oomd</code></li>
+<li><code>vgrep</code></li>
+<li><code>git-publish</code></li>
+<li><code>psi-notify</code></li>
+<li><code>etcd</code></li>
+<li><code>gosec</code></li>
+<li><code>kind</code></li>
+<li><code>nomad</code></li>
+<li><code>distrobuilder</code></li>
+<li><code>hunspell-nb</code></li>
+<li><code>hunspell-nn</code></li>
+<li><code>magic-wormhole</code></li>
+</ul>
+<h1 id="bugfixes">Bugfixes</h1>
+<ul>
+<li><code>bash-bats</code>: <a href="https://bugs.archlinux.org/task/63099">FS#63099</a></li>
+<li><code>github-cli</code>: <a href="https://bugs.archlinux.org/task/69787">FS#69787</a></li>
+<li><code>lxd</code>: <a href="https://bugs.archlinux.org/task/69352">FS#69352</a></li>
+<li><code>plocate</code>: <a href="https://bugs.archlinux.org/task/69884">FS#69884</a></li>
+<li><code>cni-plugins</code>: <a href="https://bugs.archlinux.org/task/69626">FS#69626</a></li>
+<li><code>gopass</code>: <a href="https://bugs.archlinux.org/task/70097">FS#70097</a></li>
+<li><code>jp2a</code>: <a href="https://bugs.archlinux.org/task/6997">FS#6997</a></li>
+<li><code>qmk</code>: <a href="https://bugs.archlinux.org/task/69908">FS#69908</a></li>
+<li><code>podman</code>: <a href="https://bugs.archlinux.org/task/70087">FS#70087</a></li>
+</ul>
+<h2 id="security-team">Security Team</h2>
+<p>The security team has released 27 advisories. The most notable this month has been the OpenSSL
+security advisory <a href="https://security.archlinux.org/ASA-202103-10">ASA-202103-10</a>.</p>
+<h1 id="other-things">Other Things</h1>
+<p>Helped fix the <a href="https://archlinux.org/todo/granite-600-rebuild/">&ldquo;granite 6.0.0 rebuild&rdquo;</a> which was blocking
+the Gnome 40 update. This resulted in 2 patches for some vala code I have no
+clue about.</p>
+<ul>
+<li><a href="https://github.com/davidmhewitt/torrential/commit/dcbdc86646268236dd30a938f0ac24224a02a310">torrential</a></li>
+<li><a href="https://github.com/needle-and-thread/vocal/issues/483">vocal</a></li>
+</ul>
+
+                <br>
+                <p class="back-to-posts"><a href="http://localhost:1313/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+

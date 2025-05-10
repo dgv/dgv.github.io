@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Resolved on Morten Linderud</title>
+    <link>http://localhost:1313/tags/resolved/</link>
+    <description>Recent content in Resolved on Morten Linderud</description>
+    <generator>Hugo</generator>
+    <language>nb</language>
+    <lastBuildDate>Sat, 06 Jan 2024 20:59:20 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/resolved/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Stream to chromecast with resolved, vlc and bash</title>
+      <link>http://localhost:1313/blog/stream-to-chromecast-with-resolved-vlc-and-bash/</link>
+      <pubDate>Sat, 06 Jan 2024 20:59:20 +0200</pubDate>
+      <guid>http://localhost:1313/blog/stream-to-chromecast-with-resolved-vlc-and-bash/</guid>
+      <description>&lt;p&gt;Chromecast is one of those devices I just generally use a lot. They are small&#xA;practical and enables me to stream video or music to my TV from multiple&#xA;devices. But it also requires you to have a supported browser or video player.&#xA;This is obviously a bit boring.&lt;/p&gt;&#xA;&lt;p&gt;There has been multiple command line chromecast streamers through the years. But&#xA;their ffmpeg usage has been shoddy at best with no hardware decoding support and&#xA;usually quite bad implementations.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

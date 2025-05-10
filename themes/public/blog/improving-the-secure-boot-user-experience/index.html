@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Daniel Gomes Vargas">
+<meta name="description" content="Secure boot tooling is terrible, can we do better?
+Currently the most widely used tooling for secure boot is the Ubuntu
+sbsigntools
+and
+efitools.
+If you are currently using secure boot both of these packages are probably
+installed on your system. Both of them support the basics of generating
+signature lists and signing the EFI variables with certificates, but they still
+have differences which is a source of confusion.
+efitools has 3 different ways of generating signature lists:
+cert-to-efi-hash-list, cert-to-sig-list and hash-to-efi-sig-list.
+&ldquo;Luckily&rdquo; there are man pages you can read which assumes you have some
+familiarity with UEFI itself.">
+
+<meta property="og:url" content="http://localhost:1313/blog/improving-the-secure-boot-user-experience/">
+  <meta property="og:site_name" content="Morten Linderud">
+  <meta property="og:title" content="Improving the Secure Boot user experience">
+  <meta property="og:description" content="Secure boot tooling is terrible, can we do better?
+Currently the most widely used tooling for secure boot is the Ubuntu sbsigntools and efitools. If you are currently using secure boot both of these packages are probably installed on your system. Both of them support the basics of generating signature lists and signing the EFI variables with certificates, but they still have differences which is a source of confusion.
+efitools has 3 different ways of generating signature lists: cert-to-efi-hash-list, cert-to-sig-list and hash-to-efi-sig-list. “Luckily” there are man pages you can read which assumes you have some familiarity with UEFI itself.">
+  <meta property="og:locale" content="nb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2020-05-18T00:00:00+02:00">
+    <meta property="article:modified_time" content="2020-05-18T00:00:00+02:00">
+    <meta property="article:tag" content="Secure Boot">
+    <meta property="article:tag" content="English">
+
+
+<title>
+
+
+     Improving the Secure Boot user experience 
+
+</title>
+<link rel="canonical" href="http://localhost:1313/blog/improving-the-secure-boot-user-experience/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/reset.css?t=2025-05-08%2016%3a20%3a22.448313921%20-0300%20-03%20m%3d%2b889.153277122">
+    <link rel="stylesheet" href="http://localhost:1313/css/pygments.css?t=2025-05-08%2016%3a20%3a22.448313921%20-0300%20-03%20m%3d%2b889.153277122">
+    <link rel="stylesheet" href="http://localhost:1313/css/main.css?t=2025-05-08%2016%3a20%3a22.448313921%20-0300%20-03%20m%3d%2b889.153277122">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="http://localhost:1313/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+<link rel="me" href="https://chaos.social/@Foxboron">
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="http://localhost:1313/"><img class="avatar" src="http://localhost:1313/img/profile.png" srcset="http://localhost:1313/img/profile.png 1x"></a>
+            
+            <a href="http://localhost:1313/"><div class="name">Daniel Gomes Vargas</div></a>
+            
+              <h3 class="self-intro">Programmer, Entropist Netrunner</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-about"><a href="http://localhost:1313/about/"><span>about</span></a></li>
+                    
+                        <li class="nav-blog"><a href="http://localhost:1313/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-tags"><a href="http://localhost:1313/tags/"><span>tags</span></a></li>
+                    
+                        <li class="nav-tips"><a href="http://localhost:1313/tips/"><span>tips</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="//github.com/dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/github.svg" alt="github" /></a>
+        
+
+        
+            <a href="//mastodon.social/@dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//twitter.com/dgvargas" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/twitter.svg" alt="twitter" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            
+        
+
+        
+
+        
+            <a href="mailto:morten@linderud.pw"><img class="icon" src="http://localhost:1313/img/email.svg" alt="email" /></a>
+        
+
+        
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Improving the Secure Boot user experience
+
+</div>
+
+                    <div class="initials"><a href="http://localhost:1313/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Mon May 18 2020 00:00:00 &#43;0200'>May 18, 2020</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>6 minutes read</div>
+                    
+                    
+                    <div class="tags"><div class="middot"></div>Tags:
+                    
+                    <a href="http://localhost:1313/tags/secure-boot/">Secure Boot</a>
+                    
+                    <a href="http://localhost:1313/tags/english/">English</a>
+                    
+                    </div>
+                    
+                    </div>
+            </div>
+            <div class="markdown">
+                <p>Secure boot tooling is terrible, can we do better?</p>
+<p>Currently the most widely used tooling for secure boot is the Ubuntu
+<a href="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git/">sbsigntools</a>
+and
+<a href="https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git">efitools</a>.
+If you are currently using secure boot both of these packages are probably
+installed on your system. Both of them support the basics of generating
+signature lists and signing the EFI variables with certificates, but they still
+have differences which is a source of confusion.</p>
+<p><code>efitools</code> has 3 different ways of generating signature lists:
+<code>cert-to-efi-hash-list</code>, <code>cert-to-sig-list</code> and <code>hash-to-efi-sig-list</code>.
+&ldquo;Luckily&rdquo; there are man pages you can read which assumes you have some
+familiarity with UEFI itself.</p>
+<p><code>sbsigntools</code> has only <code>sbsiglist</code> which is mostly fine, but has non-obvious
+functionality. How do you sign the checksum of an EFI executable as an example?
+I figured that out after some searching on the github code search:</p>
+<pre><code>sha256sum file.efi | awk '{printf &quot;0x&quot;$1}' | xxd -r -g 1 -c 64  &gt; sha256.bin
+sbsiglist --type sha256 --output sha256.bin.siglist sha256.bin
+</code></pre>
+<p>I think it works as I haven&rsquo;t tried yet. However, it is not really a nice
+experience to use, and the documentation of the tool is severely lacking. The
+functionality should be obvious from the get go. Why do you want this? A nice
+example is to keep a list of known bad checksums of things you don&rsquo;t want booted
+on your system, without having to sign all of it.</p>
+<p>Secure boot needs key enrollment if you want to use your own keys. <code>sbsigntool</code>
+got their undocumented <code>sbkeysync</code> utility which can live enroll secure boot
+keys it reads from a database in either <code>/etc/secureboot/keys</code> or
+<code>/usr/share/secureboot/keys</code>. Meanwhile <code>efitools</code> supports live enrollment
+through <code>efi-updatevar</code>, or if you can use the bundled <code>KeyTool.efi</code> which you
+can boot and load your keys from.</p>
+<p>But which do you use for signing EFI executables? Only <code>sbsigntool</code> implements
+this! What you end up with is 3 different ways of enrolling keys, between 2-4
+different ways of creating signature lists depending on your usage, and only one
+way to sign EFI executables.</p>
+<p>This is probably fine and dandy for technical people that can be bothered to
+invest some time into their tools. But this isn&rsquo;t a great user experience for
+most people, one which I&rsquo;ll wager is a roadblock for people to adopt secure
+boot. It is a shame, people should be capable of rolling their own secure boot
+keys without having to understand UEFI in detail to do so.</p>
+<p>There are multiple guides and instruction on the <a href="https://wiki.gentoo.org/wiki/Sakaki%27s_EFI_Install_Guide/Configuring_Secure_Boot">Gentoo
+wiki</a>,
+<a href="https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface/Secure_Boot#Using_your_own_keys">Arch Linux
+Wiki</a>,
+by <a href="http://www.rodsbooks.com/efi-bootloaders/controlling-sb.html">Rod Smith</a> and
+<a href="http://www.kroah.com/log/blog/2013/09/02/booting-a-self-signed-linux-kernel/">Greg
+Kroah-Hartman</a>.
+These are great sources of information for how things work. But the inherent
+complexity of these articles underlines the problem confusing tooling.</p>
+<p>We should do better.</p>
+<h2 id="sbctl">sbctl</h2>
+<p>Around two years ago I tried to roll my own secure boot keys and found the
+entire experience maddening. The madness promptly made me write 400 lines of bash
+for <a href="https://github.com/Foxboron/efi-roller">efi-roller</a>. The project enabled me
+to keep track of files I needed to sign between kernel upgrades, systemd
+upgrades and fwupdmgr upgrades. I didn&rsquo;t need to conjure up some complicated
+hooks for my package manager to ensure I had all the files signed.</p>
+<p>It has served me well quite well. However, bash gets fairly limiting when you
+want some trivial option parsing in-between subcommand parsing, which I needed
+for my EFISTUB generation. In the end I decided it was better to start from
+scratch with Go to get some sanity back and wound up with <code>sbctl</code>.</p>
+<p><code>sbctl</code> aims to be a easy interface for managing your own secure boot keys and
+follows in the footsteps of <code>efi-rooler</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sbctl create-keys
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Creating secure boot keys...
+</span></span><span class="line"><span class="cl">  -&gt; Using UUID d6e9af79-c6b5-4b43-b893-dbb7e6570142...
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Signing <span class="o">[</span>...<span class="o">]</span>/keys/PK/PK.der.esl with <span class="o">[</span>...<span class="o">]</span>/keys/PK/PK.key...
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Signing <span class="o">[</span>...<span class="o">]</span>/keys/KEK/KEK.der.esl with <span class="o">[</span>...<span class="o">]</span>/keys/PK/PK.key...
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Signing <span class="o">[</span>...<span class="o">]</span>/keys/db/db.der.esl with <span class="o">[</span>...<span class="o">]</span>/keys/KEK/KEK.key...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ sbctl enroll-keys
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Syncing /usr/share/secureboot/keys to EFI variables...
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Synced keys!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ sbctl sign /boot/EFI/BOOT/BOOTX64.EFI
+</span></span><span class="line"><span class="cl">  -&gt; Signing /boot/EFI/BOOT/BOOTX64.EFI...</span></span></code></pre></div>
+<p>No <code>openssl</code> commands. No <code>cert-to-efi-sig-list</code> or <code>sbsiglist</code> commands. And no
+need to figure out how to enroll keys. It just works. And this is how simple it
+ought to be.</p>
+<p><code>sbctl</code> can also track which files you would like to sign. This can help you
+make hooks towards your package manager which signs them between system
+upgrades.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">λ ~ » sudo sbctl list-files 
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; File: /efi/EFI/Linux/linux-linux.efi
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; File: /usr/lib/fwupd/efi/fwupdx64.efi
+</span></span><span class="line"><span class="cl">  -&gt; Output: /usr/lib/fwupd/efi/fwupdx64.efi.signed
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; File: /boot/EFI/BOOT/BOOTX64.EFI
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; File: /boot/EFI/arch/fwupdx64.efi
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; File: /boot/EFI/systemd/systemd-bootx64.efi
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; File: /boot/vmlinuz-linux
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">λ ~ » sudo sbctl sign-all
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; /boot/vmlinuz-linux has been signed...
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; /efi/EFI/Linux/linux-linux.efi has been signed...
+</span></span><span class="line"><span class="cl">  -&gt; Signing /usr/lib/fwupd/efi/fwupdx64.efi...
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; /boot/EFI/BOOT/BOOTX64.EFI has been signed...
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; /boot/EFI/arch/fwupdx64.efi has been signed...
+</span></span><span class="line"><span class="cl">  -&gt; Signing /boot/EFI/systemd/systemd-bootx64.efi...</span></span></code></pre></div>
+<p>The intention is to have a nice and practical utility which should be the center
+of the secure boot keys. It should enroll them, rotate the keys when you need
+to, and ensure they are secured well enough.</p>
+<p>The code can be found on github: <a href="https://github.com/Foxboron/sbctl">https://github.com/Foxboron/sbctl</a></p>
+<p>I haven&rsquo;t cut a first release yet as I would like some feedback on the general
+design of the tool. It would also be interesting to lean how well it fits into
+other peoples usecases for secure boot and what it covers and don&rsquo;t cover.
+Another problem is that <code>sbctl</code> inherits the one of the problems discussed
+earlier.</p>
+<h2 id="goefi">goefi</h2>
+<p><code>sbctl</code> still relies on <code>sbsigntools</code> for all of it&rsquo;s functionality. Actively
+shelling out to tools is easy, but it&rsquo;s not very satisfying when we are writing
+in a system language. This lead me to downloading the 2558 page long <a href="https://uefi.org/specifications">&ldquo;Unified
+Extensible Firmware Interface Specification Version
+2.8&rdquo;</a> which I started reading a month ago.</p>
+<p>It&rsquo;s frankly interesting when you realize how this work on Linux. Admittedly, I
+haven&rsquo;t done a lot of low-level programming before. I thought you had to do some
+weird <code>ioctl</code> or syscalls to modify EFI variables, which during a weak moment
+made me consider properly learning C. In practise you are just reading and
+writing files under <code>/sys/firmware/efi/efivars</code>, which any language should
+capable of doing.</p>
+<p>So far I have managed to read most of my <code>Boot*</code> entries, create EFI signature
+lists and have also reimplemented the UEFI variable signing, which you can now
+use replace the base functionality of <code>sbsiglist</code> and <code>sbvarsig</code>. Quite a bit of
+code left until I can use it for <code>sbctl</code>, but it&rsquo;s starting to shape up nicely.</p>
+<p>The library code is currently on github: <a href="https://github.com/Foxboron/goefi">https://github.com/Foxboron/goefi</a>.</p>
+<p>The end goal is to have a Go library capable of parsing and writing most of the
+structs from the UEFI specification in an API friendly way. This could hopefully
+enable software authors to write more user friendly secure boot tooling.</p>
+<p>If reading <code>asn1parse</code> output and looking at hexdumps sounds like an evening
+well spent, or you enjoy figuring out nice top-level APIs, please do reach out
+and take a look at the code!</p>
+<p>It would also very much like to hear about more use cases for <code>sbctl</code> and what
+people currently are doing with existing secure boot tooling.</p>
+
+                <br>
+                <p class="back-to-posts"><a href="http://localhost:1313/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+

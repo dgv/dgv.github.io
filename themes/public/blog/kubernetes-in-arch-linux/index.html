@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="Daniel Gomes Vargas">
+<meta name="description" content="Arch Linux got kubernetes packaged into the [community] repository the past
+week with the hard work of David Runge. I contribute to testing the packages so
+I thought it would be interesting to write up quickly the testing that was done.
+Originally I did the testing with docker but with the dockershim deprecation
+I rewrote the blog to utilize containerd instead.
+David has reworked the kubernetes archwiki article as well. It currently doesn&rsquo;t
+cover all use cases and contributions welcome. I will try cover the containerd
+parts of this page to the wiki.">
+
+<meta property="og:url" content="http://localhost:1313/blog/kubernetes-in-arch-linux/">
+  <meta property="og:site_name" content="Morten Linderud">
+  <meta property="og:title" content="Kubernetes in Arch Linux">
+  <meta property="og:description" content="Arch Linux got kubernetes packaged into the [community] repository the past week with the hard work of David Runge. I contribute to testing the packages so I thought it would be interesting to write up quickly the testing that was done. Originally I did the testing with docker but with the dockershim deprecation I rewrote the blog to utilize containerd instead.
+David has reworked the kubernetes archwiki article as well. It currently doesn’t cover all use cases and contributions welcome. I will try cover the containerd parts of this page to the wiki.">
+  <meta property="og:locale" content="nb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2020-12-23T20:00:00+02:00">
+    <meta property="article:modified_time" content="2020-12-23T20:00:00+02:00">
+    <meta property="article:tag" content="English">
+    <meta property="article:tag" content="Archlinux">
+
+
+<title>
+
+
+     Kubernetes in Arch Linux 
+
+</title>
+<link rel="canonical" href="http://localhost:1313/blog/kubernetes-in-arch-linux/">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Ubuntu+Mono:400,400i,700,700i|Raleway:500">
+
+
+
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/reset.css?t=2025-05-08%2016%3a20%3a22.440149661%20-0300%20-03%20m%3d%2b889.145112871">
+    <link rel="stylesheet" href="http://localhost:1313/css/pygments.css?t=2025-05-08%2016%3a20%3a22.440149661%20-0300%20-03%20m%3d%2b889.145112871">
+    <link rel="stylesheet" href="http://localhost:1313/css/main.css?t=2025-05-08%2016%3a20%3a22.440149661%20-0300%20-03%20m%3d%2b889.145112871">
+    
+
+
+
+
+<link rel="shortcut icon"
+
+    href="http://localhost:1313/img/favicon.ico"
+
+>
+
+
+
+
+
+
+
+
+<link rel="me" href="https://chaos.social/@Foxboron">
+
+
+
+</head>
+
+
+<body lang="en">
+
+<section class="header">
+    <div class="container">
+        <div class="content">
+            
+                
+                
+                
+                
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <a href="http://localhost:1313/"><img class="avatar" src="http://localhost:1313/img/profile.png" srcset="http://localhost:1313/img/profile.png 1x"></a>
+            
+            <a href="http://localhost:1313/"><div class="name">Daniel Gomes Vargas</div></a>
+            
+              <h3 class="self-intro">Programmer, Entropist Netrunner</h3>
+            
+            <nav>
+                <ul>
+                    
+                        <li class="nav-about"><a href="http://localhost:1313/about/"><span>about</span></a></li>
+                    
+                        <li class="nav-blog"><a href="http://localhost:1313/blog/"><span>blog</span></a></li>
+                    
+                        <li class="nav-tags"><a href="http://localhost:1313/tags/"><span>tags</span></a></li>
+                    
+                        <li class="nav-tips"><a href="http://localhost:1313/tips/"><span>tips</span></a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="icons">
+    <div class="container">
+        <div class="content">
+
+        
+            <a href="//github.com/dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/github.svg" alt="github" /></a>
+        
+
+        
+            <a href="//mastodon.social/@dgv" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/mastodon.svg" alt="mastodon" /></a>
+        
+
+        
+            <a href="//twitter.com/dgvargas" target="_blank" rel="noopener"><img class="icon" src="http://localhost:1313/img/twitter.svg" alt="twitter" /></a>
+        
+
+        
+
+        
+
+        
+
+        
+            
+        
+
+        
+
+        
+            <a href="mailto:morten@linderud.pw"><img class="icon" src="http://localhost:1313/img/email.svg" alt="email" /></a>
+        
+
+        
+        
+        </div>
+    </div>
+</section>
+
+
+<section class="main post non-narrow zero-top-spacing">
+    <div class="container">
+        <div class="content">
+            <div class="front-matter">
+                <div class="title-container">
+                    <div class="page-heading">
+
+    Kubernetes in Arch Linux
+
+</div>
+
+                    <div class="initials"><a href="http://localhost:1313/"></a></div>
+                </div>
+                <div class="meta">
+                    
+                    <div class="date" title='Wed Dec 23 2020 20:00:00 &#43;0200'>Dec 23, 2020</div>
+                    
+                    
+                    <div class="reading-time"><div class="middot"></div>5 minutes read</div>
+                    
+                    
+                    <div class="tags"><div class="middot"></div>Tags:
+                    
+                    <a href="http://localhost:1313/tags/english/">English</a>
+                    
+                    <a href="http://localhost:1313/tags/archlinux/">Archlinux</a>
+                    
+                    </div>
+                    
+                    </div>
+            </div>
+            <div class="markdown">
+                <p>Arch Linux got <a href="https://www.archlinux.org/packages/community/x86_64/kubernetes/">kubernetes</a> packaged into the <code>[community]</code> repository the past
+week with the hard work of David Runge. I contribute to testing the packages so
+I thought it would be interesting to write up quickly the testing that was done.
+Originally I did the testing with <code>docker</code> but with the <code>dockershim</code> <a href="https://kubernetes.io/blog/2020/12/02/dockershim-faq/">deprecation</a>
+I rewrote the blog to utilize <code>containerd</code> instead.</p>
+<p>David has reworked the kubernetes <a href="https://wiki.archlinux.org/index.php/Kubernetes">archwiki</a> article as well. It currently doesn&rsquo;t
+cover all use cases and contributions welcome. I will try cover the <code>containerd</code>
+parts of this page to the wiki.</p>
+<p>Our goal in this post is to simply setup a one node &ldquo;cluster&rdquo; and test some
+basic functionality. <code>kubeadm</code> is going to be used for bootstrapping the cluster
+as it is an easy way to get started.</p>
+<p>For the testing portion of kubernetes I utilized <a href="https://linuxcontainers.org/">lxd</a> as it&rsquo;s a neat interface
+for managing virtual machines. They also provide Arch Linux images which makes
+things fairly easy to setup.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># lxc launch images:archlinux/current arch-vm-kubernetes-test --vm
+</span></span><span class="line"><span class="cl"># lxc exec arch-vm-kubernetes-test bash</span></span></code></pre></div>
+<p>This sets up an Arch Linux virtual machine we will setup kubernetes with. Next
+up we need to install the packges we will be using to setup kubernetes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># pacman -S kubernetes-control-plane 
+</span></span><span class="line"><span class="cl"># pacman -S containerd kubeadm kubectl</span></span></code></pre></div>
+<p>We have split up the kubernetes package in different components and then
+construced 3 package groups for users. <code>kubernetes-control-plane</code> for the
+control planes/master nodes. <code>kubernetes-node</code> for worker nodes, and then
+<code>kubernetes-tools</code> for the tools like <code>kubectl</code>. We are also fetching
+<code>containerd</code> for the container runtime.</p>
+<p>Setup of the different container runtimes is explained at the <a href="https://kubernetes.io/docs/setup/production-environment/container-runtimes/">container runtimes</a>
+webpage. However, there are a few distro specifics which could be nice to
+document on the archwiki. Next part of the setup is to ensure the modules and
+kernel parameters are correct.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># cat &lt;&lt;EOF | tee /etc/modules-load.d/containerd.conf
+</span></span><span class="line"><span class="cl">br_netfilter
+</span></span><span class="line"><span class="cl">EOF
+</span></span><span class="line"><span class="cl"># modprobe br_netfilter
+</span></span><span class="line"><span class="cl"># cat &lt;&lt;EOF | tee /etc/sysctl.d/99-kubernetes-cri.conf
+</span></span><span class="line"><span class="cl">net.bridge.bridge-nf-call-iptables  = 1
+</span></span><span class="line"><span class="cl">net.ipv4.ip_forward                 = 1
+</span></span><span class="line"><span class="cl">net.bridge.bridge-nf-call-ip6tables = 1
+</span></span><span class="line"><span class="cl">EOF
+</span></span><span class="line"><span class="cl"># sysctl --system
+</span></span><span class="line"><span class="cl"># systemctl start containerd</span></span></code></pre></div>
+<p>I have no clue why they <code>br_netfilter</code> are needed, but I guess <code>docker</code> solves
+this itself where as <code>containerd</code> does not. It should be noted we don&rsquo;t setup
+the overlay module as the <code>containerd</code> service inserts it on its own. Rest of it
+is fairly straight forward and verbatim from the kubernetes documentation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># kubeadm init --pod-network-cidr=192.168.0.0/16 \
+</span></span><span class="line"><span class="cl">	--upload-certs --ignore-preflight-errors=NumCPU,Mem
+</span></span><span class="line"><span class="cl">[init] Using Kubernetes version: v1.19.4
+</span></span><span class="line"><span class="cl">[preflight] Running pre-flight checks
+</span></span><span class="line"><span class="cl">[[...SNIP...]]
+</span></span><span class="line"><span class="cl">[addons] Applied essential addon: CoreDNS
+</span></span><span class="line"><span class="cl">[addons] Applied essential addon: kube-proxy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Your Kubernetes control-plane has initialized successfully!
+</span></span><span class="line"><span class="cl">[[...SNIP...]]</span></span></code></pre></div>
+<p><code>kubeadm</code> sets up the kubernetes cluster. The pod network CIRD defines the IP
+range the pods (read containers) are going to be using inside the cluster.
+Because we are using the default <code>lxd</code> containers we need to ignore a few limits
+kubernetes imposes on us. It expects more then 1 CPU code, and more then 1GB
+RAM. However this doesn&rsquo;t matter for the fairly small workload we have for the
+testing.</p>
+<p>In a real cluster you would hopefully have larger nodes!</p>
+<p>Once the cluster has initialized we can copy the <code>admin.conf</code> and query for the
+cluster nodes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># mkdir ~/.kube
+</span></span><span class="line"><span class="cl"># cp -i /etc/kubernetes/admin.conf ~/.kube/config
+</span></span><span class="line"><span class="cl"># kubectl get nodes
+</span></span><span class="line"><span class="cl">NAME        STATUS      ROLES    AGE   VERSION
+</span></span><span class="line"><span class="cl">archlinux   NotReady    master   18m   v1.20.0</span></span></code></pre></div>
+<p>Currently it says <code>NotReady</code> which is because there is no network configured on
+the cluster. We will untaint the master node, which allows us to deploy pods on
+the master, and then setup some network.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># kubectl taint nodes --all node-role.kubernetes.io/master-
+</span></span><span class="line"><span class="cl">node/archlinux untainted</span></span></code></pre></div>
+<p>We will be using <code>kube-router</code> for the networking portion as it is what I have
+been using personally, and it has been fairly straight forward to setup.</p>
+<p>It can be fetched from their github repository which has the RBAC support
+<code>kubeadm</code> setup. We can just apply this deployment fairly easily.
+<a href="https://raw.githubusercontent.com/cloudnativelabs/kube-router/v1.1.0/daemonset/kubeadm-kuberouter.yaml">https://raw.githubusercontent.com/cloudnativelabs/kube-router/v1.1.0/daemonset/kubeadm-kuberouter.yaml</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># kubectl apply -f kubeadm-kuberouter.yaml
+</span></span><span class="line"><span class="cl"># kubectl get pods -A
+</span></span><span class="line"><span class="cl">NAMESPACE     NAME                                READY   STATUS    RESTARTS
+</span></span><span class="line"><span class="cl">kube-system   coredns-f9fd979d6-2wp2x             1/1     Running   0
+</span></span><span class="line"><span class="cl">kube-system   coredns-f9fd979d6-522nz             1/1     Running   0
+</span></span><span class="line"><span class="cl">kube-system   etcd-archlinux                      1/1     Running   0
+</span></span><span class="line"><span class="cl">kube-system   kube-apiserver-archlinux            1/1     Running   0
+</span></span><span class="line"><span class="cl">kube-system   kube-controller-manager-archlinux   1/1     Running   0
+</span></span><span class="line"><span class="cl">kube-system   kube-proxy-sjxvw                    1/1     Running   0
+</span></span><span class="line"><span class="cl">kube-system   kube-router-8fq2m                   1/1     Running   0
+</span></span><span class="line"><span class="cl">kube-system   kube-scheduler-archlinux            1/1     Running   0
+</span></span><span class="line"><span class="cl"># kubectl get nodes
+</span></span><span class="line"><span class="cl">NAME        STATUS  ROLES    AGE   VERSION
+</span></span><span class="line"><span class="cl">archlinux   Ready   master   20m   v1.20.0</span></span></code></pre></div>
+<p>Now our cluster is ready for a workload! Personally I have sometimes queried the
+<code>docker</code> for the running containerd, but we are currently using <code>containerd</code>
+which provides <code>ctr</code> for interacting with the containers. It organizes all pods
+related to kubernetes inside a <code>k8s.io</code> namespace, where you can list the pods.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># ctr -n k8s.io c list
+</span></span><span class="line"><span class="cl">CONTAINER  IMAGE                                         RUNTIME             
+</span></span><span class="line"><span class="cl">0cf8a9c17  docker.io/cloudnativelabs/kube-router:latest  io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">2bda5427a  k8s.gcr.io/pause:3.2                          io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">4dbdaea0d  k8s.gcr.io/pause:3.2                          io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">5430728fc  k8s.gcr.io/pause:3.2                          io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">546633029  k8s.gcr.io/pause:3.2                          io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">5593c7f09  k8s.gcr.io/kube-proxy:v1.20.0                 io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">7f4dd2ff4  k8s.gcr.io/pause:3.2                          io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">96dd370ec  k8s.gcr.io/pause:3.2                          io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">aab09f1e1  docker.io/cloudnativelabs/kube-router:latest  io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">aba203048  k8s.gcr.io/pause:3.2                          io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">b1bd5082a  sha256:0369cf4303ffdb467dc219990960a9baa8...  io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">dc02359d9  k8s.gcr.io/coredns:1.7.0                      io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">e42de4f65  k8s.gcr.io/kube-controller-manager:v1.20.0    io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">fc943a990  k8s.gcr.io/kube-apiserver:v1.20.0             io.containerd.runc.v2
+</span></span><span class="line"><span class="cl">fe49fbf3f  k8s.gcr.io/kube-scheduler:v1.20.0             io.containerd.runc.v2</span></span></code></pre></div>
+<p>Now we have the basics cluster working. We will add an deployment on this
+cluster and expose it through a load balancer. It&rsquo;s</p>
+<p>The steps are taken from the &ldquo;create a deployment&rdquo; page in the <a href="https://kubernetes.io/docs/tutorials/hello-minikube/#create-a-deployment">kubernetes</a>
+documentation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl"># kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.10
+</span></span><span class="line"><span class="cl"># kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+</span></span><span class="line"><span class="cl">service/hello-node exposed
+</span></span><span class="line"><span class="cl"># kubectl get services
+</span></span><span class="line"><span class="cl">NAME         TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+</span></span><span class="line"><span class="cl">hello-node   LoadBalancer   10.96.177.87   &lt;pending&gt;     8080:31569/TCP   5s
+</span></span><span class="line"><span class="cl">kubernetes   ClusterIP      10.96.0.1      &lt;none&gt;        443/TCP          22m
+</span></span><span class="line"><span class="cl"># curl 10.96.177.87:8080
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Hostname: hello-node-59bffcc9fd-hs7mk
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Pod Information:
+</span></span><span class="line"><span class="cl">	-no pod information available-
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Server values:
+</span></span><span class="line"><span class="cl">	server_version=nginx: 1.13.3 - lua: 10008
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Request Information:
+</span></span><span class="line"><span class="cl">	client_address=192.168.0.1
+</span></span><span class="line"><span class="cl">	method=GET
+</span></span><span class="line"><span class="cl">	real path=/
+</span></span><span class="line"><span class="cl">	query=
+</span></span><span class="line"><span class="cl">	request_version=1.1
+</span></span><span class="line"><span class="cl">	request_scheme=http
+</span></span><span class="line"><span class="cl">	request_uri=http://10.96.177.87:8080/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Request Headers:
+</span></span><span class="line"><span class="cl">	accept=*/*
+</span></span><span class="line"><span class="cl">	host=10.96.177.87:8080
+</span></span><span class="line"><span class="cl">	user-agent=curl/7.73.0
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Request Body:
+</span></span><span class="line"><span class="cl">	-no body in request-</span></span></code></pre></div>
+<p>This shows an fairly simple setup with one kubernetes node running a service and
+a pod. It can be expanded upon, but for the sake of keeping this short this
+works as an introduction I reckon.</p>
+<p>Hopefully this was as a simple introduction to kubernetes on Arch Linux!</p>
+
+                <br>
+                <p class="back-to-posts"><a href="http://localhost:1313/blog/">Back to posts</a></p>
+            </div>
+            <br>
+            <div class="disqus">
+                
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+</body>
+</html>
+

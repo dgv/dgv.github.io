@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Secure Boot on Morten Linderud</title>
+    <link>http://localhost:1313/tags/secure-boot/</link>
+    <description>Recent content in Secure Boot on Morten Linderud</description>
+    <generator>Hugo</generator>
+    <language>nb</language>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/secure-boot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Improving the Secure Boot user experience</title>
+      <link>http://localhost:1313/blog/improving-the-secure-boot-user-experience/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/improving-the-secure-boot-user-experience/</guid>
+      <description>&lt;p&gt;Secure boot tooling is terrible, can we do better?&lt;/p&gt;&#xA;&lt;p&gt;Currently the most widely used tooling for secure boot is the Ubuntu&#xA;&lt;a href=&#34;https://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git/&#34;&gt;sbsigntools&lt;/a&gt;&#xA;and&#xA;&lt;a href=&#34;https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git&#34;&gt;efitools&lt;/a&gt;.&#xA;If you are currently using secure boot both of these packages are probably&#xA;installed on your system. Both of them support the basics of generating&#xA;signature lists and signing the EFI variables with certificates, but they still&#xA;have differences which is a source of confusion.&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;efitools&lt;/code&gt; has 3 different ways of generating signature lists:&#xA;&lt;code&gt;cert-to-efi-hash-list&lt;/code&gt;, &lt;code&gt;cert-to-sig-list&lt;/code&gt; and &lt;code&gt;hash-to-efi-sig-list&lt;/code&gt;.&#xA;&amp;ldquo;Luckily&amp;rdquo; there are man pages you can read which assumes you have some&#xA;familiarity with UEFI itself.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

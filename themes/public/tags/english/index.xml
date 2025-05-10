@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>English on Morten Linderud</title>
+    <link>http://localhost:1313/tags/english/</link>
+    <description>Recent content in English on Morten Linderud</description>
+    <generator>Hugo</generator>
+    <language>nb</language>
+    <lastBuildDate>Fri, 18 Apr 2025 14:00:00 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/english/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Easter hack: terraform-provider-openwrt</title>
+      <link>http://localhost:1313/blog/easter-hack-terraform-provider-openwrt/</link>
+      <pubDate>Fri, 18 Apr 2025 14:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/easter-hack-terraform-provider-openwrt/</guid>
+      <description>&lt;p&gt;April is usualy tax season for most people in Norway, and as I got some &lt;a href=&#34;https://www.youtube.com/watch?v=ThRXs74EjeE&#34;&gt;&amp;ldquo;money&#xA;back on the skætt&amp;rdquo;&lt;/a&gt; I wound up purchasing an &lt;a href=&#34;https://openwrt.org/toh/openwrt/one&#34;&gt;OpenWrt One&lt;/a&gt; to replace my 13-14 year old Asus router. I&amp;rsquo;ve been meaning to learn a bit more&#xA;about networking in general and getting an OpenWrt router seemed like a fun&#xA;project.&lt;/p&gt;&#xA;&lt;p&gt;Last year I bought a &lt;a href=&#34;https://www.gl-inet.com/products/gl-mt3000/&#34;&gt;Beryl AX&lt;/a&gt; from GL-Inet as I was travelling for a few&#xA;weeks. It&amp;rsquo;s a qute smol travel router that runs a fork of OpenWrt. But during&#xA;a recent conference it was reset and I realized I did not have a backup of any&#xA;configuration files for the device. Oops!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>SSH CA with device and identity attestation: ssh-tpm-ca-authority</title>
+      <link>http://localhost:1313/blog/ssh-ca-with-device-and-identity-attestation-ssh-tpm-ca-authority/</link>
+      <pubDate>Sat, 31 Aug 2024 18:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/ssh-ca-with-device-and-identity-attestation-ssh-tpm-ca-authority/</guid>
+      <description>&lt;p&gt;The past year I have been hacking around on tools utilizing TPMs, and one of the&#xA;features I have been interested to learn more about is the device attestation&#xA;features.&lt;/p&gt;&#xA;&lt;p&gt;After being a bit inspired by some ideas from people at work, the hackerspace&#xA;and toots on mastodon, I figure out a SSH certificate authority would be a cool&#xA;small project to hack on. Last year I wrote an SSH agent with TPM bound keys so&#xA;this would nicely fit into the existing tooling.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>NixOS is not reproducible</title>
+      <link>http://localhost:1313/blog/nixos-is-not-reproducible/</link>
+      <pubDate>Tue, 02 Apr 2024 19:21:08 +0200</pubDate>
+      <guid>http://localhost:1313/blog/nixos-is-not-reproducible/</guid>
+      <description>&lt;p&gt;Okay, sorry for the clickbait.&lt;/p&gt;&#xA;&lt;p&gt;NixOS is not reproducible according to the Reproducible Builds definition.&lt;/p&gt;&#xA;&lt;p&gt;I keep reading people making this claim repeatedly on orange-site, even&#xA;LWN.net made a similar claim when writing about Nix and Guix earlier this&#xA;week.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; Along with their recently launched &lt;a href=&#34;https://wiki.nixos.org/wiki/Overview_of_the_NixOS_Linux_distribution&#34;&gt;wiki&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;So, what is the Reproducible Builds definition?&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;When is a build reproducible?&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;A build is reproducible if given the same source code, build environment and&#xA;build instructions, any party can recreate bit-by-bit identical copies of all&#xA;specified artifacts.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Stream to chromecast with resolved, vlc and bash</title>
+      <link>http://localhost:1313/blog/stream-to-chromecast-with-resolved-vlc-and-bash/</link>
+      <pubDate>Sat, 06 Jan 2024 20:59:20 +0200</pubDate>
+      <guid>http://localhost:1313/blog/stream-to-chromecast-with-resolved-vlc-and-bash/</guid>
+      <description>&lt;p&gt;Chromecast is one of those devices I just generally use a lot. They are small&#xA;practical and enables me to stream video or music to my TV from multiple&#xA;devices. But it also requires you to have a supported browser or video player.&#xA;This is obviously a bit boring.&lt;/p&gt;&#xA;&lt;p&gt;There has been multiple command line chromecast streamers through the years. But&#xA;their ffmpeg usage has been shoddy at best with no hardware decoding support and&#xA;usually quite bad implementations.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Store ssh keys inside the TPM: ssh-tpm-agent</title>
+      <link>http://localhost:1313/blog/store-ssh-keys-inside-the-tpm-ssh-tpm-agent/</link>
+      <pubDate>Wed, 04 Oct 2023 19:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/store-ssh-keys-inside-the-tpm-ssh-tpm-agent/</guid>
+      <description>&lt;p&gt;After writing &lt;a href=&#34;https://github.com/Foxboron/age-plugin-tpm&#34;&gt;age-plugin-tpm&lt;/a&gt; a friend of mine at the &lt;a href=&#34;https://hackeriet.no&#34;&gt;hackerspace&lt;/a&gt; was super&#xA;excited to &lt;em&gt;finally&lt;/em&gt; have easy file encryption with TPM sealed keys, all without&#xA;having to rely on &lt;code&gt;gnupg&lt;/code&gt;. &amp;ldquo;This is great!&amp;rdquo; he said.&lt;/p&gt;&#xA;&lt;p&gt;&amp;ldquo;I wish I could have my SSH keys sealed in a TPM just as easily&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;We should have left it at that.&lt;/p&gt;&#xA;&lt;p&gt;I shouldn&amp;rsquo;t have replied with a random assortment&#xA;of facts like &amp;ldquo;I know &lt;a href=&#34;https://github.com/google/go-tpm&#34;&gt;&lt;code&gt;google/go-tpm&lt;/code&gt;&lt;/a&gt; now&amp;rdquo;, or &amp;ldquo;but Go has a &lt;a href=&#34;https://pkg.go.dev/golang.org/x/crypto/ssh/agent&#34;&gt;&lt;code&gt;ssh-agent&lt;/code&gt; protocol&lt;/a&gt; implementation&amp;rdquo; followed-up with &amp;ldquo;Filippo has already implemented &lt;a href=&#34;https://github.com/FiloSottile/yubikey-agent/&#34;&gt;&lt;code&gt;yubikey-agent&lt;/code&gt;&lt;/a&gt;, it can&amp;rsquo;t be that hard&amp;rdquo;. So I wound up writing a new ssh agent.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Store age identities inside the TPM: age-plugin-tpm</title>
+      <link>http://localhost:1313/blog/store-age-identities-inside-the-tpm-age-plugin-tpm/</link>
+      <pubDate>Mon, 17 Jul 2023 18:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/store-age-identities-inside-the-tpm-age-plugin-tpm/</guid>
+      <description>&lt;p&gt;The past year I have been trying to learn more about the Trusted Platform Module&#xA;(TPM). This is a small device found on most modern laptops that has several cool&#xA;security features like key creation, sealing and attestation, however I have&#xA;been struggling to find a small project where I can learn more about it.&lt;/p&gt;&#xA;&lt;p&gt;To my surprised I learned a couple of months ago that nobody has written a TPM&#xA;plugin for age!&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Golang crypto/ecdh and the TPM</title>
+      <link>http://localhost:1313/blog/golang-crypto/ecdh-and-the-tpm/</link>
+      <pubDate>Mon, 24 Apr 2023 20:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/golang-crypto/ecdh-and-the-tpm/</guid>
+      <description>&lt;p&gt;I have lately been trying to learn more about the Trusted Platform Module (TPM)&#xA;as they are capable of key creation and sealing secrets in a secure manner. They&#xA;are common hardware these days and make for a reasonable ways to store secrets.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/FiloSottile/age&#34;&gt;&lt;code&gt;age&lt;/code&gt;&lt;/a&gt; is a file encryption/decryption tool&#xA;from Filippo Valsorda which a lot of people have been using to replace GnuPG for&#xA;things like &lt;code&gt;password-store&lt;/code&gt;. It has a few plugins doing things like storing&#xA;keys on Yubikey, Trezor hardware wallets or the Apple Secure Enclave, however&#xA;it doesn&amp;rsquo;t have a TPM plugin. I saw the opportunity to write something that is&#xA;capable of utilizing the TPM.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>coredumpctl, delve and debug packages for Go</title>
+      <link>http://localhost:1313/blog/coredumpctl-delve-and-debug-packages-for-go/</link>
+      <pubDate>Sat, 19 Nov 2022 19:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/coredumpctl-delve-and-debug-packages-for-go/</guid>
+      <description>&lt;p&gt;I have spent a fair amount of time hacking on debug packages the past two years.&#xA;This work resulted in Arch Linux announcing the public &lt;a href=&#34;https://archlinux.org/news/debug-packages-and-debuginfod/&#34;&gt;debuginfod&#xA;server&lt;/a&gt; which allows&#xA;users to download symbols and source code to debug software running on their&#xA;system.&lt;/p&gt;&#xA;&lt;p&gt;With this service users don&amp;rsquo;t need to figure out what the debug packages are&#xA;called, installing them and maybe removing it afterwards. It also saves a fair&#xA;amount of data you need to download. Generally just a great service with a good&#xA;list of supported clients.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Monitoring the kernel.org Transparency Log for a year</title>
+      <link>http://localhost:1313/blog/monitoring-the-kernel.org-transparency-log-for-a-year/</link>
+      <pubDate>Sat, 16 Apr 2022 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/monitoring-the-kernel.org-transparency-log-for-a-year/</guid>
+      <description>&lt;p&gt;Lets prefix this with: I really love Transparency Logs!&lt;/p&gt;&#xA;&lt;p&gt;It&amp;rsquo;s a fairly simple concept: If you hash elements together in a binary tree,&#xA;you can validate and verify if elements are present on a tree by hashing a&#xA;couple of elements. This is what is commonly known as a &lt;a href=&#34;https://en.wikipedia.org/wiki/Merkle_tree&#34;&gt;Merkle tree&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I forget the math, but if you have a tree with a million items, you would only&#xA;really need less than 10 hashes (I think) to figure out what the hash of the top&#xA;node would be. This allows you to easily audit and verify the tree is internally&#xA;consistent. If you compare this to something like git, which people often&#xA;mistake for a Merkle tree, you would need to effectively replay a million&#xA;commits to figure out if the last commit hash is actually correct or not.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Streaming the Steam Deck to OBS</title>
+      <link>http://localhost:1313/blog/streaming-the-steam-deck-to-obs/</link>
+      <pubDate>Sat, 26 Mar 2022 14:07:41 +0100</pubDate>
+      <guid>http://localhost:1313/blog/streaming-the-steam-deck-to-obs/</guid>
+      <description>&lt;p&gt;Valve was kind enough to send Steam Deck devkits to Arch Linux maintainers and&#xA;developers which gave us an opportunity to mess around with the device.&lt;/p&gt;&#xA;&lt;p&gt;Personally I find it a bit fun to mess around with video streaming, thus one of&#xA;the first things I wanted to try figure out was how I could stream the gamemode&#xA;on the Steam Deck. Installing the OBS flatpak and adding it to the menu doesn&amp;rsquo;t&#xA;actually work so we sadly have to be a bit more clever.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>mkinitcpio v31 and UEFI stubs</title>
+      <link>http://localhost:1313/blog/mkinitcpio-v31-and-uefi-stubs/</link>
+      <pubDate>Sun, 22 Aug 2021 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/mkinitcpio-v31-and-uefi-stubs/</guid>
+      <description>&lt;p&gt;A few months ago I wrote up some code for &lt;code&gt;mkinitcpio&lt;/code&gt; which teaches it how to&#xA;create UEFI executables utilizing the systemd stub.&lt;/p&gt;&#xA;&lt;p&gt;The change can be found here: &lt;a href=&#34;https://github.com/archlinux/mkinitcpio/pull/53&#34;&gt;https://github.com/archlinux/mkinitcpio/pull/53&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;This is a short introduction to why the feature is great, how it makes it easier&#xA;to boot your system, and how it can be used to better secure your system with&#xA;something like secure boot.&lt;/p&gt;&#xA;&lt;h3 id=&#34;the-boot-process&#34;&gt;The Boot Process&lt;/h3&gt;&#xA;&lt;p&gt;For the past decade most computers have two ways to boot. The legacy BIOS mode&#xA;and UEFI which is suppose to replace it. It frankly does a lot of things, but&#xA;one of the more interesting aspects is that the Linux kernel is a valid &lt;a href=&#34;https://en.wikipedia.org/wiki/DOS_MZ_executable&#34;&gt;MS DOS&#xA;binary&lt;/a&gt;. If you read out the&#xA;two first bytes you will see &lt;code&gt;MZ&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in April 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-april-2021/</link>
+      <pubDate>Wed, 05 May 2021 21:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-april-2021/</guid>
+      <description>&lt;p&gt;Yo!&lt;/p&gt;&#xA;&lt;p&gt;Hope people have had a lovely spring. This month has passed quickly! I have&#xA;put off writing the monthly post because I was busy with a weekend project.&lt;/p&gt;&#xA;&lt;p&gt;My master thesis was about how to apply transparency logs and reproducible&#xA;builds to give package rebuilders the ability to produce tamper evident logs.&#xA;This is handy since any one package build can easily be proven to be part of the&#xA;log, and you can very easily fill inn the history from one point in time to&#xA;another by hashing files in the correct order.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in March 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-march-2021/</link>
+      <pubDate>Fri, 02 Apr 2021 14:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-march-2021/</guid>
+      <description>&lt;p&gt;Yoooo!&lt;/p&gt;&#xA;&lt;p&gt;Another month has passed which means another status update.&lt;/p&gt;&#xA;&lt;p&gt;The python2 removal has been steady and several packages has been removed this&#xA;month. Currently a query for &lt;code&gt;python2&lt;/code&gt; on archweb returns 139 matches. At the&#xA;start of the month it was around 160-170. Progress!&lt;/p&gt;&#xA;&lt;p&gt;I have suggested we &lt;a href=&#34;https://lists.archlinux.org/pipermail/arch-dev-public/2021-March/030390.html&#34;&gt;remove &lt;code&gt;checkdepends&lt;/code&gt;&lt;/a&gt; on python2 packages to ease the cleanup of dependency cycles. The&#xA;response has been lukewarm at best so we&amp;rsquo;ll see how that progresses. Hopefully&#xA;more is being removed in the upcoming months.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in February 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-february-2021/</link>
+      <pubDate>Mon, 01 Mar 2021 18:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-february-2021/</guid>
+      <description>&lt;p&gt;Yo!&lt;/p&gt;&#xA;&lt;p&gt;New month, new update!&lt;/p&gt;&#xA;&lt;p&gt;The start of this month was marked with FOSDEM! I held a talk about secure boot&#xA;and the tooling stuff I have written, &lt;code&gt;sbctl&lt;/code&gt;. It&amp;rsquo;s a tool to help you manage&#xA;secure boot keys and signing files. With help from &lt;code&gt;sbsigntools&lt;/code&gt; it also does&#xA;live enrollment of keys.&lt;/p&gt;&#xA;&lt;p&gt;The talk went great (I think) and it was fun to see how FOSDEM pulled off the&#xA;conference with matrix and jitsi. I gave me some inspiration for Arch Conf 2021&#xA;that I should try kick off some planning on.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in January 2021</title>
+      <link>http://localhost:1313/blog/foss-activities-in-january-2021/</link>
+      <pubDate>Mon, 01 Feb 2021 00:21:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-january-2021/</guid>
+      <description>&lt;p&gt;And January is over! Time has frankly been moving fast the past days.&lt;/p&gt;&#xA;&lt;p&gt;Packaging wise, things has been fine. Added &lt;code&gt;tailscale&lt;/code&gt; and some other minor&#xA;packages, but had a real purge of old packages from resigned maintainers. Also&#xA;dropped &lt;code&gt;ntop&lt;/code&gt; to the AUR which hasn&amp;rsquo;t been actively developed for years at this&#xA;point. I&amp;rsquo;m curious when people are going to bug me about that one :)&lt;/p&gt;&#xA;&lt;p&gt;On the security side of things there has been quite a lot happening just the&#xA;past week. &lt;code&gt;sudo&lt;/code&gt; had &lt;a href=&#34;https://security.archlinux.org/CVE-2021-3156&#34;&gt;CVE-2021-3156&lt;/a&gt; and &lt;code&gt;libgcrypt&lt;/code&gt; had &lt;a href=&#34;https://security.archlinux.org/CVE-2021-3345&#34;&gt;CVE-2021-3345&lt;/a&gt; which are&#xA;both are quite severe. My personal take is that the &lt;code&gt;sudo&lt;/code&gt; one bad, but not &lt;em&gt;that&lt;/em&gt;&#xA;bad. While &lt;code&gt;libgcrypt&lt;/code&gt; is a bit more terrible considering the data is parsed&#xA;before it&amp;rsquo;s authenticated. However both was patched fairly quickly in Arch.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in December 2020</title>
+      <link>http://localhost:1313/blog/foss-activities-in-december-2020/</link>
+      <pubDate>Sat, 02 Jan 2021 11:20:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-december-2020/</guid>
+      <description>&lt;p&gt;End of the year and third blog post! Hope everyone has had a nice new years eve :)&lt;/p&gt;&#xA;&lt;p&gt;The first news of the month is that Remi Gacogne was &lt;a href=&#34;https://lists.archlinux.org/pipermail/aur-general/2020-December/036034.html&#34;&gt;accepted&lt;/a&gt; as Trusted User.&#xA;Congratulations to him and super exciting.&lt;/p&gt;&#xA;&lt;p&gt;Other then that I have had a meeting with the devops team discussing how we&#xA;should implement the &lt;a href=&#34;https://lists.archlinux.org/pipermail/arch-dev-public/2020-November/030222.html&#34;&gt;debuginfod system&lt;/a&gt; on our infrastructure. I have written up&#xA;the &lt;a href=&#34;https://gitlab.archlinux.org/archlinux/infrastructure/-/merge_requests/168&#34;&gt;ansible role&lt;/a&gt; for debuginfod and it was more or less decided that we want to&#xA;host it on a small VPS for the service itself, and sync debug packages to the&#xA;host to serve them. This avoid the problem of hosting more services on our&#xA;server which distributes packages with services it does not really need.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kubernetes in Arch Linux</title>
+      <link>http://localhost:1313/blog/kubernetes-in-arch-linux/</link>
+      <pubDate>Wed, 23 Dec 2020 20:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/kubernetes-in-arch-linux/</guid>
+      <description>&lt;p&gt;Arch Linux got &lt;a href=&#34;https://www.archlinux.org/packages/community/x86_64/kubernetes/&#34;&gt;kubernetes&lt;/a&gt; packaged into the &lt;code&gt;[community]&lt;/code&gt; repository the past&#xA;week with the hard work of David Runge. I contribute to testing the packages so&#xA;I thought it would be interesting to write up quickly the testing that was done.&#xA;Originally I did the testing with &lt;code&gt;docker&lt;/code&gt; but with the &lt;code&gt;dockershim&lt;/code&gt; &lt;a href=&#34;https://kubernetes.io/blog/2020/12/02/dockershim-faq/&#34;&gt;deprecation&lt;/a&gt;&#xA;I rewrote the blog to utilize &lt;code&gt;containerd&lt;/code&gt; instead.&lt;/p&gt;&#xA;&lt;p&gt;David has reworked the kubernetes &lt;a href=&#34;https://wiki.archlinux.org/index.php/Kubernetes&#34;&gt;archwiki&lt;/a&gt; article as well. It currently doesn&amp;rsquo;t&#xA;cover all use cases and contributions welcome. I will try cover the &lt;code&gt;containerd&lt;/code&gt;&#xA;parts of this page to the wiki.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in November 2020</title>
+      <link>http://localhost:1313/blog/foss-activities-in-november-2020/</link>
+      <pubDate>Tue, 01 Dec 2020 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-november-2020/</guid>
+      <description>&lt;p&gt;Second month of doing these posts. In short not much has been happening the past&#xA;weeks, but that would be a slight lie.&lt;/p&gt;&#xA;&lt;p&gt;I have sponsored rgacognes Trusted User application. The application was posted&#xA;to the &lt;a href=&#34;https://lists.archlinux.org/pipermail/aur-general/2020-November/036017.html&#34;&gt;mailing list&lt;/a&gt;, and it&amp;rsquo;s currently being voted and decided by a weeks time.&lt;/p&gt;&#xA;&lt;p&gt;There has also been some discussion for &lt;em&gt;years&lt;/em&gt; about bringing debug packages&#xA;into Arch. This has largely been stalled but I brought it back to life again.&#xA;Essentially the problem might be solved by utilizing the new &lt;a href=&#34;https://developers.redhat.com/blog/2019/10/14/introducing-debuginfod-the-elfutils-debuginfo-server/&#34;&gt;debuginfod&lt;/a&gt; project,&#xA;and we can later distribute the packages itself when we understand the new&#xA;mirror requirements. There is currently a discussion on &lt;a href=&#34;https://lists.archlinux.org/pipermail/arch-dev-public/2020-November/030222.html&#34;&gt;&lt;code&gt;[arch-dev-public]&lt;/code&gt;&lt;/a&gt;&#xA;about it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PAM Bypass: when null(is not)ok</title>
+      <link>http://localhost:1313/blog/pam-bypass-when-nullis-notok/</link>
+      <pubDate>Tue, 24 Nov 2020 20:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/pam-bypass-when-nullis-notok/</guid>
+      <description>&lt;h2 id=&#34;the-problem&#34;&gt;The Problem&lt;/h2&gt;&#xA;&lt;p&gt;Someone enters an IRC support channel and proclaims their dovecot server has&#xA;been hacked and a non existing user sends spam email from their server. The&#xA;initial reaction might be something along the lines of&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Wat ಠ_ಠ&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;With the following assumption that the user &lt;em&gt;clearly&lt;/em&gt; did something wrong.&#xA;Hosting email is difficult after all. I don&amp;rsquo;t quite recall how rest of the&#xA;support went, but it was solved and the root cause was not found. However, we&#xA;keep on rolling! Then someone posts about a similar incident on &lt;a href=&#34;https://www.reddit.com/r/archlinux/comments/jvh38a/postfix_dovecot_got_hacked/&#34;&gt;r/archlinux&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>FOSS Activities in October 2020</title>
+      <link>http://localhost:1313/blog/foss-activities-in-october-2020/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/blog/foss-activities-in-october-2020/</guid>
+      <description>&lt;p&gt;I wanted to start writing these for myself as I have been reading quite a few&#xA;monthly resports from Chris Lamb and other Debian contributors. They make for&#xA;interesting content for readers curious about what distribution maintainers do&#xA;during a month, and motivation for myself as not everything one does is visible&#xA;work.&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;ll try have some sort of structure with them, by starting off with the menial&#xA;tasks, and add the meeting notes and misc contributions at the bottom.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Improving the Secure Boot user experience</title>
+      <link>http://localhost:1313/blog/improving-the-secure-boot-user-experience/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0200</pubDate>
+      <guid>http://localhost:1313/blog/improving-the-secure-boot-user-experience/</guid>
+      <description>&lt;p&gt;Secure boot tooling is terrible, can we do better?&lt;/p&gt;&#xA;&lt;p&gt;Currently the most widely used tooling for secure boot is the Ubuntu&#xA;&lt;a href=&#34;https://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git/&#34;&gt;sbsigntools&lt;/a&gt;&#xA;and&#xA;&lt;a href=&#34;https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git&#34;&gt;efitools&lt;/a&gt;.&#xA;If you are currently using secure boot both of these packages are probably&#xA;installed on your system. Both of them support the basics of generating&#xA;signature lists and signing the EFI variables with certificates, but they still&#xA;have differences which is a source of confusion.&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;efitools&lt;/code&gt; has 3 different ways of generating signature lists:&#xA;&lt;code&gt;cert-to-efi-hash-list&lt;/code&gt;, &lt;code&gt;cert-to-sig-list&lt;/code&gt; and &lt;code&gt;hash-to-efi-sig-list&lt;/code&gt;.&#xA;&amp;ldquo;Luckily&amp;rdquo; there are man pages you can read which assumes you have some&#xA;familiarity with UEFI itself.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Packaging LXD for Arch Linux</title>
+      <link>http://localhost:1313/blog/packaging-lxd-for-arch-linux/</link>
+      <pubDate>Mon, 27 Apr 2020 23:30:00 +0100</pubDate>
+      <guid>http://localhost:1313/blog/packaging-lxd-for-arch-linux/</guid>
+      <description>&lt;p&gt;With the release of 3.20, LXD was included into the&#xA;&lt;a href=&#34;https://wiki.archlinux.org/index.php/Official_repositories#community&#34;&gt;community&lt;/a&gt;&#xA;repository of Arch Linux in January, and has currently been sitting there&#xA;happily for the past months. LXD is a container manager from Canonical that&#xA;manages containers as if they where independent machines in a cluster. I have&#xA;somehow taken to calling them &amp;ldquo;containers-as-machines&amp;rdquo;. This is in contrast to&#xA;podman and docker which would be &amp;ldquo;containers-as-applications&amp;rdquo;. Think of lxd as&#xA;&lt;a href=&#34;http://www.ganeti.org/&#34;&gt;ganeti&lt;/a&gt;, but for containers.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Reproducible Arch Linux Packages</title>
+      <link>http://localhost:1313/blog/reproducible-arch-linux-packages/</link>
+      <pubDate>Mon, 11 Nov 2019 12:00:00 +0100</pubDate>
+      <guid>http://localhost:1313/blog/reproducible-arch-linux-packages/</guid>
+      <description>&lt;p&gt;Arch Linux has been involved with the reproducible builds efforts since 2016.&#xA;The goal is to achieve deterministic building of software packages to enhance&#xA;the security of the distribution.&lt;/p&gt;&#xA;&lt;p&gt;After almost 3 years of continued effort, along with the release of pacman 5.2&#xA;and contributions from a lot of people, we are finally able to reproduce&#xA;packages distributed by Arch Linux!&lt;/p&gt;&#xA;&lt;p&gt;This enables users to build packages and compare them with the ones distributed&#xA;by the Arch Linux team. Users can independently verify the work done by our&#xA;packagers, and figure out if malicious code has been included in the pristine&#xA;source during the build, which in turns enhances the overall supply chain security.&#xA;We are one of the first binary distributions that has achieved this, and can&#xA;provide tooling down to users.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

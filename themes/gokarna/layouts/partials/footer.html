@@ -32,8 +32,4 @@
     {{ if (gt (.Scratch.Get "footerText" | len) 0) }}
         <span>&copy; {{ .Scratch.Get "footerText" | markdownify }}</span>
     {{ end }}
-
-    <span>
-        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/gokarna-theme/gokarna-hugo">Gokarna</a>
-    </span>
 </footer>

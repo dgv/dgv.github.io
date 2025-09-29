@@ -6,11 +6,11 @@ tags: [dev,editors]
 showTableOfContents: true
 ---
 
-My first editor for code was Microsoft Notepad, why? Because Internet Explorer on Win95 used to show page source there, so I like to edit HTML and batch scripts using it, then FrontPage Express (to have syntax highlighting support) and later notepad++.
+My first editor for code was Microsoft Notepad, why? Because Internet Explorer on Windows 95 used it to show page source there, so I like to edit HTML and batch scripts using it, then FrontPage Express (which comes with syntax highlighting support) and later notepad++.
 
-When finally started to use Linux and later OpenBSD choose vi, yes vi, not iMproved version, emacs is not available by default, used vi for notes, shell scripting then some C, found funny the `~` marks, buffer manipulation and shortcuts, never was a advanced user, or have complex `.vimrc`, or problems to `:q!`.
+When finally started to use Linux and later OpenBSD I choosed vi, yes vi, not iMproved version, emacs is not available by default, used vi for notes, shell scripting then some C, found funny the `~` marks, buffer manipulation and shortcuts, never was a advanced user, or have complex `.vimrc`, or problems to `:q!`.
 
-### editors time line
+### code editors timeline
 - 1976: emacs, vi
 - 1983: notepad
 - 1989: pico
@@ -28,7 +28,7 @@ When finally started to use Linux and later OpenBSD choose vi, yes vi, not iMpro
 - 2021: helix
 - 2023: zed
 
-Things changed when I started to work as professional programmer and was introduced to IDEs, using Delphi 7 and Visual Basic 6, start to debug using breakpoints, pure magic, skyrocket productivity. Then started to work as webdeveloper with PHP and Ruby, back to text editors until Java (using Eclipse and Netbeans) for while.
+Things changed when I started to work as professional programmer and was introduced to IDEs, using Delphi 7 and Visual Basic 6, started to debug using breakpoints, pure magic, skyrocket productivity. Then started to work as webdeveloper with PHP and Ruby, back to text editors until Java (using Eclipse and Netbeans) for while.
 
 ### moving from zed
 >_Every program attempts to expand until it can support LLMs. Those programs which cannot so expand are replaced by ones which can._
@@ -37,17 +37,17 @@ Things changed when I started to work as professional programmer and was introdu
 
 The year is 2024, tried to use almost all mainstream code editors, you name it, now most of time I use Zed, and obliged to use Xcode and Android Studio for mobile development, you know.
 
-Tried Lapce, Helix and I was pretty happy with Zed for while, started to use it at 0.160.0 before it get support for Linux, now I get updates every time... Some update messed with my plugin config, change my theme, I dont care about social, AI thing, I just want a reliable editor that works, manage resources efficiently, simpler and better than vscode, tried to build Zen for Linux once, but why I need postgres and docker to build a code editor?!
+Tried Lapce, Helix and I was pretty happy with Zed for while, started to use it at 0.160.0 before it get support for Linux, now I get updates every time... Some update messed with my plugin config, change my theme, I dont care about social, AI thing integration, I just want a reliable editor that works, manage resources efficiently, LSP support, simpler and better than vscode, tried to build Zen for Linux once, but why I need postgres and docker to build a code editor?!
 The Cargo file has more than 500 lines, more than 150 external deps from crates... Forget it, just prefered to wait for Linux official support...
 
 After some time noted huge memory consuption, some leak overtime with couple small files opened. So, they prefer add AI/social integration features than support more platforms or fix this [issues](https://github.com/zed-industries/zed/issues/18673#issuecomment-2408663493)...?!
 
-Zed with Windows support will probably compete with VScode in couple years, maybe become developer editor _de facto_, but these issues for me is just unacceptable...Good luck then, I'm back with my old plan to maintain my own editor like many other devs... You will move to another home, quit your job, buy another laptop, even change your OS, but probably will continue to use the same code editor...
+Zed with Windows support will probably compete with VScode in couple years, maybe become developer editor _de facto_, but these issues for me is just unacceptable...Good luck then, I'm back with my old plan to maintain my own editor like many other devs... You will move to another home, quit your job, buy another laptop, even change your OS, but probably will continue to use the same code editor... 
 
 As inspiration...
 - Salvatore Sanfilippo (aka antirez) created [kilo](https://antirez.com/news/108)
 - Rob Pike created [acme](http://acme.cat-v.org/)
-- John Romero created [TEd the editor that shipped over 30 games](https://www.gamedeveloper.com/design/classic-tools-retrospective-john-romero-talks-about-creating-ted-the-tile-editor-that-shipped-over-30-games)
+- John Romero created TEd [the editor that shipped over 30 games](https://www.gamedeveloper.com/design/classic-tools-retrospective-john-romero-talks-about-creating-ted-the-tile-editor-that-shipped-over-30-games)
 
 ## banzai editor
 [![banzai](/img/banzai.png)](https://en.wikipedia.org/wiki/Top_Gear_(video_game))

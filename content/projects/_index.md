@@ -1,16 +1,20 @@
 ---
-title: "projects"
+title: "Projects"
 type: page
 ---
+
+- [banzai](https://github.com/dgv/banzai): rewritten of  [lite](https://github.com/rxi/lite) editor focused in simplicity, performance and portability.
+- [yubicli](https://github.com/dgv/yubicli): simple CLI tool to handle Yubico dongles for authentication (TOTP/HOTP), raw implementation without dependencies of Yubico Manager (ykman).
 
 ### _learning_
 
 just for learning purpose
 
-- [zig-htmx-tailwind-example](https://github.com/dgv/zig-htmx-tailwind-example): example of CRUD app written in Zig + HTMX + Tailwind CSS. 
+- [blockchain](https://github.com/dgv/blockchain): just my experimental code based on [Learn Blockchain by Building One](https://medium.com/@vanflymen/learn-blockchains-by-building-one-117428612f46) post.
 - [play.zig](https://github.com/dgv/play.zig): playground to run, share and learn Zig online (used by [Zig by Example](https://zig-by-example.com/)).
-- [zOS](https://github.com/dgv/zOS): just reimplementation of OS in 1k lines.
-- [blockchain book](https://github.com/dgv/blockchain-book): just my experimental code based on [Learn Blockchain by Building One](https://www.amazon.com/Learn-Blockchain-Building-Understanding-Cryptocurrencies/dp/1484251709) book.
+- [zig-htmx-tailwind-example](https://github.com/dgv/zig-htmx-tailwind-example): just an example of CRUD app. 
+- [zOS](https://github.com/dgv/zOS): reimplementation of [OS in 1k lines](https://operating-system-in-1000-lines.vercel.app/en/).
+
 
 ### _legacy_
 

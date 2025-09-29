@@ -38,7 +38,7 @@ unsafe= true
     </script>
   """
 
-  description = "programmer, entropist netrunner"
+  description = ""
   footer = ""
   metaKeywords = ["blog", "devlog", "golang", "zig", "openbsd", "web3"]
   showBackToTopButton = true # true or false for "back to top" button on posts and pages
@@ -51,35 +51,35 @@ unsafe= true
     {name = "email", url = "mailto:danielgvargas@proton.me"}
   ]
 
-[menu]   
+[menu]
   [[menu.main]]
-    name = "Home"
-    pre = "<span data-feather='home'></span>"
-    url = "/"
-    weight = 2
+    name = "Hire me?"
+    pre = "<span data-feather='briefcase'></span>"
+    url = "/hireme"
+    weight = 1
 
   [[menu.main]]
     name = "Posts"
     pre = "<span data-feather='book'></span>"
     url = "/posts/"
-    weight = 3
+    weight = 2
 
   [[menu.main]]
     name = "Projects"
     pre = "<span data-feather='code'></span>"
     url = "/projects/"
     weight = 4
+    
+  [[menu.main]]
+    name = "Recommended Links"
+    pre = "<span data-feather='link'></span>"
+    url = "/links/"
+    weight = 5
 
   [[menu.main]]
     name = "Tags"
     pre = "<span data-feather='tag'></span>"
     url = "/tags/"
-    weight = 5
-
-  [[menu.main]]
-    name = "Tips"
-    pre = "<span data-feather='info'></span>"
-    url = "/tips/"
     weight = 6
 
   [[menu.main]]
@@ -88,12 +88,11 @@ unsafe= true
     url = "https://github.com/dgv"
     weight = 7
 
-
   [[menu.main]]
     identifier = "rss"
     pre = "<span data-feather='rss'></span>"
     url = "/index.xml"
-    weight = 7
+    weight = 8
 
 [markup]
   [markup.tableOfContents]

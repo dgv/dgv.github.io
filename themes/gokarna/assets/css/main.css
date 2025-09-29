@@ -281,6 +281,9 @@ a:hover .feather-sun {
   list-style-type: none;
   padding: 0;
 }
+.post-tag {
+  margin-right: 5px;
+}
 .post-tags .post-tag {
   border: 1.5px solid;
   border-radius: 4px;

@@ -10,7 +10,7 @@ best thigs in life are free
 - [Getting Real](https://basecamp.com/gettingreal)
 - [Foundations of Programming](https://www.openmymind.net/FoundationsOfProgramming.pdf)
 - [Distributed systems for fun and profit](https://book.mixu.net/distsys/)
-- [Producing Open Source Software](https://producingoss.com/en/producingoss.html)
+- [Patterns of Software](https://www.dreamsongs.com/Files/PatternsOfSoftware.pdf)
 
 ### Languages
 - [An Introduction to Assembly Programming with RISC-V](https://riscv-programming.org/book.html)

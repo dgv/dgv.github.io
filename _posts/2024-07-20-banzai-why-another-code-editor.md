@@ -29,17 +29,17 @@ When finally started to use Linux and later OpenBSD choose vi, yes vi, not iMpro
 Things changed when I started to work as professional programmer and was introduced to IDEs, using Delphi 7 and Visual Basic 6, start to debug using breakpoints, pure magic, skyrocket productivity. Then started to work as webdeveloper with PHP and Ruby, back to text editors until Java (using Eclipse and Netbeans) for while.
 
 ## moving from zed
-_Every program attempts to expand until it can support chatgpt. Those programs which cannot so expand are replaced by ones which can._<br>
+_Every program attempts to expand until it can support LLMs. Those programs which cannot so expand are replaced by ones which can._<br>
 (modified James Zawinski law from 1995 to 2022)
 
 The year is 2024, tried to use almost all mainstream code editors, you name it, now most of time I use Zed, and obliged to use Xcode and Android Studio for mobile development, you know.
 
-I was pretty happy with Zed for while, started to use it at 0.160.0 before it get support for linux, now I get updates every time I open it... Some update messed with my plugins config, change my theme, I dont care about social, AI thing, I just want a reliable editor that works, manage resources efficiently, simpler and better than vscode, tried to built Zen for Linux once, but why I need postgres and docker to build a code editor?!
+Tried Lapce, Helix and I was pretty happy with Zed for while, started to use it at 0.160.0 before it get support for Linux, now I get updates every time... Some update messed with my plugin config, change my theme, I dont care about social, AI thing, I just want a reliable editor that works, manage resources efficiently, simpler and better than vscode, tried to build Zen for Linux once, but why I need postgres and docker to build a code editor?!
 The Cargo file has more than 500 lines, more than 150 external deps from crates... Forget it, just prefered to wait for Linux official support...
 
 After some time noted huge memory consuption, some leak overtime with couple small files opened. So, they prefer add AI/social integration features than support more platforms or fix this [issues](https://github.com/zed-industries/zed/issues/18673#issuecomment-2408663493)...?!
 
-Zed with Windows support will probably compete with VScode in couple years, maybe become developer editor _de facto_, but these issues for me is just unacceptable...Good luck then, I'm back with my old plan to maintain my own editor like many other devs... You will move to another home, quit your job, bought another laptop and change your OS, but probably will continue to use the same code editor...
+Zed with Windows support will probably compete with VScode in couple years, maybe become developer editor _de facto_, but these issues for me is just unacceptable...Good luck then, I'm back with my old plan to maintain my own editor like many other devs... You will move to another home, quit your job, buy another laptop, even change your OS, but probably will continue to use the same code editor...
 
 As inspiration...
 - Salvatore Sanfilippo (aka antirez) created [kilo](https://antirez.com/news/108)
@@ -56,24 +56,24 @@ Appreciate many things, utf8 support, watchdir, the plugins ecosystem flurish, b
 
 **just works™**<br>
 How much time you need to setup your dev environment? I hate unattended updates, or that one which mess with current configs, incompatible changes argh...
-just want portable binary, couple megabytes, need couple disk kilobytes to save editor assets, your config, session, maybe plugins... like on [helix](https://helix-editor.com/), you have some lsp server installed? nice, will try to use it...
+just want portable binary, couple megabytes, need couple disk kilobytes to save editor assets, your config, session, maybe plugins... like helix, you have some lsp server installed? nice, will try to use it...
 
 **defaults**<br>
-I always use more than one machine, with different processors archtectures and OSs, I'm early-adopter, like to try new stuff from time to time, so I just give up to maintain dotfiles or adapt config files,
-prefer simplicity and portability over customizations, optinated defaults from the apps and use them as they come.
+I always use more than one machine, with different processors archtectures and OS, I'm early-adopter, like to try new stuff from time to time, so I just give up to maintain dotfiles or adapt config files,
+prefer simplicity and portability over customizations, optinated defaults from the apps, use them as they come.
 
 **gui vs tui**<br>
-If you're a developer these days certanily will use a browser and terminal emulator to handle a package manager at least, or git.
+If you're a developer these days certanily will use a browser and terminal emulator to handle a package manager, infra tooling and git at least.
 For me doesn't make sense tweak terminal editor to appear like gui one, as said had good experience with gui editors (zed, textmate, sublime) for while, and SDL comes with acceleration support.
 I'm using vi/m less and less, editing remote configs eventualy, now everything are running in containers, can be debugged remotely.
 
 **low learning curve**<br>
-Never understand the cult behind it, why people still using hjkl if we have arrows keys? why maintain this antropological cult of ADM-3A terminal keyboard layout shortcuts?
-I can understand the flow of not use a mouse, but this as John Carmack says is "civil war re-enactment". My idea is mantain a low learning curve like notepad or web browser so you can customize and introduce advanced editing overtime or even use _vim-mode_ plugin.
+Never understand the cult behind VI/m, why people still using hjkl if we have arrow keys in any modern computer? Why maintain this antropological cult of ADM-3A terminal keyboard layout/shortcuts?
+I can understand the flow of not use a mouse, used qutebrowser for a while, but as Carmack says it's "civil war re-enactment". My idea is mantain a low learning curve like notepad or web browser so you can customize and introduce advanced editing overtime or even use _vim-mode_ plugin as you wish.
 
 **minimalism**<br>
 I like _zen mode_ for editors or minimalist designs like ElementaryOS code, no buttons, sidebars, visual distractions as low as possible, just you and code.
-But need to have tree view for files, I manage too many different projects, different assets, like to have an overview across. Decided to maintain all configuration in one file, using lua not json, keep things simple and powerful...
+But need to have tree view for files, I manage too many different projects, different assets, like to have an overview across it or them. Decided to maintain all configuration in one file, using lua like neovim not json, keep things simple and powerful...
 
 **zen of banzai**<br>
 Considering all my experience, essential things that won't change over time I can summarize as mantra
@@ -89,7 +89,7 @@ what I expect and deserve from code editor...
 - no social features
 - no auto-updates
 
-**bazai**<br>
-_banzai_ is japanese cheer of enthusiasm or triumph, meaning "10k years" of long life, I hope to use it until end of times. Decided to rewrite the base in Zig to bring all desired simplicity and portability, will be much easier to maintain and improve over time... Not a fork of lite or lite-xl, will be like a little brother, anyone is welcome to try it, test, submit fixes, but if you miss any feature not included will be better to fork or start your own journey, [banzai!!!](https://github.com/dgv/banzai)
+**banzai**<br>
+_banzai_ is japanese cheer of enthusiasm or triumph, meaning "10k years" of long life, I hope to use it until _the end of times_. Decided to rewrite the _launcher/renderer_ in Zig to bring all desired simplicity and portability, will be much easier to maintain and improve over time... Not a fork of lite or lite-xl, will be like a _little brother_, anyone is welcome to try it, test, submit fixes, but if you miss any feature not included will be better to fork or start your own journey, [banzai!!!](https://github.com/dgv/banzai)
 
 

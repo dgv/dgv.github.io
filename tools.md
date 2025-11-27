@@ -10,7 +10,7 @@ useful free web tools
 - [IP location](https://www.iplocation.net/): ip lookup in many geolocation db at once.
 - [IconKitchen](https://icon.kitchen): app icon generator.
 - [Global Ping Statistics](https://wondernetwork.com/pings): ping times between WonderNetwork servers.
-- [websocket test page](http://livepersoninc.github.io/ws-test-page/): just handful form instead use console.
+- [websocket test page](http://livepersoninc.github.io/ws-test-page/): just handful form instead browser console.
 - [GetDeploying](https://getdeploying.com/): compare cloud providers for your next project.
 - [SSL Server Test](https://www.ssllabs.com/ssltest/): Qualys SSL test tool.
 - [HTTP Observatory](https://developer.mozilla.org/en-US/observatory): Mozilla tool for scoring sites.

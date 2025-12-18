@@ -3,19 +3,19 @@ title: curated readings
 ---
 ## values
 
-_don't be clever_<br>
-_code is a liability_<br>
-_ask, learn, and teach_<br>
-_design and architecture matter_<br>
-_first make it correct then make it fast_<br>
-_only make it fast if you know it matters_<br>
-_it's not done until customers are getting value_<br>
-_it's not done until there's nothing left to take away_<br>
-_don't automate something you haven't done manually_<br>
-_quick incremental progress is better than the alternative_<br>
-_code is shared by the team. there is no such thing as my code_<br>
-_it's easier to change a dry-erase board than a production system_<br>
-_code is written to be understood by humans first, computers second_<br>
+_don't be clever_<br />
+_code is a liability_<br />
+_ask, learn, and teach_<br />
+_design and architecture matter_<br />
+_first make it correct then make it fast_<br />
+_only make it fast if you know it matters_<br />
+_it's not done until customers are getting value_<br />
+_it's not done until there's nothing left to take away_<br />
+_don't automate something you haven't done manually_<br />
+_quick incremental progress is better than the alternative_<br />
+_code is shared by the team. there is no such thing as my code_<br />
+_it's easier to change a dry-erase board than a production system_<br />
+_code is written to be understood by humans first, computers second_<br />
 [_Ryan R. Smith_](https://r.32k.io/eng-vals)
 
 ## culture
@@ -44,10 +44,12 @@ _code is written to be understood by humans first, computers second_<br>
 - [The futile comfort of working long hours](https://codewithoutrules.com/2018/02/11/working-long-hours/)
 
 ## survive
+- [Stop Hacklore!](https://www.hacklore.org/letter)
 - [Write code that is easy to delete, not easy to extend](https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)
 - [A high-velocity style of software development](https://mihaiolteanu.me/interactive-dev)
 - [How To Learn Cryptography as a Programmer](https://soatok.blog/2020/06/10/how-to-learn-cryptography-as-a-programmer/)
 - [the cryptopals crypto challenges](https://cryptopals.com/)
+- [C programming notes](https://www.eskimo.com/~scs/cclass/krnotes/top.html)
 - [Latency Numbers Every Programmer Should Know](https://colin-scott.github.io/personal_website/research/interactive_latency.html)
 - [30 Linux System Monitoring Tools Every SysAdmin Should Know](https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html)
 - [My Approach to Building Large Technical Projects](https://mitchellh.com/writing/building-large-technical-projects)

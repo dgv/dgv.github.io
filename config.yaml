@@ -1,0 +1,41 @@
+baseurl: "https://dgv.dev.br/"
+languageCode: en-us
+theme: enso
+title: dgv
+enableEmoji: true
+enableRobotsTXT: true
+pygmentsStyle: nord
+menu:
+  main: 
+    - identifier: posts
+      name: posts
+      url: /posts/
+      weight: 1
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 2
+    - identifier: tips
+      name: tips
+      url: /tips/
+      weight: 3
+params:
+  abbrDateFmt: "Jan 2"
+  author: "dgv"
+  author.name: "Daniel Gomes Vargas"
+  author.link: "dgv.dev.br"
+  author.email: "dgv@keemail.me"
+  dateFmt: "2006-01-02"
+  social:
+    - name: codeberg
+      url: https://codeberg.org/dgv
+    - name: github
+      url: https://github.com/dgv
+    - name: lobsters
+      url: https://lobste.rs/~dgv
+    - name: mastodon
+      url: https://mastodon.social/@dgv
+markup:
+  goldmark:
+    renderer:
+      unsafe: true

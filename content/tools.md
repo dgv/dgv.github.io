@@ -19,3 +19,5 @@ useful free web tools
 - [WebPageTest](https://www.webpagetest.org/): analyze and emulate site performace speed.
 - [BrowserLeaks](https://browserleaks.com/): check browser's security and privacy.
 - [EveryTimeZone](https://everytimezone.com): time zone converter, compare time zone difference and find best time.
+- [tunnl.gg](https://tunnl.gg/): expose localhost to the internet, instant public URLs for your local web server, no installation required, just SSH.
+- [ip.thc.org](https://ip.thc.org/): Reverse-DNS, Subdomain and CNAME Lookups.

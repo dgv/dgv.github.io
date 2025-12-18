@@ -1,6 +1,8 @@
 public/
+resources/
 _site/
 .sass-cache
 .jekyll-cache/
 .DS_Store
 assets/.DS_Store
+.hugo_build.lock

@@ -1,0 +1,14 @@
+{{ define "main" }}
+  {{ if .Site.Params.social }}
+    <h1>programmer, entropist netrunner</h1>
+    <p id="social">
+      find me around the web<br /><ul>
+	  {{ range $i, $e := .Site.Params.social }}<li><a href="{{ .url }}">{{ .name }}</a></li>{{ end }} 
+	 </ul> 
+	  contact<br><ul>
+	  <li><a href="https://lobste.rs/messages?to=dgv">lobste.rs</a></li>
+	  <li><a href="mailto:dgv@keemail.me">dgv@keemail.me</li>
+	  </ul>
+    </p>
+  {{ end }}
+{{ end }}

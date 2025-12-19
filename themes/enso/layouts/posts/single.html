@@ -7,11 +7,4 @@
       <div class="content">{{ .Content }}</div>
     </article>
   </main>
-  <footer>
-  {{ if .Site.Params.social }}
-    <p id="social">
-      find me around the web: {{ range $i, $e := .Site.Params.social }}{{ if $i }}, {{ end }}<a href="{{ .url }}">{{ .name }}</a>{{ end }} or <a href="mailto:dgv@keemail.me">mail</a> me.
-    </p>
-  {{ end }}
-  </footer>
 {{ end }}

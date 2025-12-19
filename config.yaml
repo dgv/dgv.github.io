@@ -27,13 +27,11 @@ params:
   author.email: "dgv@keemail.me"
   dateFmt: "2006-01-02"
   social:
-    - name: codeberg
+    - name: codeberg.org/dgv
       url: https://codeberg.org/dgv
-    - name: github
+    - name: github.com/dgv
       url: https://github.com/dgv
-    - name: lobsters
-      url: https://lobste.rs/~dgv
-    - name: mastodon
+    - name: mastodon.social/@dgv
       url: https://mastodon.social/@dgv
 markup:
   goldmark:

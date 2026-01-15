@@ -1,5 +1,5 @@
 ---
-title: banzai! 
+title: banzai
 subtitle: why another code editor?
 date: 2024-07-20
 tags: [dev,editors]

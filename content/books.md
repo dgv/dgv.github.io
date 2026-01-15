@@ -1,16 +1,23 @@
 ---
 title: free books for devs
+date: 2024-03-24
 ---
 best thigs in life are free
 
 ### Cryptography
-- [Practical Cryptography for developers](https://cryptobook.nakov.com/)
+- [Practical Cryptography for Developers](https://cryptobook.nakov.com/)
 
 ### Development
 - [Getting Real](https://basecamp.com/gettingreal)
 - [Foundations of Programming](https://www.openmymind.net/FoundationsOfProgramming.pdf)
 - [Distributed systems for fun and profit](https://book.mixu.net/distsys/)
 - [Patterns of Software](https://www.dreamsongs.com/Files/PatternsOfSoftware.pdf)
+
+### Hands-on tutorials
+- [A tour of Go](https://go.dev/tour/)
+- [eBPF party](https://ebpf.party/)
+- [the cryptopals crypto challenges](https://cryptopals.com/)
+- [Tour of Rust](https://tourofrust.com)
 
 ### Languages
 - [An Introduction to Assembly Programming with RISC-V](https://riscv-programming.org/book.html)
@@ -33,10 +40,12 @@ best thigs in life are free
 - [Site Reliability Engineering](https://sre.google/sre-book/table-of-contents/)
 
 ### Operational Systems
+- [FreeBSD books](https://docs.freebsd.org/en/books/)
 - [OpenBSD Handbook](https://www.openbsdhandbook.com/)
 - [Operating System in 1,000 Lines](https://operating-system-in-1000-lines.vercel.app/en/)
 - [Operating System Design Book Series](http://www.fysnet.net/osdesign_book_series.htm)
 - [The little book about OS development](http://littleosbook.github.io/)
+
 
 ### Another Resources
 - [Good books for deep hacks](https://begriffs.com/posts/2017-04-13-longterm-computing-reading.html)

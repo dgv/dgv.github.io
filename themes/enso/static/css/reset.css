@@ -2,35 +2,38 @@ html {
   overflow-y: scroll
 }
 :root {
-  --bgcolor: #f8f9fa;
-  --dimcolor: #eee;
-  --fontcolor: #000;
-  --linkcolor: #000;
-  --visitedcolor: #000;
-  --precolor: #fff;
-  --prebgcolor: #000;
+  --bgcolor: #eceff4;
+  --dimcolor: #e5e9f0;
+  --fontcolor: #2e3440;
+  --linkcolor: #2e3440;
+  --visitedcolor: #2e3440;
+  --precolor: #2e3440;
+  --prebgcolor: #fff;
+}
+#brand .icon {
+    fill: #2e3440;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-     --bgcolor: #222;
-     --dimcolor: #333;
-     --fontcolor: #ddd;
-     --linkcolor: #fff;
-     --visitedcolor: #fff;
-     --precolor: #fff;
-     --prebgcolor: #383838;
+     --bgcolor: #2e3440;
+     --dimcolor: #434c5e;
+     --fontcolor: #e5e9f0;
+     --linkcolor: #eceff4;
+     --visitedcolor: #eceff4;
+     --precolor: #eceff4;
+     --prebgcolor: #3b4252;
   }
   #terms .term {
-    background-color: #383838;
+    background-color: #4c566a;
   }
   #brand .icon {
-    fill: #ddd;
+    fill: #e5e9f0;
   }
 }
 @media (prefers-color-scheme: light) {
   #terms .term {
-    background-color: #ddd;
+    background-color: #e5e9f0;
   }
 } 
 body {
@@ -79,7 +82,7 @@ img {
   height: auto;
 }
 figcaption {
-  color: #888;
+  color: #d8dee9;
   font: 12px/1.5 monospace;
   text-align: center;
 }

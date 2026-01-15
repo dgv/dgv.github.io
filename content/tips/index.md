@@ -1,9 +1,10 @@
 ---
 title: tips
 subtitle: 
+hidden: true
 ---
 
-- [recommended apps](/apps)
-- [free books for devs](/books)
 - [curated readings](/readings)
 - [dev tools](/tools)
+- [free books for devs](/books)
+- [recommended apps](/apps)

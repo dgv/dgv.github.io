@@ -1,5 +1,6 @@
 ---
 title: curated readings
+date: 2024-03-24
 ---
 ## values
 
@@ -40,6 +41,7 @@ _code is written to be understood by humans first, computers second_<br />
 - [Patterns are not building blocks](http://the-whiteboard.github.io/2016/09/02/patterns.html)
 - [Simplicity is the Key](http://www.extremeprogramming.org/rules/simple.html)
 - [Software disenchantment](https://tonsky.me/blog/disenchantment/)
+- [Engineering Inspiration](https://r.32k.io/eng-inspiration)
 - [The mythical 10x programmer](http://antirez.com/news/112)
 - [The futile comfort of working long hours](https://codewithoutrules.com/2018/02/11/working-long-hours/)
 
@@ -48,12 +50,14 @@ _code is written to be understood by humans first, computers second_<br />
 - [Write code that is easy to delete, not easy to extend](https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)
 - [A high-velocity style of software development](https://mihaiolteanu.me/interactive-dev)
 - [How To Learn Cryptography as a Programmer](https://soatok.blog/2020/06/10/how-to-learn-cryptography-as-a-programmer/)
-- [the cryptopals crypto challenges](https://cryptopals.com/)
-- [C programming notes](https://www.eskimo.com/~scs/cclass/krnotes/top.html)
-- [Latency Numbers Every Programmer Should Know](https://colin-scott.github.io/personal_website/research/interactive_latency.html)
+- [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments)
+- [Shrinking your code review](https://alexgaynor.net/2015/dec/29/shrinking-code-review/)
+- [A good commit message](https://gist.github.com/matthewhudson/1475276)
+- [Latency Numbers Every Programmer Should Know](https://colin-scott.github.io/personal_website/research/interactive_latency.html), [IO devices and latency](https://planetscale.com/blog/io-devices-and-latency)
 - [30 Linux System Monitoring Tools Every SysAdmin Should Know](https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html)
-- [My Approach to Building Large Technical Projects](https://mitchellh.com/writing/building-large-technical-projects)
+- [My Approach to Building Large Technical Projects](https://mitchellh.cm/writing/building-large-technical-projects)
 - [Contributing to Complex Projects](https://mitchellh.com/writing/contributing-to-complex-projects)
+- [Best Practices for Maintainers](https://opensource.guide/best-practices/)
 - [Twelve rules for job applications and interviews](https://vurt.org/articles/twelve-rules/)
 - [GDPR – A Practical Guide For Developers](https://techblog.bozho.net/gdpr-practical-guide-developers/)
 
@@ -66,7 +70,6 @@ _code is written to be understood by humans first, computers second_<br />
 - [Ops School Curriculum](https://www.opsschool.org/)
 - [RFC1925: The Twelve Networking Truths](https://www.rfc-editor.org/rfc/rfc1925)
 - [Distributed systems theory for the distributed systems engineers](https://www.the-paper-trail.org/post/2014-08-09-distributed-systems-theory-for-the-distributed-systems-engineer/)
-- [How to Solder: Through-Hole Soldering](https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering)
 
 ## life
 - [Actions, not words, reveal our real values](https://sive.rs/arv)
@@ -81,31 +84,11 @@ _code is written to be understood by humans first, computers second_<br />
 - [The Four Tools of Discipline](https://fs.blog/the-four-tools-of-discipline/)
 - [Critical Thinking - Why is it so hard to teach?](https://www.scribd.com/doc/52187953/Critical-Thinking?secret_password=2mquzbsbo6fq6txhqba5#full)
 
-## openbsd
-- [Openbsd.app search packages](https://openbsd.app/)
-- [OpenBSD Journal](https://undeadly.org)
-- [OpenBSD manual page server](https://man.openbsd.org/)
-- [OpenBSD Solutions Blog](https://obsd.solutions/en/blog/index.html)
-- [OpenBSD webzine](https://webzine.puffy.cafe/)
-- [The OpenBSD guy](https://www.youtube.com/@TheOpenBSDguy)
-- [Why OpenBSD rocks](https://why-openbsd.rocks/)
-<br>people
-	- [dataswamp by solene](https://dataswamp.org/~solene/)
-	- [flak by tedunangst](https://flak.tedunangst.com/)
-	- [jcs](https://jcs.org/)
-	- [rsadowski](https://rsadowski.de/posts/)
-	- [x61 by gonzalo](https://x61.ar/log/)
-
-## misc
-- [Engineering Inspiration](https://r.32k.io/eng-inspiration)
-- [How I write software](https://programmingisterrible.com/post/102153932958/how-i-write-software)
+## basics
 - [Learning to Read x86 Assembly Language](https://patshaughnessy.net/2016/11/26/learning-to-read-x86-assembly-language)
-- [IO devices and latency](https://planetscale.com/blog/io-devices-and-latency)
-- [The Lost Art of Structure Packing](http://www.catb.org/esr/structure-packing/)
-- [Steve Wozniak - Founders at Work](https://web.archive.org/web/20240327140802/http://www.foundersatwork.com/steve-wozniak.html)
-- [Things Every Hacker Once Knew](http://www.catb.org/esr/faqs/things-every-hacker-once-knew/)
 - [Post-Quantum Cryptography Basics](https://matduggan.com/post-quantum-cryptography-basics/)
 - [A tcpdump Tutorial with Examples](https://danielmiessler.com/blog/tcpdump)
 - [Eleven syscalls that rock the world](https://www.cloudatomiclab.com/prosyscall/)
-- [How setting the TZ environment variable avoids thousands of system calls](https://blog.packagecloud.io/set-environment-variable-save-thousands-of-system-calls/)
+- [How to Solder: Through-Hole Soldering](https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering)
+
 

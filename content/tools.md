@@ -1,5 +1,6 @@
 ---
 title: dev tools
+date: 2024-03-24
 ---
 useful free web tools
 

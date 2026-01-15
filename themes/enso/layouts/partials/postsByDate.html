@@ -7,7 +7,7 @@
           {{ .Date.Format (default "Jan 2" .Site.Params.abbrDateFmt) }}
         </div>
         <div class="title">
-          <a href="{{ .RelPermalink }}">{{.Title }} <i>{{.Params.subtitle }}</i></a>
+          <a href="{{ .RelPermalink }}"><b>{{.Title }}</b></a> <i>{{.Params.subtitle }}</i>
         </div>
       </li>
     {{ end }}

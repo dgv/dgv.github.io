@@ -40,6 +40,7 @@ body {
   color: var(--fontcolor);
   background: var(--bgcolor);
   margin: 0;
+  line-height: 1.45em;
 }
 a {
   text-decoration: underline;

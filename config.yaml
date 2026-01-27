@@ -26,6 +26,7 @@ params:
   author.link: "dgv.dev.br"
   author.email: "dgv@keemail.me"
   dateFmt: "2006-01-02"
+  description: "dgv's devlog & stuff"
   social:
     - name: codeberg.org/dgv
       url: https://codeberg.org/dgv

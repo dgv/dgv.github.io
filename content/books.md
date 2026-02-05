@@ -13,12 +13,6 @@ best thigs in life are free
 - [Distributed systems for fun and profit](https://book.mixu.net/distsys/)
 - [Patterns of Software](https://www.dreamsongs.com/Files/PatternsOfSoftware.pdf)
 
-### Hands-on tutorials
-- [A tour of Go](https://go.dev/tour/)
-- [eBPF party](https://ebpf.party/)
-- [the cryptopals crypto challenges](https://cryptopals.com/)
-- [Tour of Rust](https://tourofrust.com)
-
 ### Languages
 - [An Introduction to Assembly Programming with RISC-V](https://riscv-programming.org/book.html)
 - [Build Your Own Lisp _(Learn C and build your own programming language in 1000 lines of code)_](https://buildyourownlisp.com/)

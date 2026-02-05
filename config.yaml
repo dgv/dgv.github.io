@@ -11,14 +11,18 @@ menu:
       name: posts
       url: /posts/
       weight: 1
-    - identifier: tags
-      name: tags
-      url: /tags/
+    - identifier: projects
+      name: projects
+      url: /projects/
       weight: 2
     - identifier: tips
       name: tips
       url: /tips/
       weight: 3
+    - identifier: now
+      name: now
+      url: /now/
+      weight: 4
 params:
   abbrDateFmt: "Jan 2"
   author: "dgv"
@@ -30,10 +34,14 @@ params:
   social:
     - name: codeberg.org/dgv
       url: https://codeberg.org/dgv
+#    - name: crowdsupply.com/people/dgv
+#      url: https://crowdsupply.com/people/dgv
     - name: github.com/dgv
       url: https://github.com/dgv
     - name: mastodon.social/@dgv
       url: https://mastodon.social/@dgv
+#    - name: tangled.org/dgv.dev.br
+#      url: https://tangled.org/dgv.dev.br
 markup:
   goldmark:
     renderer:

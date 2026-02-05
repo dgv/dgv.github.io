@@ -47,12 +47,14 @@ _code is written to be understood by humans first, computers second_<br />
 
 ## survive
 - [Stop Hacklore!](https://www.hacklore.org/letter)
+- [5 Rules of Programming](https://www.cs.unc.edu/~stotts/COMP590-059-f24/robsrules.html)
 - [Write code that is easy to delete, not easy to extend](https://programmingisterrible.com/post/139222674273/write-code-that-is-easy-to-delete-not-easy-to)
 - [A high-velocity style of software development](https://mihaiolteanu.me/interactive-dev)
 - [How To Learn Cryptography as a Programmer](https://soatok.blog/2020/06/10/how-to-learn-cryptography-as-a-programmer/)
 - [Go Code Review Comments](https://go.dev/wiki/CodeReviewComments)
 - [Shrinking your code review](https://alexgaynor.net/2015/dec/29/shrinking-code-review/)
 - [A good commit message](https://gist.github.com/matthewhudson/1475276)
+- [The Twelve Networking Truths (RFC1925)](https://datatracker.ietf.org/doc/rfc9267/)
 - [Latency Numbers Every Programmer Should Know](https://colin-scott.github.io/personal_website/research/interactive_latency.html), [IO devices and latency](https://planetscale.com/blog/io-devices-and-latency)
 - [30 Linux System Monitoring Tools Every SysAdmin Should Know](https://www.cyberciti.biz/tips/top-linux-monitoring-tools.html)
 - [My Approach to Building Large Technical Projects](https://mitchellh.cm/writing/building-large-technical-projects)
@@ -91,4 +93,9 @@ _code is written to be understood by humans first, computers second_<br />
 - [Eleven syscalls that rock the world](https://www.cloudatomiclab.com/prosyscall/)
 - [How to Solder: Through-Hole Soldering](https://learn.sparkfun.com/tutorials/how-to-solder-through-hole-soldering)
 
-
+### tutorials
+- [A tour of Go](https://go.dev/tour/)
+- [eBPF party](https://ebpf.party/)
+- [Project-Based Tutorials in C](https://github.com/7etsuo/project-based-tutorials-in-c)
+- [the cryptopals crypto challenges](https://cryptopals.com/)
+- [Tour of Rust](https://tourofrust.com)

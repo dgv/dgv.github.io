@@ -4,7 +4,8 @@ subtitle:
 hidden: true
 ---
 
+- [books for devs](/books)
 - [curated readings](/readings)
 - [dev tools](/tools)
-- [free books for devs](/books)
+- [freebsd](/freebsd)
 - [recommended apps](/apps)

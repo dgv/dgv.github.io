@@ -1,10 +1,12 @@
 <div class="post-meta">
-  <strong>
+  <!--<strong>
     <span>posted on</span>
     <time>{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time>
-  </strong>
-  {{ with .WordCount }}<span> • {{ . }} words</span>{{ end }}
+  </strong>-->
+  <i>
+  {{ with .WordCount }}<span>{{ . }} words</span>{{ end }}
   {{ with .ReadingTime}}<span> • {{ . }} minute read</span>{{ end }}
+  </i>
   {{ if and .IsPage (ne .Date .Lastmod) }}
     <div>
       last updated on

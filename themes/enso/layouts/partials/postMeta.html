@@ -32,11 +32,11 @@
 {{ end }}
 
 <div class="post-meta">
-  <strong>
+  <!--<strong>
     <span>Posted on</span>
     <time>{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time>
-  </strong>
- {{ with .WordCount }}<span> • {{ . }} words</span>{{ end }}
+  </strong>-->
+ {{ with .WordCount }}<span>{{ . }} words</span>{{ end }}
  {{ with .ReadingTime}}<span> • {{ $duration }} minute read</span>{{ end }}
   {{ with .Params.tags }}
     <div>
